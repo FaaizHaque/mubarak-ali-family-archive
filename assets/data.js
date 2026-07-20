@@ -104,10 +104,11 @@ window.FAMILY = {
             ref: { text: "Their children are shown under Ahsan ul Haque, Branch 6 →", to: "b6-ahsan" }
           },
           {
+            id: "b1-siraj",
             name: "Siraj ul Haque",
             sex: "m",
-            note: "Mother: Sharifan.",
-            spouses: [ { name: "Shameem" } ],
+            note: "Mother: Sharifan. Married his first cousin Shameem (daughter of Kubra, Branch 6).",
+            spouses: [ { id: "b6-shameem", name: "Shameem", note: "daughter of Kubra (Branch 6)" } ],
             children: [
               { name: "Zia", sex: "m", note: "not married." },
               { name: "Saira", sex: "f", note: "not married." }
@@ -637,7 +638,14 @@ window.FAMILY = {
               }
             ]
           },
-          { name: "Shameem", sex: "f" },
+          {
+            id: "b6-shameem",
+            name: "Shameem",
+            sex: "f",
+            note: "Daughter of Kubra. Married her first cousin Siraj ul Haque (Branch 1); their children are shown on his line.",
+            spouses: [ { id: "b1-siraj", name: "Siraj ul Haque", note: "son of Sheikh Muhammad Ramzan (Branch 1)" } ],
+            ref: { text: "Their children are shown under Siraj ul Haque, Branch 1 →", to: "b1-siraj" }
+          },
           { name: "Nasreen", sex: "f" },
           {
             id: "b6-ahsan",

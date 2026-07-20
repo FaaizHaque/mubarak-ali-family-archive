@@ -162,8 +162,8 @@
         sp.appendChild(line);
       });
     }
-    var par = FL.parentOf[n.id];
-    if(par){ sec(body,"Parent").appendChild(relBtn(par.name,par.sex,par.id)); }
+    var pars = FL.parentsOf ? FL.parentsOf(n.id) : (FL.parentOf[n.id]?[FL.parentOf[n.id]]:[]);
+    if(pars.length){ var psec=sec(body, pars.length>1?"Parents":"Parent"); pars.forEach(function(pp){ psec.appendChild(relBtn(pp.name,pp.sex,pp.id)); }); }
 
     var kids = n.children||[];
     if(kids.length){ var cs=sec(body,"Children ("+kids.length+")"); kids.forEach(function(c){ cs.appendChild(relBtn(c.name,c.sex,c.id)); }); }

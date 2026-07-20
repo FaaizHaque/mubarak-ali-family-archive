@@ -54,6 +54,31 @@
   }
   FL.chain = chain;
 
+  // Both parents of a person: the parent they are nested under, plus that
+  // parent's in-family spouse (co-parent) when one is linked by id. This is what
+  // lets an intra-family marriage be traced from either side.
+  FL.parentsOf = function(id){
+    var out=[], p=parentOf[id];
+    if(p){ out.push(p);
+      (p.spouses||[]).forEach(function(s){
+        if(s.id && byId[s.id] && byId[s.id]!==p && out.indexOf(byId[s.id])<0) out.push(byId[s.id]);
+      });
+    }
+    return out;
+  };
+  // Every ancestor reachable through either parent, with its minimum generation depth.
+  function ancestorMap(id){
+    var dist={}, q=[[id,0]]; dist[id]=0;
+    while(q.length){
+      var cur=q.shift();
+      FL.parentsOf(cur[0]).forEach(function(par){
+        if(dist[par.id]==null || cur[1]+1<dist[par.id]){ dist[par.id]=cur[1]+1; q.push([par.id, cur[1]+1]); }
+      });
+    }
+    return dist;
+  }
+  FL.ancestorMap = ancestorMap;
+
   FL.descendantCount = function(node){
     var n = 0; (node.children||[]).forEach(function(c){ n += 1 + FL.descendantCount(c); });
     return n;
@@ -100,12 +125,15 @@
     var A = byId[aId], B = byId[bId];
     if(!A || !B) return { headline:"Unknown", detail:"", via:"" };
     var aN = FL.displayName(A.name), bN = FL.displayName(B.name);
-    var cA = chain(aId), mapA = {};
-    cA.forEach(function(x){ mapA[x.node.id] = x.depth; });
+    var mapA = ancestorMap(aId), mapB = ancestorMap(bId);
     var best = null;
-    chain(bId).forEach(function(x){
-      var d1 = mapA[x.node.id];
-      if(d1 != null){ var d2 = x.depth; if(!best || (d1+d2) < (best.d1+best.d2)) best = { node:x.node, d1:d1, d2:d2 }; }
+    Object.keys(mapA).forEach(function(cid){
+      if(mapB[cid]!=null){
+        var d1 = mapA[cid], d2 = mapB[cid];
+        if(!best || (d1+d2) < (best.d1+best.d2) ||
+           ((d1+d2) === (best.d1+best.d2) && Math.abs(d1-d2) < Math.abs(best.d1-best.d2)))
+          best = { node:byId[cid], d1:d1, d2:d2 };
+      }
     });
     if(!best) return { headline:"No direct blood link", detail:aN+" and "+bN+" may be connected by marriage rather than descent.", via:"" };
 

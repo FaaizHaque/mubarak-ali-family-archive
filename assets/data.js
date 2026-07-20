@@ -99,68 +99,9 @@ window.FAMILY = {
             id: "b1-suriya",
             name: "Suriya Jabeen",
             sex: "f",
-            note: "Mother: Sharifan.",
-            spouses: [ { name: "Ahsan ul Haque" } ],
-            children: [
-              {
-                name: "Rizwan ul Haque",
-                sex: "m",
-                spouses: [ { name: "Romana" } ],
-                children: [
-                  {
-                    name: "Hira", sex: "f",
-                    spouses: [ { name: "A" } ],
-                    children: [ { name: "C", sex: "m", note: "son" } ]
-                  },
-                  { name: "Maryam", sex: "f", spouses: [ { name: "B" } ] }
-                ]
-              },
-              {
-                id: "b1-shazia",
-                name: "Shazia",
-                sex: "f",
-                spouses: [ { name: "Faisal Haque", note: "son of Imdad ul Haque (Branch 3)" } ],
-                children: [
-                  {
-                    name: "Fatima", sex: "f",
-                    spouses: [ { name: "Faiz" } ],
-                    children: [
-                      { name: "Ayla", sex: "f" },
-                      { name: "Alina", sex: "f" },
-                      { name: "Ayza", sex: "f" }
-                    ]
-                  },
-                  {
-                    name: "Sadaf", sex: "f",
-                    spouses: [ { name: "Waiz" } ],
-                    children: [ { name: "Zaidan", sex: "m" } ]
-                  },
-                  {
-                    name: "Salman", sex: "m",
-                    spouses: [ { name: "Nada" } ],
-                    children: [ { name: "Dalia", sex: "f" } ]
-                  }
-                ]
-              },
-              {
-                id: "b1-farrah",
-                name: "Farrah",
-                sex: "f",
-                spouses: [ { name: "Moin ul Haque", note: "son of Anwar ul Haque (Branch 3)" } ],
-                children: [
-                  {
-                    name: "Zara Haque", sex: "f",
-                    spouses: [ { name: "Umer Shami" } ],
-                    children: [
-                      { name: "Ayra", sex: "f" },
-                      { name: "Zainab", sex: "f" }
-                    ]
-                  },
-                  { name: "Zain ul Haque", sex: "m", spouses: [ { name: "Hira Noor" } ] },
-                  { name: "Faaiz ul Haque", sex: "m" }
-                ]
-              }
-            ]
+            note: "Mother: Sharifan. Married her first cousin Ahsan ul Haque (Branch 6); their children are shown on his line.",
+            spouses: [ { id: "b6-ahsan", name: "Ahsan ul Haque", note: "son of Kubra (Branch 6)" } ],
+            ref: { text: "Their children are shown under Ahsan ul Haque, Branch 6 →", to: "b6-ahsan" }
           },
           {
             name: "Siraj ul Haque",
@@ -237,8 +178,19 @@ window.FAMILY = {
                 id: "b3-moin",
                 name: "Moin ul Haque",
                 sex: "m",
-                spouses: [ { name: "Farrah", note: "daughter of Ahsan & Suriya (Branch 1)" } ],
-                ref: { text: "Their children are shown under Farrah, Branch 1 →", to: "b1-farrah" }
+                spouses: [ { id: "b1-farrah", name: "Farrah", note: "daughter of Suriya & Ahsan (Branches 1 & 6)" } ],
+                children: [
+                  {
+                    name: "Zara Haque", sex: "f",
+                    spouses: [ { name: "Umer Shami" } ],
+                    children: [
+                      { name: "Ayra", sex: "f" },
+                      { name: "Zainab", sex: "f" }
+                    ]
+                  },
+                  { name: "Zain ul Haque", sex: "m", spouses: [ { name: "Hira Noor" } ] },
+                  { name: "Faaiz ul Haque", sex: "m" }
+                ]
               },
               {
                 name: "Mobin ul Haque",
@@ -320,20 +272,40 @@ window.FAMILY = {
             id: "b3-imdad",
             name: "Imdad ul Haque",
             sex: "m",
-            spouses: [ { name: "Naseem", note: "daughter of Sughra (Branch 5)" } ],
+            spouses: [ { id: "b5-naseem", name: "Naseem", note: "daughter of Sughra (Branch 5)" } ],
             children: [
               {
                 id: "b3-faisal",
                 name: "Faisal",
                 sex: "m",
-                spouses: [ { name: "Shazia", note: "daughter of Suriya & Ahsan (Branch 1)" } ],
-                ref: { text: "Their children are shown under Shazia, Branch 1 →", to: "b1-shazia" }
+                spouses: [ { id: "b1-shazia", name: "Shazia", note: "daughter of Suriya & Ahsan (Branches 1 & 6)" } ],
+                children: [
+                  {
+                    name: "Fatima", sex: "f",
+                    spouses: [ { name: "Faiz" } ],
+                    children: [
+                      { name: "Ayla", sex: "f" },
+                      { name: "Alina", sex: "f" },
+                      { name: "Ayza", sex: "f" }
+                    ]
+                  },
+                  {
+                    name: "Sadaf", sex: "f",
+                    spouses: [ { name: "Waiz" } ],
+                    children: [ { name: "Zaidan", sex: "m" } ]
+                  },
+                  {
+                    name: "Salman", sex: "m",
+                    spouses: [ { name: "Nada" } ],
+                    children: [ { name: "Dalia", sex: "f" } ]
+                  }
+                ]
               },
               {
                 id: "b3-adil",
                 name: "Adil",
                 sex: "m",
-                spouses: [ { name: "Amna", note: "daughter of Habib (Branch 7)" } ],
+                spouses: [ { id: "b7-amna", name: "Amna", note: "daughter of Habib (Branch 7)" } ],
                 children: [
                   { name: "Anum", sex: "f" },
                   { name: "Madiha", sex: "f", spouses: [ { name: "", note: "married — name to be added" } ] },
@@ -352,7 +324,7 @@ window.FAMILY = {
                 id: "b3-suhail",
                 name: "Suhail",
                 sex: "m",
-                spouses: [ { name: "Aliya", note: "daughter of Zahoor ul Haque, son of Kubra (Branch 6)" } ],
+                spouses: [ { id: "b6-aliya", name: "Aliya", note: "daughter of Zahoor ul Haque, son of Kubra (Branch 6)" } ],
                 children: [
                   { name: "Momin", sex: "m", spouses: [ { name: "Zara" } ] },
                   { name: "Maryam", sex: "f", spouses: [ { name: "Bilawal" } ] },
@@ -582,9 +554,11 @@ window.FAMILY = {
           },
           { name: "Jamila", sex: "f", spouses: [ { name: "Riffat Pasha" } ], note: "No biological children." },
           {
+            id: "b5-naseem",
             name: "Naseem",
             sex: "f",
-            spouses: [ { name: "Imdad ul Haque", note: "son of Sheikh Muhammad Arif (Branch 3)" } ],
+            note: "Married her first cousin Imdad ul Haque (Branch 3); their children are shown on his line.",
+            spouses: [ { id: "b3-imdad", name: "Imdad ul Haque", note: "son of Sheikh Muhammad Arif (Branch 3)" } ],
             ref: { text: "Their five sons are shown under Imdad ul Haque, Branch 3 →", to: "b3-imdad" }
           }
         ]
@@ -665,7 +639,40 @@ window.FAMILY = {
           },
           { name: "Shameem", sex: "f" },
           { name: "Nasreen", sex: "f" },
-          { name: "Ahsan", sex: "m" },
+          {
+            id: "b6-ahsan",
+            name: "Ahsan ul Haque",
+            sex: "m",
+            note: "Son of Kubra. Married his first cousin Suriya Jabeen (Branch 1); their children are shown on his line below.",
+            spouses: [ { id: "b1-suriya", name: "Suriya Jabeen", note: "daughter of Sheikh Muhammad Ramzan (Branch 1)" } ],
+            children: [
+              {
+                name: "Rizwan ul Haque",
+                sex: "m",
+                spouses: [ { name: "Romana" } ],
+                children: [
+                  { name: "Hira", sex: "f", spouses: [ { name: "A" } ], children: [ { name: "C", sex: "m", note: "son" } ] },
+                  { name: "Maryam", sex: "f", spouses: [ { name: "B" } ] }
+                ]
+              },
+              {
+                id: "b1-shazia",
+                name: "Shazia",
+                sex: "f",
+                note: "Daughter of Suriya & Ahsan. Married Faisal (Branch 3); their children are shown on his line.",
+                spouses: [ { id: "b3-faisal", name: "Faisal", note: "son of Imdad ul Haque (Branch 3)" } ],
+                ref: { text: "Their children are shown under Faisal, Branch 3 →", to: "b3-faisal" }
+              },
+              {
+                id: "b1-farrah",
+                name: "Farrah",
+                sex: "f",
+                note: "Daughter of Suriya & Ahsan. Married Moin ul Haque (Branch 3); their children are shown on his line.",
+                spouses: [ { id: "b3-moin", name: "Moin ul Haque", note: "son of Anwar ul Haque (Branch 3)" } ],
+                ref: { text: "Their children are shown under Moin ul Haque, Branch 3 →", to: "b3-moin" }
+              }
+            ]
+          },
           {
             id: "b6-zahoor",
             name: "Zahoor ul Haque",
@@ -675,7 +682,7 @@ window.FAMILY = {
                 id: "b6-aliya",
                 name: "Aliya",
                 sex: "f",
-                spouses: [ { name: "Suhail", note: "son of Imdad ul Haque (Branch 3)" } ],
+                spouses: [ { id: "b3-suhail", name: "Suhail", note: "son of Imdad ul Haque (Branch 3)" } ],
                 ref: { text: "Their children are shown under Suhail, Branch 3 →", to: "b3-suhail" }
               }
             ]
@@ -704,8 +711,9 @@ window.FAMILY = {
                 id: "b7-irum",
                 name: "Irum",
                 sex: "f",
-                spouses: [ { name: "Babar", note: "first cousin — son of Habib & Altaf Shafi (Branch 7)" } ],
-                todo: "two daughters, both married — names and details to be added"
+                note: "Married her first cousin Babar (Branch 7); their children are shown on his line.",
+                spouses: [ { id: "b7-babar", name: "Babar", note: "first cousin — son of Habib & Altaf Shafi (Branch 7)" } ],
+                ref: { text: "Their children are shown under Babar, above →", to: "b7-babar" }
               },
               { name: "Farah", sex: "f", spouses: [ { name: "", note: "married — name to be added" } ], todo: "details to be added" }
             ]
@@ -718,14 +726,14 @@ window.FAMILY = {
                 id: "b7-babar",
                 name: "Babar",
                 sex: "m",
-                spouses: [ { name: "Irum", note: "first cousin — daughter of Ata (Branch 7)" } ],
-                ref: { text: "Their children are shown under Irum, above →", to: "b7-irum" }
+                spouses: [ { id: "b7-irum", name: "Irum", note: "first cousin — daughter of Ata (Branch 7)" } ],
+                todo: "two daughters, both married — names and details to be added"
               },
               {
                 id: "b7-amna",
                 name: "Amna",
                 sex: "f",
-                spouses: [ { name: "Adil", note: "son of Imdad ul Haque (Branch 3)" } ],
+                spouses: [ { id: "b3-adil", name: "Adil", note: "son of Imdad ul Haque (Branch 3)" } ],
                 ref: { text: "Their children are shown under Adil, Branch 3 →", to: "b3-adil" }
               }
             ]

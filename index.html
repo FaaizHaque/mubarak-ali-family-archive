@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sheikh Mubarak Ali Family Archive</title>
+<meta name="description" content="Preserving the history, heritage and legacy of the descendants of Sheikh Mubarak Ali — the Haque family." />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="home">
+
+  <section class="hero">
+    <div class="in">
+      <div class="bigcrest">م</div>
+      <h1 id="h-title">Sheikh Mubarak Ali Family Archive</h1>
+      <div class="sub" id="h-sub">Preserving the History, Heritage and Legacy of the Haque Family</div>
+      <div class="est">Descendants of Sheikh Mubarak Ali</div>
+    </div>
+  </section>
+
+  <div class="container narrow">
+    <div class="prose">
+      <h3 id="intro-heading">Introduction</h3>
+      <div id="intro"></div>
+    </div>
+  </div>
+
+  <div class="tiles" id="tiles"></div>
+  <div style="height:70px"></div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/familylib.js"></script>
+  <script src="assets/site.js"></script>
+  <script>
+    (function(){
+      var FL = window.FL;
+      document.getElementById("h-title").textContent = FL.site.title;
+      document.getElementById("h-sub").textContent = FL.site.subtitle;
+      document.getElementById("intro-heading").textContent = (FL.intro.heading || "Introduction");
+      var box = document.getElementById("intro");
+      (FL.intro.paragraphs||[]).forEach(function(t){
+        var p = document.createElement("p"); p.innerHTML = t; box.appendChild(p);
+      });
+      var TILES = [
+        { i:"🌳", t:"Family Tree",        d:"Explore the interactive tree of all seven branches.", h:"tree.html" },
+        { i:"📖", t:"Family Directory",   d:"Every member — searchable and filterable.",           h:"directory.html" },
+        { i:"🔗", t:"Relationship Finder",d:"See exactly how any two people are related.",          h:"finder.html" },
+        { i:"🕰️", t:"Timeline",           d:"Key moments across the generations.",                  h:"timeline.html" },
+        { i:"★",  t:"Notable Members",    d:"Distinguished members of the family.",                 h:"notable.html" },
+        { i:"🖼️", t:"Gallery",            d:"Photographs across the years.",                        h:"gallery.html" },
+        { i:"✍️", t:"Family Stories",     d:"Memories, accounts and milestones.",                   h:"stories.html" },
+        { i:"📜", t:"Documents & Archive",d:"Certificates, letters and family records.",            h:"documents.html" }
+      ];
+      var tiles = document.getElementById("tiles");
+      TILES.forEach(function(x){
+        var a = document.createElement("a"); a.className="tile"; a.href=x.h;
+        a.innerHTML = '<div class="ico">'+x.i+'</div><div><div class="tt">'+x.t+'</div><div class="td">'+x.d+'</div></div>';
+        tiles.appendChild(a);
+      });
+    })();
+  </script>
+</body>
+</html>

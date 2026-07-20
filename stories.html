@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Family Stories · Sheikh Mubarak Ali Family Archive</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="stories">
+  <div class="container narrow">
+    <div class="pagehead">
+      <h2>Family Stories</h2>
+      <div class="lede">Memories, accounts and milestones — the moments that turn a family tree into a family history.</div>
+    </div>
+    <hr class="rule" />
+    <div id="stories"></div>
+    <div id="empty"></div>
+  </div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/familylib.js"></script>
+  <script src="assets/site.js"></script>
+  <script src="content/stories.js"></script>
+  <script>
+    (function(){
+      var FL=window.FL, SITE=window.SITE, items=window.STORIES||[], box=document.getElementById("stories");
+      if(!items.length){
+        document.getElementById("empty").innerHTML =
+          '<div class="empty-state"><div class="ico">✍️</div><h3>No stories yet</h3>'+
+          '<p>This is where the family’s memories and accounts will be gathered — a first migration, a wedding, a life well lived.</p></div>'+
+          '<div class="howto"><h4>How to add a story</h4><ol>'+
+          '<li>Open <code>content/stories.js</code>.</li>'+
+          '<li>Copy the example block, then fill in the <code>title</code> and <code>body</code> (a blank line separates paragraphs).</li>'+
+          '<li>Optionally add <code>author</code>, <code>date</code>, and <code>people</code> (ids from the tree).</li></ol></div>';
+        return;
+      }
+      items.forEach(function(s){
+        var art=document.createElement("article"); art.style.cssText="background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--shadow)";
+        var meta=[s.author,s.date].filter(Boolean).map(function(x){return SITE.escapeText(x);}).join(" · ");
+        var html='<h3 style="margin:0 0 4px;font-size:22px">'+SITE.escapeText(s.title||"Untitled")+'</h3>';
+        if(meta) html+='<div class="lede" style="font-size:13px;margin-bottom:12px">'+meta+'</div>';
+        (s.body||"").split(/\n\s*\n/).forEach(function(p){ html+='<p style="font-size:16px;line-height:1.7;margin:0 0 14px">'+SITE.escapeText(p)+'</p>'; });
+        art.innerHTML=html;
+        if(s.people && s.people.length){
+          var row=document.createElement("div"); row.style.marginTop="6px";
+          s.people.forEach(function(id){ if(!FL.byId[id]) return; var b=document.createElement("button"); b.className="relbtn"; b.innerHTML='<span class="dot"></span>'+SITE.escapeText(FL.displayName(FL.byId[id].name)); b.onclick=function(){ SITE.openProfile(id); }; row.appendChild(b); });
+          art.appendChild(row);
+        }
+        box.appendChild(art);
+      });
+    })();
+  </script>
+</body>
+</html>

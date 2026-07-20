@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Timeline · Sheikh Mubarak Ali Family Archive</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="timeline">
+  <div class="container narrow">
+    <div class="pagehead">
+      <h2>Timeline</h2>
+      <div class="lede">Milestones across the generations. Births and deaths are added here automatically as dates are recorded on people in the archive.</div>
+    </div>
+    <hr class="rule" />
+    <div class="timeline" id="tl"></div>
+    <div class="howto">
+      <h4>Add to the timeline</h4>
+      <ol>
+        <li>For a historical event, add it to the <code>events</code> list near the top of <code>assets/data.js</code>.</li>
+        <li>For a birth or death, just set <code>dob</code> / <code>dod</code> on that person — it appears here on its own.</li>
+      </ol>
+    </div>
+  </div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/familylib.js"></script>
+  <script src="assets/site.js"></script>
+  <script>
+    (function(){
+      var FL=window.FL, SITE=window.SITE;
+      function ynum(y){ var m=(""+y).match(/\d{3,4}/); return m?+m[0]:9999; }
+      var items=[];
+      (FL.events||[]).forEach(function(e){
+        items.push({ n:ynum(e.year), label:(e.display||e.year), title:e.title, text:e.text||"", kind:e.kind||"milestone", big:true });
+      });
+      FL.datedPeople().forEach(function(d){
+        items.push({ n:ynum(d.year), label:d.year, title:d.name, text:(d.kind==="birth"?"Born":"Died"), kind:"life", id:d.id, big:false });
+      });
+      items.sort(function(a,b){ return a.n-b.n; });
+
+      var tl=document.getElementById("tl");
+      if(!items.length){ tl.innerHTML='<div class="empty">No dated events yet.</div>'; return; }
+      items.forEach(function(it){
+        var d=document.createElement("div");
+        d.className="tevent "+(it.kind==="milestone"||it.kind==="origin"?"milestone":"")+(it.big?"":" small");
+        var head='<div class="yr">'+SITE.escapeText(it.label)+'</div><div class="tt">'+SITE.escapeText(it.title)+'</div>';
+        d.innerHTML=head+(it.text?'<div class="tx">'+SITE.escapeText(it.text)+'</div>':'');
+        if(it.id){ d.style.cursor="pointer"; d.onclick=function(){ SITE.openProfile(it.id); }; }
+        tl.appendChild(d);
+      });
+    })();
+  </script>
+</body>
+</html>

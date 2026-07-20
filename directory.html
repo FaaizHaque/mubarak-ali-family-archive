@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Family Directory · Sheikh Mubarak Ali Family Archive</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="directory">
+  <div class="container">
+    <div class="pagehead">
+      <h2>Family Directory</h2>
+      <div class="lede">Every member of the family, searchable and filterable. Tap anyone to open their profile.</div>
+    </div>
+    <hr class="rule" />
+    <div class="toolbar">
+      <input type="search" id="q" placeholder="Search names…" autocomplete="off" />
+      <select id="branch"><option value="">All branches</option></select>
+      <select id="gen"><option value="">All generations</option></select>
+      <select id="sort">
+        <option value="name">Sort: A → Z</option>
+        <option value="branch">Sort: by branch</option>
+        <option value="gen">Sort: by generation</option>
+      </select>
+      <label class="chip" style="cursor:pointer"><input type="checkbox" id="hideph" checked style="margin-right:6px" />Hide unnamed</label>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div id="none" class="empty" style="display:none;margin-top:20px">No one matches those filters.</div>
+  </div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/familylib.js"></script>
+  <script src="assets/site.js"></script>
+  <script src="assets/directory.js"></script>
+</body>
+</html>

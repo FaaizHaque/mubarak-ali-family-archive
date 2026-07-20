@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Relationship Finder · Sheikh Mubarak Ali Family Archive</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="finder">
+  <div class="container narrow">
+    <div class="pagehead">
+      <h2>Relationship Finder</h2>
+      <div class="lede">Pick any two members of the family and see exactly how they are related.</div>
+    </div>
+    <hr class="rule" />
+
+    <div class="finder">
+      <div class="picker" id="pa">
+        <h4>First person</h4>
+        <input type="search" placeholder="Type a name…" autocomplete="off" />
+        <div class="plist"></div>
+        <div class="sel"><span class="empty">No one chosen yet</span></div>
+      </div>
+      <div class="vs">↔</div>
+      <div class="picker" id="pb">
+        <h4>Second person</h4>
+        <input type="search" placeholder="Type a name…" autocomplete="off" />
+        <div class="plist"></div>
+        <div class="sel"><span class="empty">No one chosen yet</span></div>
+      </div>
+    </div>
+
+    <div class="result empty" id="result">Choose two people above to see how they are related.</div>
+
+    <p class="lede" style="font-size:13px; margin-top:18px">
+      Relationships are traced through blood descent from Sheikh Mubarak Ali. Where cousins married within
+      the family, the finder shows their closest descent-based relationship. Marriage-only (in-law) links are
+      not yet computed.
+    </p>
+  </div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/familylib.js"></script>
+  <script src="assets/site.js"></script>
+  <script src="assets/finder.js"></script>
+</body>
+</html>

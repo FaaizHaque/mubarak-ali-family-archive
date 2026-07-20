@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Notable Members · Sheikh Mubarak Ali Family Archive</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="notable">
+  <div class="container">
+    <div class="pagehead">
+      <h2>Notable Members</h2>
+      <div class="lede">Members of the family who have served with distinction — in public life, the professions, and in holding the family together. This page grows as members are recognised.</div>
+    </div>
+    <hr class="rule" />
+    <div class="grid" id="grid"></div>
+
+    <div class="howto">
+      <h4>Add a notable member</h4>
+      <ol>
+        <li>Find the person in <code>assets/data.js</code> and add <code>notable: true</code>, plus optional <code>role: "…"</code> and <code>honors: "…"</code>.</li>
+        <li>For someone who married into the family (not on the tree), add them to the <code>notableExtra</code> list near the top of <code>assets/data.js</code>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/familylib.js"></script>
+  <script src="assets/site.js"></script>
+  <script>
+    (function(){
+      var FL=window.FL, SITE=window.SITE;
+      var list=FL.notablePeople(), grid=document.getElementById("grid");
+      if(!list.length){ grid.innerHTML='<div class="empty">No notable members recorded yet — see the guide below.</div>'; return; }
+      list.forEach(function(p){
+        var el=document.createElement(p.id?"button":"div");
+        el.className="pcard"; el.style.alignItems="flex-start";
+        if(p.id) el.onclick=function(){ SITE.openProfile(p.id); }; else el.style.cursor="default";
+        var av=document.createElement("div"); av.className="avatar "+(p.sex||"");
+        if(p.photo){ var im=new Image(); im.src=p.photo; im.onerror=function(){ av.textContent=FL.initials(p.name); }; av.appendChild(im); } else av.textContent=FL.initials(p.name);
+        var m=document.createElement("div"); m.style.minWidth="0";
+        m.innerHTML='<div class="nm"><span class="starred">★</span> '+SITE.escapeText(p.name)+'</div>'+
+          (p.role?'<div class="mt"><span class="b">'+SITE.escapeText(p.role)+'</span></div>':'')+
+          (p.honors?'<div class="mt" style="margin-top:5px;line-height:1.5">'+SITE.escapeText(p.honors)+'</div>':'');
+        el.appendChild(av); el.appendChild(m); grid.appendChild(el);
+      });
+    })();
+  </script>
+</body>
+</html>

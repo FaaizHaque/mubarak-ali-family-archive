@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Documents &amp; Archive · Sheikh Mubarak Ali Family Archive</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="documents">
+  <div class="container narrow">
+    <div class="pagehead">
+      <h2>Documents &amp; Archive</h2>
+      <div class="lede">Scanned certificates, letters, records and other original materials — the documentary memory of the family.</div>
+    </div>
+    <hr class="rule" />
+    <div id="docs"></div>
+    <div id="empty"></div>
+  </div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/familylib.js"></script>
+  <script src="assets/site.js"></script>
+  <script src="content/documents.js"></script>
+  <script>
+    (function(){
+      var SITE=window.SITE, items=window.DOCUMENTS||[], box=document.getElementById("docs");
+      if(!items.length){
+        document.getElementById("empty").innerHTML =
+          '<div class="empty-state"><div class="ico">📜</div><h3>No documents yet</h3>'+
+          '<p>This is where scanned certificates, letters, and historical records will be preserved for the family.</p></div>'+
+          '<div class="howto"><h4>How to add a document</h4><ol>'+
+          '<li>Create a <code>documents-files/</code> folder and put the scan (PDF or image) inside.</li>'+
+          '<li>Open <code>content/documents.js</code> and add <code>{ title:"…", note:"…", file:"documents-files/name.pdf", year:"…" }</code>.</li>'+
+          '<li>Save — it appears here as a link.</li></ol></div>';
+        return;
+      }
+      items.forEach(function(d){
+        var row=document.createElement("a"); row.className="tile"; row.href=d.file||"#"; if(d.file) row.target="_blank";
+        row.innerHTML='<div class="ico">📄</div><div><div class="tt">'+SITE.escapeText(d.title||"Document")+(d.year?' <span class="tag">'+SITE.escapeText(d.year)+'</span>':'')+'</div>'+(d.note?'<div class="td">'+SITE.escapeText(d.note)+'</div>':'')+'</div>';
+        box.appendChild(row);
+      });
+      box.className="tiles"; box.style.gridTemplateColumns="1fr";
+    })();
+  </script>
+</body>
+</html>

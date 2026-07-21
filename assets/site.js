@@ -121,6 +121,26 @@
   }
   function sec(body, title){ var d=el("div","sec"); d.appendChild(el("h4",null,title)); body.appendChild(d); return d; }
 
+  // Render a multi-line bio: "Label: value" lines, "Heading:" subheads, and "• " bullets.
+  function renderBio(text){
+    var wrap=el("div","biobody"), lines=(''+text).split(/\r?\n/), ul=null;
+    lines.forEach(function(line){
+      var t=line.trim();
+      if(!t){ ul=null; return; }
+      if(/^[•\-\*]\s?/.test(t)){
+        if(!ul){ ul=el("ul","biolist"); wrap.appendChild(ul); }
+        var li=document.createElement("li"); li.textContent=t.replace(/^[•\-\*]\s?/,""); ul.appendChild(li);
+      } else if(/:$/.test(t) && t.length<48){
+        ul=null; wrap.appendChild(el("div","biohead",escapeText(t.replace(/:$/,""))));
+      } else {
+        ul=null; var m=t.match(/^([^:]{2,42}):\s+(.+)$/), d=el("div","bioline");
+        if(m) d.innerHTML="<b>"+escapeText(m[1])+":</b> "+escapeText(m[2]); else d.textContent=t;
+        wrap.appendChild(d);
+      }
+    });
+    return wrap;
+  }
+
   function openProfile(id){
     var n = FL.byId[id]; if(!n) return;
     if(!drawer) buildDrawer();
@@ -141,7 +161,7 @@
 
     var body = document.getElementById("d-body"); body.innerHTML="";
 
-    if(n.bio){ var s=sec(body,"Biography"); s.appendChild(el("div","bio",escapeText(n.bio))); }
+    if(n.bio){ var s=sec(body,"Biography"); s.appendChild(renderBio(n.bio)); }
     if(n.honors){ var sh=sec(body,"Honours & achievements"); sh.appendChild(el("div","bio",escapeText(n.honors))); }
     if(n.note){ var sn=sec(body,"Note"); sn.appendChild(el("div","bio",escapeText(n.note))); }
 
@@ -172,6 +192,9 @@
 
     var add = sec(body,"Add / update this person");
     add.appendChild(el("div","addnote",'To add a <b>photo, dates, profession or biography</b>, edit <code>assets/data.js</code> and find this person (id: <code>'+n.id+'</code>). The guide is at the top of that file.'));
+    var fullLink = el("a",null,"↗ Open full profile page"); fullLink.href = "person.html?id=" + encodeURIComponent(id);
+    fullLink.style.cssText = "display:block;text-align:center;margin-top:10px;background:linear-gradient(180deg,var(--gold-soft),var(--gold));color:#231a03;border-radius:10px;padding:10px;font-size:13px;font-weight:700;text-decoration:none";
+    add.appendChild(fullLink);
     var share = el("div","sharerow");
     var showTree = el("button",null,"🌳 Show in tree"); showTree.onclick = function(){ showInTree(id); };
     var copy = el("button",null,"🔗 Copy link"); copy.onclick = function(){ copyLink(id); };
@@ -202,6 +225,7 @@
     closeProfile: closeProfile,
     toast: toast,
     escapeText: escapeText,
+    renderBio: renderBio,
     onShowInTree: null   // the tree page overrides this to centre instead of navigate
   };
 

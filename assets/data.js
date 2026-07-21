@@ -182,6 +182,45 @@ window.FAMILY_EMBEDDED = {
                 id: "b3-moin",
                 name: "Moin ul Haque",
                 sex: "m",
+                dob: "01.03.1963",
+                profession: "Diplomat — Pakistan Foreign Service",
+                notable: true,
+                role: "Ambassador of Pakistan",
+                honors: "Sitara-e-Imtiaz",
+                bio: `Place of Birth: Rawalpindi, Pakistan
+Date of Birth: 01.03.1963
+Qualification: Masters in Commerce
+Joined Foreign Service: 14.11.1987
+Languages: English, Urdu, French
+Award: Sitara-e-Imtiaz
+Marital Status: Married, with one daughter and two sons.
+
+Professional Experience at Headquarters:
+• 1989–1990 — Desk Officer for Bangladesh
+• 1991–1993 — Assistant Director, Personnel Division
+• 1996–1997 — Deputy Director, OIC Summit Cell
+• 1997–1999 — Deputy Director, Foreign Secretary's Office
+• 2005–2007 — Director, Foreign Secretary's Office
+• 2013 (Sep–Dec) — Director General (Europe)
+• 2013–2015 — Chief of Protocol
+• 2016 (Jan–Jul) — Additional Secretary (Administration)
+
+Diplomatic Assignments Abroad:
+• 1993–1996 — Third / Second Secretary, Embassy of Pakistan, Brussels, Belgium
+• 1999–2002 — Second / First Secretary, Permanent Mission of Pakistan to the UN, New York
+• 2002–2005 — First Secretary / Counsellor, High Commission for Pakistan, Colombo, Sri Lanka
+• 2007–2010 — Consul General, Consulate General of Pakistan, Vancouver, Canada
+• 2010–2013 — Minister / DHM, Embassy of Pakistan, Ankara, Turkey
+• Jul 2016 – Jul 2020 — Ambassador of Pakistan to France, also accredited to the Principality of Monaco and Permanent Delegate to UNESCO
+• Aug 2020 – Nov 2023 — Ambassador of Pakistan to China, also accredited to Mongolia
+
+Other Assignment:
+• Jul 2024 – Jul 2025 — Advisor, IBI International Group Co. Ltd., Suzhou, Jiangsu, China
+
+Courses Attended:
+• 1990–1991 — French Language Course, CAVILAM, Vichy, France
+• 2007 (Feb–Jul) — Senior Management Course, School of Public Policy, Lahore
+• 2015–2016 — National Security Course, National Defence University, Islamabad`,
                 spouses: [ { id: "b1-farrah", name: "Farrah", note: "daughter of Suriya & Ahsan (Branches 1 & 6)" } ],
                 children: [
                   {

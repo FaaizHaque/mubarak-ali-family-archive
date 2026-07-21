@@ -2,7 +2,7 @@
    tree.js — renders the family tree and handles pan / zoom / pinch / collapse.
    Clicking a person opens the shared profile drawer (window.SITE.openProfile).
 ============================================================================= */
-(function(){
+window.familyReady.then(function(){
   "use strict";
   var FL = window.FL, SITE = window.SITE;
   var stage = document.getElementById("stage");
@@ -135,4 +135,4 @@
     var h=(location.hash||"").replace("#","");
     if(h && FL.byId[h]) centerOn(h, true);
   });
-})();
+});

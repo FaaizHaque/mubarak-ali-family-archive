@@ -195,7 +195,7 @@
   function escapeText(s){ var d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
 
   /* ---------- boot ---------- */
-  buildHeader(); buildFooter(); buildDrawer();
+  buildDrawer();   // drawer DOM has no data dependency; header/footer need FL.site
 
   window.SITE = {
     openProfile: openProfile,
@@ -204,4 +204,6 @@
     escapeText: escapeText,
     onShowInTree: null   // the tree page overrides this to centre instead of navigate
   };
+
+  (window.familyReady || Promise.resolve()).then(function(){ buildHeader(); buildFooter(); });
 })();

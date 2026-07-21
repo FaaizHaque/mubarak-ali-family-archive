@@ -1,7 +1,7 @@
 /* =============================================================================
    finder.js — pick two people, compute their relationship via FL.relationship.
 ============================================================================= */
-(function(){
+window.familyReady.then(function(){
   "use strict";
   var FL = window.FL, SITE = window.SITE;
 
@@ -66,4 +66,4 @@
 
   makePicker("pa","a");
   makePicker("pb","b");
-})();
+});

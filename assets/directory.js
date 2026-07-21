@@ -1,7 +1,7 @@
 /* =============================================================================
    directory.js — searchable / filterable A–Z list of every family member.
 ============================================================================= */
-(function(){
+window.familyReady.then(function(){
   "use strict";
   var FL = window.FL, SITE = window.SITE;
   var rows = FL.directory();
@@ -72,4 +72,4 @@
 
   // open a profile if arriving with #id
   var h=(location.hash||"").replace("#",""); if(h && FL.byId[h]) SITE.openProfile(h);
-})();
+});

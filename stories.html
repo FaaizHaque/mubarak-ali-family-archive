@@ -17,12 +17,15 @@
     <div id="empty"></div>
   </div>
 
+  <script src="assets/config.js"></script>
   <script src="assets/data.js"></script>
   <script src="assets/familylib.js"></script>
+  <script src="assets/sheet.js"></script>
+  <script src="assets/boot.js"></script>
   <script src="assets/site.js"></script>
   <script src="content/stories.js"></script>
   <script>
-    (function(){
+    window.familyReady.then(function(){
       var FL=window.FL, SITE=window.SITE, items=window.STORIES||[], box=document.getElementById("stories");
       if(!items.length){
         document.getElementById("empty").innerHTML =
@@ -48,7 +51,7 @@
         }
         box.appendChild(art);
       });
-    })();
+    });
   </script>
 </body>
 </html>

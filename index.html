@@ -28,11 +28,14 @@
   <div class="tiles" id="tiles"></div>
   <div style="height:70px"></div>
 
+  <script src="assets/config.js"></script>
   <script src="assets/data.js"></script>
   <script src="assets/familylib.js"></script>
+  <script src="assets/sheet.js"></script>
+  <script src="assets/boot.js"></script>
   <script src="assets/site.js"></script>
   <script>
-    (function(){
+    window.familyReady.then(function(){
       var FL = window.FL;
       document.getElementById("h-title").textContent = FL.site.title;
       document.getElementById("h-sub").textContent = FL.site.subtitle;
@@ -57,7 +60,7 @@
         a.innerHTML = '<div class="ico">'+x.i+'</div><div><div class="tt">'+x.t+'</div><div class="td">'+x.d+'</div></div>';
         tiles.appendChild(a);
       });
-    })();
+    });
   </script>
 </body>
 </html>

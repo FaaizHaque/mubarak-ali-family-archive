@@ -17,12 +17,15 @@
     <div id="empty"></div>
   </div>
 
+  <script src="assets/config.js"></script>
   <script src="assets/data.js"></script>
   <script src="assets/familylib.js"></script>
+  <script src="assets/sheet.js"></script>
+  <script src="assets/boot.js"></script>
   <script src="assets/site.js"></script>
   <script src="content/gallery.js"></script>
   <script>
-    (function(){
+    window.familyReady.then(function(){
       var SITE=window.SITE, items=window.GALLERY||[], gal=document.getElementById("gal");
       if(!items.length){
         document.getElementById("empty").innerHTML =
@@ -39,7 +42,7 @@
         g.innerHTML='<img src="'+SITE.escapeText(it.photo)+'" alt="" loading="lazy">'+(it.caption?'<div class="cap">'+SITE.escapeText(it.caption)+'</div>':'');
         gal.appendChild(g);
       });
-    })();
+    });
   </script>
 </body>
 </html>

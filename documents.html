@@ -17,12 +17,15 @@
     <div id="empty"></div>
   </div>
 
+  <script src="assets/config.js"></script>
   <script src="assets/data.js"></script>
   <script src="assets/familylib.js"></script>
+  <script src="assets/sheet.js"></script>
+  <script src="assets/boot.js"></script>
   <script src="assets/site.js"></script>
   <script src="content/documents.js"></script>
   <script>
-    (function(){
+    window.familyReady.then(function(){
       var SITE=window.SITE, items=window.DOCUMENTS||[], box=document.getElementById("docs");
       if(!items.length){
         document.getElementById("empty").innerHTML =
@@ -40,7 +43,7 @@
         box.appendChild(row);
       });
       box.className="tiles"; box.style.gridTemplateColumns="1fr";
-    })();
+    });
   </script>
 </body>
 </html>

@@ -27,7 +27,17 @@ content/  stories.js · gallery.js · documents.js  (add stories/photos/document
 photos/   image files
 ```
 
-## The one file you edit: `assets/data.js`
+## Two ways to edit the family
+1. **Google Sheet (easiest).** Edit everyone in a friendly spreadsheet; the site
+   reads from it. One-time setup in **[SHEET-SETUP.md](SHEET-SETUP.md)**. A
+   ready-to-import **`people.csv`** is included in this repo.
+2. **The built-in file `assets/data.js`.** Used when no sheet is connected, and
+   always kept as an automatic fallback. Details below.
+
+Whichever you use, the tree, directory, relationship finder, timeline and
+notable pages all update from that one source.
+
+## The built-in file: `assets/data.js`
 Everyone in the family lives in `assets/data.js`. Each person looks like:
 
 ```js

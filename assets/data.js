@@ -33,7 +33,10 @@
    "name to be added" and shown faintly — replace them when you learn the name.
 ============================================================================= */
 
-window.FAMILY = {
+/* This is the BUILT-IN copy of the family, used as the fallback when no Google
+   Sheet is connected (or if the sheet can't be reached). To edit via a sheet
+   instead, see SHEET-SETUP.md and set the URL in assets/config.js. */
+window.FAMILY_EMBEDDED = {
 
   /* ---- Site identity (shown in the header of every page) ---- */
   site: {

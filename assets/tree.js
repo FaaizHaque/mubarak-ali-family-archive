@@ -76,27 +76,31 @@ window.familyReady.then(function(){
   function clampS(s){ return Math.max(MIN, Math.min(MAX, s)); }
   function zoomAround(px,py,ns){ ns=clampS(ns); var wx=(px-tx)/scale, wy=(py-ty)/scale; scale=ns; tx=px-wx*scale; ty=py-wy*scale; apply(); }
 
-  var pointers=new Map(), moved=false, downX=0, downY=0, sTx=0, sTy=0, pinchDist=0, pinchScale=1;
+  var pointers=new Map(), moved=false, downX=0, downY=0, sTx=0, sTy=0, pinchDist=0, pinchScale=1, tapNode=null;
   function xy(e){ var r=stage.getBoundingClientRect(); return {x:e.clientX-r.left, y:e.clientY-r.top}; }
   stage.addEventListener("pointerdown", function(e){
     stage.setPointerCapture(e.pointerId); pointers.set(e.pointerId, xy(e));
-    if(pointers.size===1){ moved=false; var p=xy(e); downX=p.x; downY=p.y; sTx=tx; sTy=ty; stage.classList.add("grabbing"); }
-    else if(pointers.size===2){ var pt=[...pointers.values()]; pinchDist=Math.hypot(pt[0].x-pt[1].x, pt[0].y-pt[1].y); pinchScale=scale; }
+    if(pointers.size===1){ moved=false; var p=xy(e); downX=p.x; downY=p.y; sTx=tx; sTy=ty; stage.classList.add("grabbing");
+      tapNode = (e.target && e.target.closest) ? e.target.closest(".node") : null; }
+    else if(pointers.size===2){ tapNode=null; var pt=[...pointers.values()]; pinchDist=Math.hypot(pt[0].x-pt[1].x, pt[0].y-pt[1].y); pinchScale=scale; }
   });
   stage.addEventListener("pointermove", function(e){
     if(!pointers.has(e.pointerId)) return; pointers.set(e.pointerId, xy(e));
     if(pointers.size===2){ var pt=[...pointers.values()]; var d=Math.hypot(pt[0].x-pt[1].x, pt[0].y-pt[1].y); var mid={x:(pt[0].x+pt[1].x)/2,y:(pt[0].y+pt[1].y)/2}; if(pinchDist>0) zoomAround(mid.x,mid.y,pinchScale*(d/pinchDist)); moved=true; }
     else if(pointers.size===1){ var p=xy(e); var dx=p.x-downX, dy=p.y-downY; if(Math.abs(dx)+Math.abs(dy)>5) moved=true; tx=sTx+dx; ty=sTy+dy; apply(); }
   });
-  function up(e){ if(pointers.has(e.pointerId)) pointers.delete(e.pointerId); if(pointers.size<2) pinchDist=0; if(pointers.size===0) stage.classList.remove("grabbing"); }
-  stage.addEventListener("pointerup", up); stage.addEventListener("pointercancel", up);
+  function handleUp(e, allowTap){
+    // a tap = the last pointer lifted without dragging, over a (non-placeholder) node
+    var doTap = allowTap && pointers.size===1 && !moved && tapNode && !tapNode.classList.contains("todo");
+    var node = tapNode;
+    if(pointers.has(e.pointerId)) pointers.delete(e.pointerId);
+    if(pointers.size<2) pinchDist=0;
+    if(pointers.size===0){ stage.classList.remove("grabbing"); tapNode=null; }
+    if(doTap) SITE.openProfile(node.getAttribute("data-id"));
+  }
+  stage.addEventListener("pointerup", function(e){ handleUp(e, true); });
+  stage.addEventListener("pointercancel", function(e){ handleUp(e, false); });
   stage.addEventListener("wheel", function(e){ e.preventDefault(); var p=xy(e); zoomAround(p.x,p.y,scale*Math.exp(-e.deltaY*0.0016)); }, {passive:false});
-
-  tree.addEventListener("click", function(e){
-    if(moved) return;
-    var c=e.target.closest(".node"); if(!c || c.classList.contains("todo")) return;
-    SITE.openProfile(c.getAttribute("data-id"));
-  });
 
   /* ---------- fit / center ---------- */
   function fit(){

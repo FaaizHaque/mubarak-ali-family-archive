@@ -1,14 +1,11 @@
 /* =============================================================================
-   config.js — site settings you can change without touching any code.
+   config.js — site settings you can change without touching any other code.
 
-   TO EDIT THE FAMILY IN A GOOGLE SHEET:
-   1. Follow SHEET-SETUP.md (import people.csv into a Google Sheet, then
-      File → Share → Publish to web → choose the sheet → Comma-separated (.csv)).
-   2. Paste the published .csv link between the quotes below.
-   3. Save. The site will read people from your sheet from then on.
-
-   Leave it as "" to use the built-in copy in assets/data.js.
+   sheetCsvUrl: the "Publish to web → .csv" link for your Google Sheet.
+   • To change sheets, paste a new published-CSV link here.
+   • To go back to the built-in copy in assets/data.js, set it to "".
+   See SHEET-SETUP.md for the full walkthrough.
 ============================================================================= */
 window.ARCHIVE_CONFIG = {
-  sheetCsvUrl: ""
+  sheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQSZgU1FuCxb2T5iu3bf6cTViN_UnVsd-E1uG2ZskP0mMjwKIocYWHDmyJq8NT3B_G1N2f0UlyE-7N/pub?gid=34562725&single=true&output=csv"
 };

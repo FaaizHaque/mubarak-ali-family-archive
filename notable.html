@@ -40,7 +40,7 @@
         el.className="pcard"; el.style.alignItems="flex-start";
         if(p.id) el.onclick=function(){ SITE.openProfile(p.id); }; else el.style.cursor="default";
         var av=document.createElement("div"); av.className="avatar "+(p.sex||"");
-        if(p.photo){ var im=new Image(); im.src=p.photo; im.onerror=function(){ av.textContent=FL.initials(p.name); }; av.appendChild(im); } else av.textContent=FL.initials(p.name);
+        SITE.fillAvatar(av, { id:p.id, name:p.name, photo:p.photo });
         var m=document.createElement("div"); m.style.minWidth="0";
         m.innerHTML='<div class="nm"><span class="starred">★</span> '+SITE.escapeText(p.name)+'</div>'+
           (p.role?'<div class="mt"><span class="b">'+SITE.escapeText(p.role)+'</span></div>':'')+

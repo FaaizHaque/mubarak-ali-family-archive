@@ -34,8 +34,7 @@ window.familyReady.then(function(){
   // header
   var head = el("div","phead");
   var av = el("div","pav "+(n.sex||"u"));
-  if(n.photo){ var im=new Image(); im.src=n.photo; im.onerror=function(){ av.textContent=FL.initials(n.name); }; av.appendChild(im); }
-  else av.textContent = FL.initials(n.name);
+  SITE.fillAvatar(av, n);
   head.appendChild(av);
   var ht = el("div"); ht.style.minWidth="0";
   ht.appendChild(el("h2",null,esc(FL.displayName(n.name))));

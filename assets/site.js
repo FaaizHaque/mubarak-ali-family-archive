@@ -141,14 +141,34 @@
     return wrap;
   }
 
+  // Fill an avatar element: initials first, then a photo if one exists. Uses the
+  // explicit `photo` field, else auto-looks for photos/<id>.jpg|.jpeg|.png — so
+  // just uploading photos/<id>.jpg is enough, no data edit needed.
+  function fillAvatar(elem, node){
+    if(!node) return;
+    elem.textContent = FL.initials(node.name);
+    var cands;
+    if(node.photo) cands = [node.photo];
+    else if(node.id) cands = ["photos/"+node.id+".jpg","photos/"+node.id+".jpeg","photos/"+node.id+".png"];
+    else return;
+    var i=0;
+    (function next(){
+      if(i>=cands.length) return;
+      var url=cands[i++], im=new Image();
+      im.alt="";
+      im.onload=function(){ elem.textContent=""; elem.appendChild(im); };
+      im.onerror=next;
+      im.src=url;
+    })();
+  }
+
   function openProfile(id){
     var n = FL.byId[id]; if(!n) return;
     if(!drawer) buildDrawer();
     try{ history.replaceState(null,"","#"+id); }catch(e){ location.hash = id; }
 
     var av = document.getElementById("d-av"); av.className = "dav "+(n.sex||"u"); av.innerHTML="";
-    if(n.photo){ var im=new Image(); im.src=n.photo; im.onerror=function(){ av.textContent=FL.initials(n.name); }; av.appendChild(im); }
-    else av.textContent = FL.initials(n.name);
+    fillAvatar(av, n);
     document.getElementById("d-name").textContent = FL.displayName(n.name);
 
     var tags = document.getElementById("d-tags"); tags.innerHTML="";
@@ -226,6 +246,7 @@
     toast: toast,
     escapeText: escapeText,
     renderBio: renderBio,
+    fillAvatar: fillAvatar,
     onShowInTree: null   // the tree page overrides this to centre instead of navigate
   };
 

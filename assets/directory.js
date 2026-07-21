@@ -22,8 +22,7 @@ window.familyReady.then(function(){
 
   function avatar(r){
     var a=document.createElement("div"); a.className="avatar "+(r.sex||"");
-    if(r.photoTried){} // no photo field in directory rows by default
-    a.textContent = FL.initials(r.raw);
+    SITE.fillAvatar(a, FL.byId[r.id]);
     return a;
   }
   function pcard(r){

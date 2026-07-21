@@ -20,8 +20,7 @@ window.familyReady.then(function(){
     c.setAttribute("data-id", node.id);
 
     var av = document.createElement("div"); av.className="avatar "+(node.sex||"");
-    if(node.photo){ var im=new Image(); im.src=node.photo; im.alt=""; im.onerror=function(){ av.textContent=FL.initials(node.name); }; av.appendChild(im); }
-    else av.textContent = FL.initials(node.name);
+    SITE.fillAvatar(av, node);
     c.appendChild(av);
 
     var meta = document.createElement("div"); meta.className="meta";

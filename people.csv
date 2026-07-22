@@ -182,8 +182,19 @@ Masroor,m,Talat,,,,,,,,,,,masroor,b5-sughra,,
 Umer,m,,,,,,,,,,,,umer,masroor,,divorced
 Jibran,m,,,,,,,,,,,,jibran,umer,,
 X,f,,,,,,,,,,,,name-to-be-added-14,umer,,
-Farooq,m,Tehmina,,,,,,,,,,children — details to be added,farooq,masroor,,
-Ayesha,f,Tahir,,,,,,,,,,2 daughters and 1 son — details to be added,ayesha-3,masroor,,
+Farooq Masroor,m,Tahmeena Syed Farooq,01.10.1967,,Chartered Accountant,"Qualification: Chartered Accountant (ICAEW), 1989–93
+A Levels: Aitchison College, 1986
+University: North East London Polytechnic, 1986/87
+
+Career:
+• Leigh Carr, London (1989–1994)
+• A F Ferguson, Lahore (1994–96)
+• ABN AMRO Bank, Lahore (1996–2003)
+• Hussain Chaudry Consulting, Lahore (2003–06)
+• Citibank, Lahore (2006–08)
+• Samba Bank, Lahore (2008–18)
+• Value Team (Private) Limited (2018–present)",,,,,,,farooq,masroor,,
+Ayesha Jawaid,f,Tahir Jawaid,31.07.1963,,Remedial Therapist,Remedial therapist for children with dyslexia.,,,,,,,ayesha-3,masroor,,
 Maryam,f,X,,,,,,,,,,children — details to be added,maryam-2,masroor,,
 Jamila,f,Riffat Pasha,,,,,,,,,No biological children.,,jamila,b5-sughra,,
 Naseem,f,Imdad ul Haque,,,,,,,,,Married her first cousin Imdad ul Haque (Branch 3); their children are shown on his line.,,b5-naseem,b5-sughra,b3-imdad,son of Sheikh Muhammad Arif (Branch 3)
@@ -223,7 +234,7 @@ C,m,,,,,,,,,,son,,name-to-be-added-25,hira,,
 Maryam,f,B,,,,,,,,,,,maryam-3,rizwan-ul-haque,,
 Shazia,f,Faisal,,,,,,,,,Daughter of Suriya & Ahsan. Married Faisal (Branch 3); their children are shown on his line.,,b1-shazia,b6-ahsan,b3-faisal,son of Imdad ul Haque (Branch 3)
 Farrah,f,Moin ul Haque,,,,,,,,,Daughter of Suriya & Ahsan. Married Moin ul Haque (Branch 3); their children are shown on his line.,,b1-farrah,b6-ahsan,b3-moin,son of Anwar ul Haque (Branch 3)
-Zahoor ul Haque,m,,,,,,,,,,,,b6-zahoor,b6-kubra,,
+Zahoor ul Haque,m,Parveen Zahoor,01.04.1935,,Organic Chemist,"PhD in Organic Chemistry — University of Dundee, Scotland.",,,,,,,b6-zahoor,b6-kubra,,
 Aliya,f,Suhail,,,,,,,,,,,b6-aliya,b6-zahoor,b3-suhail,son of Imdad ul Haque (Branch 3)
 Israr,m,,,,,,,,,,,,israr,b6-kubra,,
 Ruqayya,f,Ghafoor,,,,,,,,,Branch 7 of 7.,,b7-ruqayya,mubarak,,
@@ -236,3 +247,45 @@ Habib,f,Altaf Shafi,,,,,,,,,,,habib,b7-ruqayya,,
 Babar,m,Irum,,,,,,,,,,"two daughters, both married — names and details to be added",b7-babar,habib,b7-irum,first cousin — daughter of Ata (Branch 7)
 Amna,f,Adil,,,,,,,,,,,b7-amna,habib,b3-adil,son of Imdad ul Haque (Branch 3)
 Haseeb,f,Manzoor,,,,,,,,,,"4 children, all married with children — details to be added",haseeb,b7-ruqayya,,
+Parveen Zahoor,f,Zahoor ul Haque,01.01.1941,,Housewife,,,,,,,,parveen-zahoor,,b6-zahoor,
+Ayesha Zahoor,f,Shahzad Waheed,23.08.1968,,,Qualification: Graduate.,,,,,,,ayesha-zahoor,b6-zahoor,,
+Shahzad Waheed,m,Ayesha Zahoor,21.06.1963,,Electrical Engineer,"Electrical Engineering — University of Engineering & Technology (UET), Lahore.
+
+Long career at PTCL, retiring as Director in 2023.",,,,,,,shahzad-waheed,,ayesha-zahoor,
+Ammar Shahzad,m,Maryam Saboor,11.03.1991,,"Senior Manager — Visa, Dubai",Qualification: MBA,,,,,,,ammar-shahzad,ayesha-zahoor,,
+Maryam Saboor,f,Ammar Shahzad,02.07.1997,,Graphic Designer,Runs her own graphic-design company.,,,,,,,maryam-saboor,,ammar-shahzad,
+Amna Shahzad,f,Arsalan Ahmed,17.09.1995,,,"Qualification: MBA in Marketing
+Currently pursuing a Master’s degree in Germany.",,,,,,,amna-shahzad,ayesha-zahoor,,
+Arsalan Ahmed,m,Amna Shahzad,19.11.1992,,Software Engineer,Software engineer at a software company in Germany.,,,,,,,arsalan-ahmed,,amna-shahzad,
+Shumaila Umer,f,Muhammad Umer Alvi,22.10.1981,,,,,,,,,,shumaila-umer,b6-zahoor,,
+Muhammad Umer Alvi,m,Shumaila Umer,18.06.1975,,Engineer,"Education:
+• PhD in Manufacturing Engineering
+• MS in Engineering Management
+• BE in Aeronautical Engineering",,,,,,,muhammad-umer-alvi,,shumaila-umer,
+Roomaan Fatima,f,,03.11.2006,,,,,,,,,,roomaan-fatima,shumaila-umer,,
+Hashim Umer,m,,05.08.2014,,,,,,,,,,hashim-umer,shumaila-umer,,
+Tahir Jawaid,m,Ayesha Jawaid,06.03.1958,,Engineer,,,,,,,,tahir-jawaid,,ayesha-3,
+Yasir Jawaid,m,Maham Khan,20.01.1988,,Doctor,,,,,,,,yasir-jawaid,ayesha-3,,
+Maham Khan,f,Yasir Jawaid,,,Doctor,,,,,,,,maham-khan,,yasir-jawaid,
+Suleiman Jawaid,m,,,,,,,,,,,,suleiman-jawaid,yasir-jawaid,,
+Maleeha Jawaid,f,Ahmed Ala,09.08.1990,,Doctor,,,,,,,,maleeha-jawaid,ayesha-3,,
+Ahmed Ala,m,Maleeha Jawaid,,,,,,,,,,,ahmed-ala,,maleeha-jawaid,
+Suniya Jawaid,f,Mohd Zain Ali Khan,30.03.1995,,,,,,,,,,suniya-jawaid,ayesha-3,,
+Mohd Zain Ali Khan,m,Suniya Jawaid,,,,,,,,,,,zain-ali-khan,,suniya-jawaid,
+Tahmeena Syed Farooq,f,Farooq Masroor,21.11.1973,,Teacher,"University: Kinnaird College, 1992–95
+
+Teaching:
+• Pre-school at Learning Alliance (1995)
+• Kidz Kampus (2003/24 and 2019/22)",,,,,,,tahmeena-syed-farooq,,farooq,
+Ashar Haq,m,,26.01.2001,,,"A Levels: Aitchison College, 2018
+University: City University, London, 2019–2022
+
+Career:
+• Value Team (2022–24)
+• Odyssey Ventures (2024–present)",,,,,,,ashar-haq,farooq,,
+Umair Haq,m,,11.05.2002,,,"A Levels: Aitchison College, 2019
+University: Les Roches, Switzerland, 2021–24
+Mandarin Oriental, Hong Kong (2025)",,,,,,,umair-haq,farooq,,
+Rania Haq,f,,17.01.2008,,,"A Levels: Lahore Grammar School, 2026
+University: Lahore Grammar University, 2026–29",,,,,,,rania-haq,farooq,,
+Taimur Haq,m,,07.04.2010,,,"A Levels: Learning Alliance, 2027",,,,,,,taimur-haq,farooq,,

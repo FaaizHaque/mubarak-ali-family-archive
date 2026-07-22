@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Add / Edit · Sheikh Mubarak Ali Family Archive</title>
+<link rel="stylesheet" href="assets/styles.css" />
+<style>
+  .ed{max-width:720px;margin:0 auto}
+  .ed .field{margin-bottom:15px}
+  .ed label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--gold);font-weight:700;margin-bottom:5px}
+  .ed input[type=text],.ed textarea,.ed select{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--ink);
+    border-radius:10px;padding:11px 13px;font-size:15px;outline:none;font-family:inherit}
+  .ed input:focus,.ed textarea:focus,.ed select:focus{border-color:var(--gold)}
+  .ed textarea{min-height:120px;resize:vertical;line-height:1.5}
+  .ed .row2{display:flex;gap:12px}.ed .row2>div{flex:1}
+  .ed .hint{font-size:12px;color:var(--muted);margin-top:4px}
+  .ed .check{display:flex;align-items:center;gap:8px}.ed .check input{width:auto}
+  .ed .actions{display:flex;gap:10px;align-items:center;margin-top:8px}
+  .ed .status{font-size:14px;margin-left:6px}
+  .ed .status.ok{color:#2e7d32}.ed .status.err{color:var(--burgundy)}
+  .pickrow{display:block;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--ink);
+    padding:10px 12px;border-radius:9px;margin-bottom:6px;cursor:pointer;font-size:14px}
+  .pickrow:hover{border-color:var(--gold)}
+  .card2{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);margin-bottom:18px}
+  .signedin{font-size:12.5px;color:var(--muted);display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-bottom:12px}
+</style>
+</head>
+<body data-page="edit">
+  <div class="container">
+    <div class="pagehead">
+      <h2>Add / Edit a person</h2>
+      <div class="lede">Fill in plain boxes — no spreadsheet, no columns. Changes are saved to the archive and appear on the site within a minute.</div>
+    </div>
+    <hr class="rule" />
+    <div class="ed" id="ed"></div>
+  </div>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/data.js"></script>
+  <script src="assets/familylib.js"></script>
+  <script src="assets/sheet.js"></script>
+  <script src="assets/boot.js"></script>
+  <script src="assets/site.js"></script>
+  <script src="assets/edit.js"></script>
+</body>
+</html>

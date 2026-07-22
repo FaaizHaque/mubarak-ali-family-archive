@@ -1,11 +1,15 @@
 /* =============================================================================
    config.js — site settings you can change without touching any other code.
 
-   sheetCsvUrl: the "Publish to web → .csv" link for your Google Sheet.
-   • To change sheets, paste a new published-CSV link here.
-   • To go back to the built-in copy in assets/data.js, set it to "".
-   See SHEET-SETUP.md for the full walkthrough.
+   dataUrl / sheetCsvUrl: where the site reads its people from (CSV).
+   • "people.csv"  → the archive's own file in this repo (recommended). Edits made
+     with the built-in editor, or by your assistant, show up here directly.
+   • a Google "Publish to web → .csv" link → read from a Google Sheet instead.
+   • ""            → use the built-in copy in assets/data.js.
 ============================================================================= */
 window.ARCHIVE_CONFIG = {
-  sheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQSZgU1FuCxb2T5iu3bf6cTViN_UnVsd-E1uG2ZskP0mMjwKIocYWHDmyJq8NT3B_G1N2f0UlyE-7N/pub?gid=34562725&single=true&output=csv"
+  sheetCsvUrl: "people.csv",
+
+  // GitHub repo the built-in editor (edit.html) saves to. Only used by the editor.
+  repo: { owner: "FaaizHaque", name: "mubarak-ali-family-archive", branch: "main", file: "people.csv" }
 };

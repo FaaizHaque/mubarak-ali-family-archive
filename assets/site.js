@@ -92,7 +92,7 @@
     var f = el("footer","footer");
     var year = "";  // static; avoids Date in some sandboxes
     f.innerHTML = '<div class="in"><div>'+FL.site.title+' · a living family archive</div>'+
-      '<div>To add or correct anything, edit <code style="font-family:monospace">assets/data.js</code> · <a href="index.html">Home</a></div></div>';
+      '<div><a href="edit.html">✎ Add / edit a person</a> &nbsp;·&nbsp; <a href="index.html">Home</a></div></div>';
     document.body.appendChild(f);
   }
 

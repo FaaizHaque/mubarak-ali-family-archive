@@ -11,7 +11,7 @@
 window.familyReady = (function(){
   "use strict";
   var emb = window.FAMILY_EMBEDDED || { site:{}, intro:{}, events:[], notableExtra:[], root:{ name:"—", children:[] } };
-  var fam = { site:emb.site, intro:emb.intro, events:emb.events, notableExtra:emb.notableExtra, root:emb.root };
+  var fam = { site:emb.site, intro:emb.intro, events:emb.events, notableExtra:emb.notableExtra, root:emb.root, externals:emb.externals||[] };
   var cfg = window.ARCHIVE_CONFIG || {};
   window.FAMILY_SOURCE = "built-in";
 
@@ -24,8 +24,9 @@ window.familyReady = (function(){
   return fetch(url, { cache: "no-store" })
     .then(function(r){ if(!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
     .then(function(text){
-      var root = window.buildRootFromCsv(text);
-      if(root && root.children && root.children.length){ fam.root = root; window.FAMILY_SOURCE = "sheet"; }
+      var built = window.buildRootFromCsv(text);
+      var root = built && built.root;
+      if(root && root.children && root.children.length){ fam.root = root; fam.externals = built.externals || []; window.FAMILY_SOURCE = "sheet"; }
       else throw new Error("sheet produced no people");
       return finish();
     })

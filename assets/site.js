@@ -175,6 +175,7 @@
     function tag(t){ tags.appendChild(el("span","tag",t)); }
     if(n.notable) tag("★ Notable member");
     if(n.sex==="m") tag("Male"); else if(n.sex==="f") tag("Female");
+    if(n.external) tag("Married into the family");
     var br = FL.branchOf(id); if(br) tag("Branch: "+FL.displayName(br.name));
     if(n.dob||n.dod) tag((n.dob||"?")+(n.dod?" – "+n.dod:" – present"));
     if(n.profession) tag("💼 "+n.profession);
@@ -205,7 +206,7 @@
     var pars = FL.parentsOf ? FL.parentsOf(n.id) : (FL.parentOf[n.id]?[FL.parentOf[n.id]]:[]);
     if(pars.length){ var psec=sec(body, pars.length>1?"Parents":"Parent"); pars.forEach(function(pp){ psec.appendChild(relBtn(pp.name,pp.sex,pp.id)); }); }
 
-    var kids = n.children||[];
+    var kids = FL.effectiveChildren(n);
     if(kids.length){ var cs=sec(body,"Children ("+kids.length+")"); kids.forEach(function(c){ cs.appendChild(relBtn(c.name,c.sex,c.id)); }); }
     else if(n.ref){ var cs2=sec(body,"Children"); var rb=el("button","relbtn","🔗 "+n.ref.text); rb.onclick=function(){ openProfile(n.ref.to); }; cs2.appendChild(rb); }
     if(n.todo){ var td=sec(body,"To be added"); td.appendChild(el("div","addnote",escapeText(n.todo))); }
@@ -224,6 +225,8 @@
   }
 
   function showInTree(id){
+    var n = FL.byId[id];   // a married-in spouse isn't in the tree — centre on their partner instead
+    if(n && n.external){ var pid=(n.spouses||[]).map(function(s){ return s.id; }).filter(function(x){ return x && FL.byId[x]; })[0]; if(pid) id=pid; }
     if(window.SITE && typeof window.SITE.onShowInTree === "function"){ window.SITE.onShowInTree(id); }
     else location.href = "tree.html#" + id;
   }

@@ -61,6 +61,19 @@ Add a new row, give them a **unique `id`**, a `name`, and set `parent_id` to the
 the tree, directory and finder automatically. (For a marriage between two people
 already in the family, put the wife's row `id` in the husband's `spouse_id`.)
 
+### To give an out-of-family spouse their own profile & photo
+Someone who married in (e.g. **Nadia**) starts out as just a name on their
+partner's card. To give them a clickable profile, photo and biography:
+1. Add a **new row** for them with a unique `id` (e.g. `nadia`) and their `name`,
+   `sex`, and any details (`dob`, `profession`, `bio`…).
+2. **Leave `parent_id` blank** (they aren't a blood descendant), and put their
+   partner's `id` in **`spouse_id`** (e.g. `moqeem`).
+3. Upload their photo as `photos/<id>.jpg`.
+
+They now get a full profile marked "Married into the family" (with their
+partner's children shown as theirs), and their name becomes clickable from the
+partner's profile — but they stay out of the descent tree, as they should.
+
 ### Good to know
 - Keep the **header row** (the first row) exactly as it is.
 - The sheet must stay **published**. If it's ever unpublished or unreachable,

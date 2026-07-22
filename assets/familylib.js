@@ -46,12 +46,25 @@
       if(parent) parentOf[node.id] = parent;
       (node.children||[]).forEach(function(c){ assign(c, node); });
     })(F.root, null);
+    // Index external people (married in): clickable & searchable, but not in the descent tree.
+    (F.externals||[]).forEach(function(e){
+      if(!e.id || byId[e.id]){ var base=e.id||FL.slug(FL.displayName(e.name)), id=base, i=2; while(used[id]) id=base+'-'+(i++); e.id=id; }
+      used[e.id]=true; byId[e.id]=e; people.push(e); e.external=true;
+    });
+    FL.externals = F.externals || [];
     FL.site = F.site || { title:"Family Archive", subtitle:"" };
     FL.intro = F.intro || { paragraphs: [] };
     FL.events = F.events || [];
     FL.notableExtra = F.notableExtra || [];
     FL.root = F.root;
     return FL;
+  };
+
+  // A person's children, or (for a married-in spouse with none of their own) their partner's children.
+  FL.effectiveChildren = function(n){
+    if(n.children && n.children.length) return n.children;
+    if(n.external){ var p=(n.spouses||[]).map(function(s){ return s.id && byId[s.id]; }).filter(Boolean)[0]; if(p && p.children) return p.children; }
+    return [];
   };
 
   /* ---------- lineage helpers ---------- */
@@ -160,9 +173,9 @@
     return people.map(function(p){
       var par = parentOf[p.id], br = FL.branchOf(p.id);
       return { id:p.id, name:FL.displayName(p.name), raw:p.name, placeholder:FL.isPlaceholder(p.name), sex:p.sex||"",
-        gen:FL.generation(p.id), branch:br?FL.displayName(br.name):"—", branchId:br?br.id:"",
+        gen:p.external?null:FL.generation(p.id), branch:br?FL.displayName(br.name):(p.external?"Married in":"—"), branchId:br?br.id:"",
         parent:par?FL.displayName(par.name):"", spouses:(p.spouses||[]).map(function(s){ return s.name && !FL.isPlaceholder(s.name)?s.name:(s.note||"—"); }),
-        profession:p.profession||"", dob:p.dob||"", dod:p.dod||"", notable:!!p.notable };
+        profession:p.profession||"", dob:p.dob||"", dod:p.dod||"", notable:!!p.notable, external:!!p.external };
     });
   };
   FL.branches = function(){

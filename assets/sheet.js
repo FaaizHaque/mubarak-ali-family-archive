@@ -74,29 +74,41 @@
     // fill in spouse display names for in-family spouses linked only by id
     nodes.forEach(function(n){ (n.spouses||[]).forEach(function(s){ if(s.id && !s.name && byId[s.id]) s.name = byId[s.id].name; }); });
 
-    // nest under parents (preserve row order); find the root (blank parent)
-    var root=null;
+    // Choose the root (Sheikh Mubarak Ali), then nest everyone else under their
+    // parent. Rows with NO parent_id (other than the root) are "external" people —
+    // spouses who married in: they get a full profile but sit outside the descent tree.
+    var rootId = byId['mubarak'] ? 'mubarak' : (nodes.filter(function(n){ return !n._parent; })[0]||{}).id;
+    var root = byId[rootId] || null, externals = [];
+    if(!root) return null;
     nodes.forEach(function(n){
-      var pid=n._parent;
-      if(!pid){ if(!root) root=n; else { (root.children=root.children||[]).push(n); } return; }
-      var p=byId[pid];
+      if(n.id===rootId) return;
+      var pid=n._parent, p=pid && byId[pid];
       if(p){ (p.children=p.children||[]).push(n); }
-      else { if(root)(root.children=root.children||[]).push(n); }   // orphan → attach to root
+      else if(pid){ (root.children=root.children||[]).push(n); }   // parent id typo → attach to root
+      else { n.external=true; externals.push(n); }                 // no parent → married in
     });
     nodes.forEach(function(n){ delete n._parent; });
-    if(!root) return null;
+
+    // Link each external spouse back onto their partner's card so it becomes clickable.
+    externals.forEach(function(E){
+      (E.spouses||[]).forEach(function(s){
+        var P = s.id && byId[s.id]; if(!P) return;
+        var m = (P.spouses||[]).filter(function(x){ return !x.id && x.name && x.name.toLowerCase()===(E.name||'').toLowerCase(); })[0];
+        if(m) m.id = E.id; else { (P.spouses=P.spouses||[]).push({ id:E.id, name:E.name }); }
+      });
+    });
 
     // auto cross-reference: a spouse whose children live on their partner's line
     function disp(nm){ return (!nm || /^(x+|tbd|\?+|[A-Z]{1,4})$/.test(nm)) ? 'Name to be added' : nm; }
     nodes.forEach(function(n){
-      if(n.children && n.children.length) return;
+      if(n.external || (n.children && n.children.length)) return;
       var link=(n.spouses||[]).filter(function(s){ return s.id && byId[s.id]; })
                               .map(function(s){ return byId[s.id]; })
                               .filter(function(s){ return s.children && s.children.length; })[0];
       if(link) n.ref = { to: link.id, text: 'Their children are shown under ' + disp(link.name) + ' →' };
     });
 
-    return root;
+    return { root: root, externals: externals };
   }
 
   if(typeof window !== 'undefined'){

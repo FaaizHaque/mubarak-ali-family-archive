@@ -33,9 +33,12 @@ window.familyReady.then(function(){
     var extra=[];
     if(r.profession) extra.push(FL.isPlaceholder(r.profession)?"":SITE.escapeText(r.profession));
     if(r.dob||r.dod) extra.push((r.dob||"?")+(r.dod?"–"+r.dod:""));
+    var line2 = r.external
+      ? '<span class="b">Married in</span>'+(r.spouses&&r.spouses[0]&&r.spouses[0]!=="—"?' · '+SITE.escapeText(r.spouses[0]):'')
+      : '<span class="b">'+SITE.escapeText(r.branch)+'</span> · Gen '+(r.gen+1)+(r.parent?' · child of '+SITE.escapeText(r.parent):'');
     m.innerHTML =
       '<div class="nm">'+(r.notable?'<span class="starred">★</span> ':'')+SITE.escapeText(r.name)+'</div>'+
-      '<div class="mt"><span class="b">'+SITE.escapeText(r.branch)+'</span> · Gen '+(r.gen+1)+(r.parent?' · child of '+SITE.escapeText(r.parent):'')+'</div>'+
+      '<div class="mt">'+line2+'</div>'+
       (extra.filter(Boolean).length?'<div class="mt">'+extra.filter(Boolean).join(" · ")+'</div>':'');
     b.appendChild(m);
     return b;

@@ -43,6 +43,7 @@ window.familyReady.then(function(){
   function tag(t){ tags.appendChild(el("span","tag",esc(t))); }
   if(n.notable) tag("★ Notable member");
   if(n.sex==="m") tag("Male"); else if(n.sex==="f") tag("Female");
+  if(n.external) tag("Married into the family");
   var br = FL.branchOf(id); if(br) tag("Branch: "+FL.displayName(br.name));
   if(n.dob||n.dod) tag((n.dob||"?")+(n.dod?" – "+n.dod:" – present"));
   if(n.profession) tag("💼 "+n.profession);
@@ -72,13 +73,14 @@ window.familyReady.then(function(){
   var pars = FL.parentsOf(id);
   if(pars.length){ var ps=sec(pars.length>1?"Parents":"Parent"), pr=el("div","rels"); pars.forEach(function(p){ pr.appendChild(relLink(p.name,p.sex,p.id)); }); ps.appendChild(pr); }
 
-  var kids = n.children||[];
+  var kids = FL.effectiveChildren(n);
   if(kids.length){ var cs=sec("Children ("+kids.length+")"), cr=el("div","rels"); kids.forEach(function(c){ cr.appendChild(relLink(c.name,c.sex,c.id)); }); cs.appendChild(cr); }
   else if(n.ref){ var cs2=sec("Children"); var a=el("a","relbtn","🔗 "+esc(n.ref.text)); a.href="person.html?id="+encodeURIComponent(n.ref.to); cs2.appendChild(a); }
   if(n.todo) sec("To be added").appendChild(el("div","edit",esc(n.todo)));
 
   var more = sec("More");
-  var t = el("a","relbtn","🌳 Show in the family tree"); t.href="tree.html#"+encodeURIComponent(id); more.appendChild(t);
+  var treeId = n.external ? ((n.spouses||[]).map(function(s){ return s.id; }).filter(function(x){ return x && FL.byId[x]; })[0]) : id;
+  if(treeId){ var t = el("a","relbtn", n.external ? "🌳 Show their family in the tree" : "🌳 Show in the family tree"); t.href="tree.html#"+encodeURIComponent(treeId); more.appendChild(t); }
   var edit = el("div","edit"); edit.style.marginTop="10px";
   edit.innerHTML = 'To add or update this person, edit the row with id <code>'+esc(id)+'</code> in the family Google Sheet (or <code>assets/data.js</code>).';
   more.appendChild(edit);

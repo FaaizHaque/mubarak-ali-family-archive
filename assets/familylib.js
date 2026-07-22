@@ -46,12 +46,25 @@
       if(parent) parentOf[node.id] = parent;
       (node.children||[]).forEach(function(c){ assign(c, node); });
     })(F.root, null);
-    // Index external people (married in): clickable & searchable, but not in the descent tree.
+    // Index explicit external people (married in): clickable & searchable, not in the descent tree.
     (F.externals||[]).forEach(function(e){
       if(!e.id || byId[e.id]){ var base=e.id||FL.slug(FL.displayName(e.name)), id=base, i=2; while(used[id]) id=base+'-'+(i++); e.id=id; }
       used[e.id]=true; byId[e.id]=e; people.push(e); e.external=true;
     });
     FL.externals = F.externals || [];
+
+    // Auto-promote every named, not-yet-linked spouse into its own clickable
+    // "married-in" profile (id = slug of their name), so any spouse can be tapped
+    // and can carry a photo (photos/<id>.jpg) with no data entry. Explicit rows win.
+    people.slice().forEach(function(p){
+      (p.spouses||[]).forEach(function(s){
+        if(s.id || !s.name || FL.isPlaceholder(s.name)) return;
+        var base=FL.slug(s.name), id=base, i=2; while(used[id]) id=base+'-'+(i++); used[id]=true;
+        var e={ id:id, name:s.name, sex:(p.sex==='m'?'f':p.sex==='f'?'m':''), external:true, autoSpouse:true,
+                spouses:[{ id:p.id, name:FL.displayName(p.name) }] };
+        byId[id]=e; people.push(e); s.id=id;   // link the partner's chip to this profile
+      });
+    });
     FL.site = F.site || { title:"Family Archive", subtitle:"" };
     FL.intro = F.intro || { paragraphs: [] };
     FL.events = F.events || [];

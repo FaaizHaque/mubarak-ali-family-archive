@@ -12,6 +12,7 @@ window.familyReady.then(function(){
       genEl = document.getElementById("gen"),
       sortEl = document.getElementById("sort"),
       hideEl = document.getElementById("hideph"),
+      familyEl = document.getElementById("familyonly"),
       grid = document.getElementById("grid"),
       countEl = document.getElementById("count"),
       noneEl = document.getElementById("none");
@@ -49,6 +50,7 @@ window.familyReady.then(function(){
     var br=brEl.value, gen=genEl.value, sort=sortEl.value, hide=hideEl.checked;
     var list = rows.filter(function(r){
       if(hide && r.placeholder) return false;
+      if(familyEl.checked && r.external) return false;
       if(br && r.branchId!==br) return false;
       if(gen!=="" && String(r.gen)!==gen) return false;
       if(q){
@@ -69,7 +71,7 @@ window.familyReady.then(function(){
   }
 
   [qEl].forEach(function(e){ e.addEventListener("input", render); });
-  [brEl,genEl,sortEl,hideEl].forEach(function(e){ e.addEventListener("change", render); });
+  [brEl,genEl,sortEl,hideEl,familyEl].forEach(function(e){ e.addEventListener("change", render); });
   render();
 
   // open a profile if arriving with #id

@@ -137,8 +137,7 @@
   function ancWord(depth, sex){ if(depth===1) return sex==='f'?"mother":sex==='m'?"father":"parent"; return greatChain(depth) + (sex==='f'?"mother":sex==='m'?"father":"parent"); }
   function descWord(depth, sex){ if(depth===1) return sex==='f'?"daughter":sex==='m'?"son":"child"; return greatChain(depth) + (sex==='f'?"daughter":sex==='m'?"son":"child"); }
 
-  FL.relationship = function(aId, bId){
-    if(aId===bId) return { headline:"The same person", detail:"", via:"" };
+  function bloodRelationship(aId, bId){
     var A = byId[aId], B = byId[bId];
     if(!A || !B) return { headline:"Unknown", detail:"", via:"" };
     var aN = FL.displayName(A.name), bN = FL.displayName(B.name);
@@ -168,6 +167,30 @@
     }
     var rt=removedText(removed), head=cap(ordinal(cousinLevel))+" cousins"+(rt?", "+rt:"");
     return { headline:head, detail:aN+" and "+bN+" are "+ordinal(cousinLevel)+" cousins"+(rt?", "+rt:"")+".", via:viaC };
+  }
+
+  // Are two people directly married to each other? (checks either side's spouse list)
+  FL.areSpouses = function(aId, bId){
+    var A=byId[aId], B=byId[bId]; if(!A||!B) return false;
+    return (A.spouses||[]).some(function(s){ return s.id===bId; }) ||
+           (B.spouses||[]).some(function(s){ return s.id===aId; });
+  };
+
+  // Public relationship: report marriage first (many family marriages are also
+  // blood relations, e.g. cousins who wed), then fall back to pure descent.
+  FL.relationship = function(aId, bId){
+    if(aId===bId) return { headline:"The same person", detail:"", via:"" };
+    var A=byId[aId], B=byId[bId];
+    if(!A||!B) return { headline:"Unknown", detail:"", via:"" };
+    var blood = bloodRelationship(aId, bId);
+    if(FL.areSpouses(aId, bId)){
+      var pair = ((A.sex==='m'&&B.sex==='f')||(A.sex==='f'&&B.sex==='m')) ? "Husband & wife" : "Married";
+      var det = FL.displayName(A.name)+" and "+FL.displayName(B.name)+" are married.";
+      if(blood && blood.headline && blood.headline!=="No direct blood link" && blood.headline!=="Unknown")
+        det += " They are also "+blood.headline.toLowerCase()+".";
+      return { headline:pair, detail:det, via:(blood&&blood.via)||"" };
+    }
+    return blood;
   };
 
   /* ---------- collectors for pages ---------- */

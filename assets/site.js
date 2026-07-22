@@ -144,7 +144,8 @@
   // Fill an avatar element: initials first, then a photo if one exists. Uses the
   // explicit `photo` field, else auto-looks for photos/<id>.jpg|.jpeg|.png — so
   // just uploading photos/<id>.jpg is enough, no data edit needed.
-  function fillAvatar(elem, node){
+  // opts.zoom = true makes the avatar clickable to view the full, uncropped photo.
+  function fillAvatar(elem, node, opts){
     if(!node) return;
     elem.textContent = FL.initials(node.name);
     var cands;
@@ -156,19 +157,44 @@
       if(i>=cands.length) return;
       var url=cands[i++], im=new Image();
       im.alt="";
-      im.onload=function(){ elem.textContent=""; elem.appendChild(im); };
+      im.onload=function(){
+        elem.textContent=""; elem.appendChild(im);
+        if(opts && opts.zoom){
+          elem.classList.add("zoomable"); elem.title="Click to view the full photo";
+          elem.onclick=function(ev){ ev.stopPropagation(); openLightbox(url, node.name); };
+        }
+      };
       im.onerror=next;
       im.src=url;
     })();
   }
+
+  /* ---------- photo lightbox (full, uncropped view) ---------- */
+  var lightbox;
+  function buildLightbox(){
+    lightbox = el("div","lightbox");
+    lightbox.innerHTML = '<button class="lb-close" title="Close">✕</button>'+
+      '<figure><img alt=""><figcaption></figcaption></figure>';
+    lightbox.addEventListener("click", function(e){ if(e.target===lightbox) closeLightbox(); });
+    lightbox.querySelector(".lb-close").onclick = closeLightbox;
+    document.body.appendChild(lightbox);
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeLightbox(); });
+  }
+  function openLightbox(url, name){
+    if(!lightbox) buildLightbox();
+    lightbox.querySelector("img").src = url;
+    lightbox.querySelector("figcaption").textContent = FL.displayName(name||"");
+    lightbox.classList.add("on");
+  }
+  function closeLightbox(){ if(lightbox) lightbox.classList.remove("on"); }
 
   function openProfile(id){
     var n = FL.byId[id]; if(!n) return;
     if(!drawer) buildDrawer();
     try{ history.replaceState(null,"","#"+id); }catch(e){ location.hash = id; }
 
-    var av = document.getElementById("d-av"); av.className = "dav "+(n.sex||"u"); av.innerHTML="";
-    fillAvatar(av, n);
+    var av = document.getElementById("d-av"); av.className = "dav "+(n.sex||"u"); av.innerHTML=""; av.onclick=null;
+    fillAvatar(av, n, {zoom:true});
     document.getElementById("d-name").textContent = FL.displayName(n.name);
 
     var tags = document.getElementById("d-tags"); tags.innerHTML="";
@@ -250,6 +276,7 @@
     escapeText: escapeText,
     renderBio: renderBio,
     fillAvatar: fillAvatar,
+    openLightbox: openLightbox,
     onShowInTree: null   // the tree page overrides this to centre instead of navigate
   };
 

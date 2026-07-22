@@ -349,3 +349,7 @@ li.collapsed > .node .toggle{color:var(--gold); border-color:var(--gold)}
 .person a.relbtn{text-decoration:none}
 .person .edit{font-size:12.5px; color:var(--muted); background:var(--bg2); border:1px dashed var(--line); border-radius:10px; padding:12px 14px; line-height:1.5}
 .person .edit code{background:var(--panel); padding:1px 5px; border-radius:5px; font-size:11.5px; font-family:monospace}
+
+/* tappable spouse name inside a tree card */
+.node .spouses .sp-link{cursor:pointer; border-bottom:1px dotted var(--accent)}
+.node .spouses .sp-link:hover{color:var(--accent)}

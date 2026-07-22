@@ -198,7 +198,7 @@
       var sp = sec(body, n.spouses.length>1?"Spouses":"Spouse");
       n.spouses.forEach(function(s){
         var line = el("div"); line.style.marginBottom="6px";
-        line.appendChild(relBtn(s.name,"",null));
+        line.appendChild(relBtn(s.name,"",s.id));
         if(s.note){ var i=el("span",null,s.note); i.style.cssText="font-size:12px;color:var(--muted);margin-left:6px"; line.appendChild(i); }
         sp.appendChild(line);
       });

@@ -10,10 +10,11 @@
   <div class="container">
     <div class="pagehead">
       <h2>Gallery</h2>
-      <div class="lede">Photographs of the family across the years.</div>
+      <div class="lede">Family photographs, organised by branch and household — from the elders down to the newest generation. Click any photograph to see it full size.</div>
     </div>
     <hr class="rule" />
-    <div class="gal" id="gal"></div>
+    <div class="galnav" id="galnav"></div>
+    <div id="gal"></div>
     <div id="empty"></div>
   </div>
 
@@ -23,26 +24,6 @@
   <script src="assets/sheet.js"></script>
   <script src="assets/boot.js"></script>
   <script src="assets/site.js"></script>
-  <script src="content/gallery.js"></script>
-  <script>
-    window.familyReady.then(function(){
-      var SITE=window.SITE, items=window.GALLERY||[], gal=document.getElementById("gal");
-      if(!items.length){
-        document.getElementById("empty").innerHTML =
-          '<div class="empty-state"><div class="ico">🖼️</div><h3>No photographs yet</h3>'+
-          '<p>This is where family photographs will live — portraits, gatherings, and moments across the generations.</p></div>'+
-          '<div class="howto"><h4>How to add photographs</h4><ol>'+
-          '<li>Put the image file in the <code>photos/</code> folder.</li>'+
-          '<li>Open <code>content/gallery.js</code> and add a line like <code>{ photo: "photos/name.jpg", caption: "…" }</code>.</li>'+
-          '<li>Save — the photo appears here automatically.</li></ol></div>';
-        return;
-      }
-      items.forEach(function(it){
-        var g=document.createElement("div"); g.className="g";
-        g.innerHTML='<img src="'+SITE.escapeText(it.photo)+'" alt="" loading="lazy">'+(it.caption?'<div class="cap">'+SITE.escapeText(it.caption)+'</div>':'');
-        gal.appendChild(g);
-      });
-    });
-  </script>
+  <script src="assets/gallery.js"></script>
 </body>
 </html>

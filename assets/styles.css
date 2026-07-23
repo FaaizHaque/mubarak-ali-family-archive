@@ -376,3 +376,32 @@ li.collapsed > .node .toggle{color:var(--gold); border-color:var(--gold)}
 .lb-close{position:fixed; top:16px; right:20px; width:44px; height:44px; border-radius:50%; cursor:pointer;
   border:1px solid rgba(255,255,255,.28); background:rgba(0,0,0,.45); color:#fff; font-size:20px; line-height:1}
 .lb-close:hover{background:rgba(0,0,0,.7)}
+
+/* --- curated gallery: Elders / branches (by household) / Gatherings --- */
+.galnav{display:flex; flex-wrap:wrap; gap:8px; margin:2px 0 22px}
+.galnav a{font-size:12.5px; padding:6px 12px; border:1px solid var(--line); border-radius:999px;
+  color:var(--muted); text-decoration:none; background:var(--panel); white-space:nowrap}
+.galnav a:hover{color:var(--accent); border-color:var(--accent)}
+.gsecwrap{margin:0 0 34px; scroll-margin-top:16px}
+.galsec{margin:8px 0 14px; padding-bottom:8px; border-bottom:2px solid var(--gold-soft)}
+.galsec .h{font-family:var(--serif); font-size:23px; color:var(--ink); margin:0}
+.galsec .s{font-size:13px; color:var(--muted); margin-top:3px}
+.galhh{font-size:15px; font-weight:700; color:var(--accent); margin:18px 0 10px; letter-spacing:.01em}
+.galhh:first-of-type{margin-top:6px}
+.gal .g{display:flex; flex-direction:column}
+.gal .g .gimg{position:relative}
+.gal .g .gimg img{width:100%; height:170px; object-fit:cover; display:block; cursor:zoom-in; transition:filter .15s ease}
+.gal .g .gimg img:hover{filter:brightness(1.05)}
+.gal .g .gimg .ph{height:170px; display:grid; place-items:center; text-align:center; padding:10px;
+  color:var(--muted); font-size:12px; background:repeating-linear-gradient(45deg,transparent,transparent 8px,var(--gold-soft) 8px,var(--gold-soft) 9px)}
+.gal .g .gimg .ph code{font-size:11px; color:var(--ink)}
+.gal .g .cap .yr{color:var(--faint); margin-left:6px; font-variant-numeric:tabular-nums}
+.gpeople{display:flex; flex-wrap:wrap; gap:5px; padding:0 11px 10px}
+.gtag{font-size:11.5px; padding:3px 8px; border:1px solid var(--line); border-radius:999px;
+  background:transparent; color:var(--accent); cursor:pointer}
+.gtag:hover{background:var(--gold-soft)}
+.galpreview{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:4px 0 22px}
+.galchip{font-size:12.5px; padding:6px 12px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:var(--panel)}
+.galsec-empty{color:var(--muted); font-size:13px; font-style:italic; margin:6px 0 18px}
+.galaddnote{margin:10px 0 4px; padding-top:16px; border-top:1px solid var(--line); font-size:13px; color:var(--muted)}
+.galaddnote a{color:var(--accent)}

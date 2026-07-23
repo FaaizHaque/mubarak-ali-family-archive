@@ -10,6 +10,11 @@
 window.ARCHIVE_CONFIG = {
   sheetCsvUrl: "people.csv",
 
+  // Photo gallery: a curated list of photographs (kept separate from the profile
+  // pictures in photos/). Images live in the gallery/ folder; captions & placement
+  // live in this CSV. See GALLERY-SETUP.md.
+  galleryCsvUrl: "gallery.csv",
+
   // GitHub repo the built-in editor (edit.html) saves to. Only used by the editor.
   repo: { owner: "FaaizHaque", name: "mubarak-ali-family-archive", branch: "main", file: "people.csv" }
 };

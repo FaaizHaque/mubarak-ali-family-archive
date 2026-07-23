@@ -82,6 +82,6 @@ window.familyReady.then(function(){
   var treeId = n.external ? ((n.spouses||[]).map(function(s){ return s.id; }).filter(function(x){ return x && FL.byId[x]; })[0]) : id;
   if(treeId){ var t = el("a","relbtn", n.external ? "🌳 Show their family in the tree" : "🌳 Show in the family tree"); t.href="tree.html#"+encodeURIComponent(treeId); more.appendChild(t); }
   var edit = el("div","edit"); edit.style.marginTop="10px";
-  edit.innerHTML = 'To add or update this person, edit the row with id <code>'+esc(id)+'</code> in the family Google Sheet (or <code>assets/data.js</code>).';
+  edit.innerHTML = 'To add or update this person, use the <a href="edit.html">✎ Add / edit a person</a> editor or ask your assistant. For a photo, upload <code>photos/'+esc(id)+'.jpg</code> to the repository. (id: <code>'+esc(id)+'</code>)';
   more.appendChild(edit);
 });

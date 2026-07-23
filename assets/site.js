@@ -247,7 +247,7 @@
     if(n.todo){ var td=sec(body,"To be added"); td.appendChild(el("div","addnote",escapeText(n.todo))); }
 
     var add = sec(body,"Add / update this person");
-    add.appendChild(el("div","addnote",'To add a <b>photo, dates, profession or biography</b>, edit <code>assets/data.js</code> and find this person (id: <code>'+n.id+'</code>). The guide is at the top of that file.'));
+    add.appendChild(el("div","addnote",'To add or update a <b>photo, dates, profession or biography</b>, use the <a href="edit.html">✎ Add / edit a person</a> editor — or just ask your assistant. For a photo, upload <code>photos/'+n.id+'.jpg</code> to the repository. (id: <code>'+n.id+'</code>)'));
     var fullLink = el("a",null,"↗ Open full profile page"); fullLink.href = "person.html?id=" + encodeURIComponent(id);
     fullLink.style.cssText = "display:block;text-align:center;margin-top:10px;background:linear-gradient(180deg,var(--gold-soft),var(--gold));color:#231a03;border-radius:10px;padding:10px;font-size:13px;font-weight:700;text-decoration:none";
     add.appendChild(fullLink);

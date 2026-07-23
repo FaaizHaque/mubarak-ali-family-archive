@@ -363,6 +363,13 @@ li.collapsed > .node .toggle{color:var(--gold); border-color:var(--gold)}
 .person .pav{width:132px; height:132px}
 .avatar img,.drawer .dav img,.person .pav img{object-fit:cover; object-position:center 26%}
 
+/* big profile avatars: show the WHOLE photo (no cropped faces) over a blurred fill */
+.drawer .dav.hasphoto,.person .pav.hasphoto{position:relative}
+.drawer .dav .av-bg,.person .pav .av-bg{position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center; filter:blur(12px) brightness(.72); transform:scale(1.3)}
+.drawer .dav .av-fg,.person .pav .av-fg{position:absolute; inset:0; width:100%; height:100%;
+  object-fit:contain; object-position:center}
+
 /* --- click-to-enlarge: view the full, uncropped photo --- */
 .dav.zoomable,.pav.zoomable{cursor:zoom-in; transition:box-shadow .15s ease, transform .15s ease}
 .dav.zoomable:hover,.pav.zoomable:hover{box-shadow:0 0 0 4px var(--gold-soft), var(--shadow); transform:scale(1.02)}

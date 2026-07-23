@@ -158,7 +158,16 @@
       var url=cands[i++], im=new Image();
       im.alt="";
       im.onload=function(){
-        elem.textContent=""; elem.appendChild(im);
+        elem.textContent="";
+        if(opts && opts.full){
+          // Show the WHOLE photo (never crop a face): a crisp "contain" image over
+          // a blurred, zoomed copy of itself so the round frame still looks full.
+          var bg=new Image(); bg.alt=""; bg.className="av-bg"; bg.src=url;
+          im.className="av-fg";
+          elem.appendChild(bg); elem.appendChild(im); elem.classList.add("hasphoto");
+        } else {
+          elem.appendChild(im);
+        }
         if(opts && opts.zoom){
           elem.classList.add("zoomable"); elem.title="Click to view the full photo";
           elem.onclick=function(ev){ ev.stopPropagation(); openLightbox(url, node.name); };
@@ -194,7 +203,7 @@
     try{ history.replaceState(null,"","#"+id); }catch(e){ location.hash = id; }
 
     var av = document.getElementById("d-av"); av.className = "dav "+(n.sex||"u"); av.innerHTML=""; av.onclick=null;
-    fillAvatar(av, n, {zoom:true});
+    fillAvatar(av, n, {zoom:true, full:true});
     document.getElementById("d-name").textContent = FL.displayName(n.name);
 
     var tags = document.getElementById("d-tags"); tags.innerHTML="";

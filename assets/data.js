@@ -67,13 +67,11 @@ window.FAMILY_EMBEDDED = {
       text: "Family knowledge suggests Sheikh Mubarak Ali served as a tutor to the son of the Raja of the erstwhile Kapurthala State (possibly Raja Jagatjit Singh) in the late 19th or early 20th century." },
     { year: "1947", kind: "milestone",
       title: "Partition & migration to Pakistan",
-      text: "Following the Partition of India, many family members migrated to the newly established Pakistan. Senior members — Sheikh Muhammad Arif, Abdul Samad and Sheikh Ikram — helped displaced relatives rebuild and resettle." }
+      text: "Following the Partition of India, many family members migrated to the newly established Pakistan. Senior members — Sheikh Muhammad Arif and Sheikh Ikram — helped displaced relatives rebuild and resettle." }
   ],
 
   /* ---- Honoured members who are not nodes in the lineage (e.g. those who married in). ---- */
   notableExtra: [
-    { name: "Abdul Samad", relation: "Husband of Sughra (Branch 5)",
-      honors: "After the 1947 Partition, played a leading part in helping displaced relatives resettle and rebuild their lives in Pakistan." }
   ],
 
   /* ---- The family tree itself ---- */

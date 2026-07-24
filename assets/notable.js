@@ -1,0 +1,50 @@
+/* =============================================================================
+   notable.js — the Notable Members page. Elders are shown first, then their
+   descendants generation by generation. A married-in notable is placed at the
+   generation of their in-family spouse (so, e.g., a branch head's husband sits
+   among the elders).
+============================================================================= */
+window.familyReady.then(function(){
+  "use strict";
+  var FL = window.FL, SITE = window.SITE;
+  var host = document.getElementById("grid");
+  var list = FL.notablePeople();
+  if(!list.length){ host.innerHTML = '<div class="empty">No notable members recorded yet — see the guide below.</div>'; return; }
+
+  function genOf(p){
+    if(!p.id) return 1;                                   // honoured non-lineage → with the elders
+    var n = FL.byId[p.id]; if(!n) return 99;
+    if(n.external){
+      var sp = (n.spouses||[]).map(function(s){ return s.id && FL.byId[s.id]; }).filter(function(x){ return x && !x.external; })[0];
+      return sp ? FL.generation(sp.id) : 1;
+    }
+    return FL.generation(p.id);
+  }
+  var brIndex = {}; FL.branches().forEach(function(b){ brIndex[b.name] = b.index; });
+  list.forEach(function(p){ p._gen = genOf(p); });
+  list.sort(function(a,b){ return a._gen - b._gen || (brIndex[a.branch]||9) - (brIndex[b.branch]||9) || a.name.localeCompare(b.name); });
+
+  function ordinal(n){ var s=["th","st","nd","rd"], v=n%100; return n + (s[(v-20)%10] || s[v] || s[0]); }
+  function groupLabel(gen){ return gen<=2 ? "Family elders" : ordinal(gen) + " generation"; }
+
+  host.className = "";                                    // build our own generation groups inside
+  var lastLabel = null, curGrid = null;
+  list.forEach(function(p){
+    var label = groupLabel(p._gen);
+    if(label !== lastLabel){
+      var h = document.createElement("h3"); h.className = "notable-gen"; h.textContent = label; host.appendChild(h);
+      curGrid = document.createElement("div"); curGrid.className = "grid"; host.appendChild(curGrid);
+      lastLabel = label;
+    }
+    var el = document.createElement(p.id ? "button" : "div");
+    el.className = "pcard"; el.style.alignItems = "flex-start";
+    if(p.id) el.onclick = function(){ SITE.openProfile(p.id); }; else el.style.cursor = "default";
+    var av = document.createElement("div"); av.className = "avatar " + (p.sex||"");
+    SITE.fillAvatar(av, { id:p.id, name:p.name, photo:p.photo });
+    var m = document.createElement("div"); m.style.minWidth = "0";
+    m.innerHTML = '<div class="nm"><span class="starred">★</span> ' + SITE.escapeText(p.name) + '</div>' +
+      (p.role ? '<div class="mt"><span class="b">' + SITE.escapeText(p.role) + '</span></div>' : '') +
+      (p.honors ? '<div class="mt" style="margin-top:5px;line-height:1.5">' + SITE.escapeText(p.honors) + '</div>' : '');
+    el.appendChild(av); el.appendChild(m); curGrid.appendChild(el);
+  });
+});

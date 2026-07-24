@@ -84,7 +84,7 @@ Rubeena,f,Imran,,,,,,,,,,,rubeena,b3-riaz,,,Ruby
 GG,m,,,,,,,,,,,,name-to-be-added-7,rubeena,,,
 Seema,f,,,,,,,,,,,,seema,b3-riaz,,,
 Imdad ul Haque,m,Naseem,,,,,,,,,,,b3-imdad,b3-arif,b5-naseem,daughter of Sughra (Branch 5),
-Faisal,m,Shazia,,,,,,,,,,,b3-faisal,b3-imdad,b1-shazia,daughter of Suriya & Ahsan (Branches 1 & 6),
+Faisal Haque,m,Shazia,,,,"A semiconductor engineer whose career has spanned Intel, Cisco and Qualcomm. Authored a book on Verilog, the hardware-description language.",,yes,"Semiconductor engineer — Intel, Cisco, Qualcomm",,,,b3-faisal,b3-imdad,b1-shazia,daughter of Suriya & Ahsan (Branches 1 & 6),
 Fatima,f,Faiz,,,,,,,,,,,fatima,b3-faisal,,,Fati
 Ayla,f,,,,,,,,,,,,ayla,fatima,,,
 Alina,f,,,,,,,,,,,,alina,fatima,,,
@@ -93,7 +93,16 @@ Sadaf,f,Waiz,,,,,,,,,,,sadaf,b3-faisal,,,Saddi
 Zaidan,m,,,,,,,,,,,,zaidan,sadaf,,,
 Salman,m,Nada,,,,,,,,,,,salman,b3-faisal,,,Babi
 Dalia,f,,,,,,,,,,,,dalia,salman,,,
-Adil,m,Amna,,,,,,,,,,,b3-adil,b3-imdad,b7-amna,daughter of Habib (Branch 7),Chuchoo
+Adil Haque,m,Amna,,,Technology & semiconductor leader,"Senior technology-development leader in the semiconductor industry, based in the San Francisco Bay Area.
+
+Career:
+• Head of Architecture, Altera (2025–present)
+• Senior Director, Engineering & Architecture, Intel (2012–2025)
+• Senior Manager / Technical Leader, Cisco Systems (1999–2012)
+
+Education:
+• MS in Electrical & Computer Engineering — UC Irvine
+• BS in Electrical Engineering — University of Engineering & Technology (UET), Lahore",,,,,,,b3-adil,b3-imdad,b7-amna,daughter of Habib (Branch 7),Chuchoo
 Anum,f,,,,,,,,,,,,anum,b3-adil,,,
 Madiha,f,,,,,,,,,,,,madiha,b3-adil,,married — name to be added,
 Zaid,m,,,,,,,,,,,,zaid,b3-adil,,,
@@ -104,7 +113,7 @@ Suhail,m,Aliya,,,,,,,,,,,b3-suhail,b3-imdad,b6-aliya,"daughter of Zahoor ul Haqu
 Momin,m,Zara,,,,,,,,,,,momin-2,b3-suhail,,,
 Maryam,f,Bilawal,,,,,,,,,,,maryam,b3-suhail,,,
 Hania,f,,,,,,,,,,,,hania,b3-suhail,,,
-Moqeem,m,Nadia,,,,,,,,,,,moqeem,b3-imdad,,,Babba
+Moqeem,m,Nadia,,,,"Began as Chief Strategy Officer (CSO) at PTCL, then held a senior position at Pure Health in the UAE, before joining McKinsey & Company as a Partner.",,yes,"Partner, McKinsey & Company","Former Chief Strategy Officer, PTCL",,,moqeem,b3-imdad,,,Babba
 Dua,f,,,,,,,,,,,,dua,moqeem,,,
 Moiz,m,,,,,,,,,,,,moiz,moqeem,,,
 Sheikh Jaffar,m,Mumtaz Begum,,,,,,,,,Branch 4 of 7.,,b4-jaffar,mubarak,,,
@@ -168,7 +177,7 @@ Sughra,f,Abdul Samad,,,,,,,,,Branch 5 of 7.,,b5-sughra,mubarak,,,
 Ikram,m,Batool,,,,,,yes,Family elder · Branch 5 (son of Sughra),"Supported family members displaced by the 1947 Partition, helping them re-establish themselves in Pakistan.",,,ikram,b5-sughra,,,
 Inam,m,Jahan,,,,,,,,,,children and grandchildren — details to be added,inam,b5-sughra,,,
 Nisar,m,Farrukh,,,,,,,,,,,nisar,b5-sughra,,,
-Imran,m,Bubble Apa,,,,,,,,,,,imran,nisar,,,Amu
+Imran ul Haque,m,Bubble Apa,,,,Business leader who served as Chief Executive Officer of Engro and as Managing Director of Pakistan State Oil (PSO).,,yes,"CEO, Engro · MD, Pakistan State Oil",,,,imran,nisar,,,Amu
 Seema,f,xx,,,,,,,,,,children — details to be added,seema-2,imran,,,
 Zara,f,X,,,,,,,,,,3 children — details to be added,zara,imran,,,
 Suleiman,m,,,,,,,,,,,children — details to be added,suleiman,imran,,married — name to be added,
@@ -200,7 +209,7 @@ Jamila,f,Riffat Pasha,,,,,,,,,No biological children.,,jamila,b5-sughra,,,
 Naseem,f,Imdad ul Haque,,,,,,,,,Married her first cousin Imdad ul Haque (Branch 3); their children are shown on his line.,,b5-naseem,b5-sughra,b3-imdad,son of Sheikh Muhammad Arif (Branch 3),Munni
 Kubra,f,Muhammad Hakeem,,,,,,,,,Branch 6 of 7.,,b6-kubra,mubarak,,,
 Sitara,f,Qaseem Shami,,,,,,,,,,,sitara,b6-kubra,,,
-Aamir,m,Saira Aamir,,,,,,,,,,,amir,sitara,,,
+Aamir Naseem,m,Saira Aamir,,,,"Served as a Member of the Oil & Gas Regulatory Authority (OGRA), Pakistan.",,yes,"Member, OGRA",,,,amir,sitara,,,
 Nofal Aamir,m,Kaynat Nofal,,,,,,,,,,,nofil,amir,,,
 Talal Aamir,m,Sobia Talal,,,,,,,,,,,talal,amir,,,
 Sarim Aamir,m,,,,,,,,,,,,sarim-aamir,amir,,,
@@ -337,7 +346,31 @@ Mirha Faruqi,f,,,,,,,,,,,,mirha-faruqi,emman-navaid,,,
 Maira,f,,,,,,,,,,,,maira,b6-zahoor,,,
 X,m,,,,,,,,,,,name to be added,maira-son,maira,,,
 X,f,,,,,,,,,,,name to be added,maira-daughter,maira,,,
-Nadeem ul Haq,m,,,,,,,,,,,,nadeem-ul-haq,ikram,,,Kuku
+Nadeem ul Haq,m,,,,,"Economist. Vice Chancellor of the Pakistan Institute of Development Economics (PIDE), and former Deputy Chairman of the Planning Commission of Pakistan.
+
+Education:
+• PhD in Economics — University of Chicago
+• MA in Economics — University of Chicago
+• BSc in Economics — London School of Economics (LSE)
+
+Career:
+• Vice Chancellor, PIDE (2006–07 and 2019–present)
+• Deputy Chairman, Planning Commission of Pakistan (2010–13)
+• IMF Senior Representative in Sri Lanka (1999–2002) and Egypt (2002–04)
+• Long career at the IMF (1983–2017) in research, training and country missions
+• Consultant / advisor to the World Bank, UNDP, ILO and several central banks",,yes,"Economist · Vice Chancellor, PIDE","Former Deputy Chairman, Planning Commission of Pakistan",,,nadeem-ul-haq,ikram,,,Kuku
 Izhar ul Haq,m,,,,,,,,,,,,izhar-ul-haq,ikram,,,
 Sabahat,f,,,,,,,,,,,,sabahat,ikram,,,Kuki
 Silwat,f,,,,,,,,,,,,silwat,ikram,,,Sillo
+Abdul Samad,m,Sughra,,,,A greatly respected figure in Balochistan; a street in Quetta is named after him. He passed away before the 1947 Partition.,,yes,A respected figure of Balochistan,A street in Quetta is named in his honour.,,,abdul-samad,,b5-sughra,,
+Umer Shami,m,Zara Haque,,,Telecommunications engineer · operations leader,"Telecommunications engineer and global operations leader, based in Canada.
+
+Career:
+• Global Operations Manager, Just Eat Takeaway.com (2021–present)
+• Site Operations Manager, NESR & Halliburton — oil & gas, Middle East (2011–2020)
+• Project Management Specialist, IBM (2018–19)
+• Radio host, Radio Pakistan — “Good Morning Pakistan” (2005–09)
+
+Education:
+• BSc in Telecommunications Engineering — FAST (National University of Computer & Emerging Sciences)
+• Business Analytics — Harvard Business School (2024)",,,,,,,umer-shami,,zara-haque,,

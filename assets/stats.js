@@ -60,6 +60,49 @@ window.familyReady.then(function(){
   var profRows = PROF.map(function(c){ return { label:c.label, count:profCounts[c.label] }; }).filter(function(r){ return r.count>0; }).sort(function(a,b){ return b.count-a.count; });
   if(profOther) profRows.push({ label:"Other professions", count:profOther });
 
+  // ---- education: parse the biography text (and profession) for degrees & institutions ----
+  function eduText(p){ return ((p.bio||'')+'  '+(p.profession||'')); }
+  function anyMatch(text, res){ for(var i=0;i<res.length;i++){ if(res[i].test(text)) return true; } return false; }
+  var hasEdu = named.filter(function(p){ return /universit|college|school|institut|polytechnic|\bMBA\b|\bMS\b|\bMSc\b|\bMA\b|\bBE\b|\bBA\b|\bBSc\b|\bPh\.?D\b|bachelor|master|doctor|degree|graduate|a[- ]?level|icaew|chartered|acca|\bcfa\b/i.test(eduText(p)); });
+  var DEG = [
+    { label:"Doctorate (PhD)",            res:[/\bph\.?d\b/i, /doctoral|doctorate/i] },
+    { label:"Master's degree",            res:[/\bMBA\b/i, /\bM\.?S\.?c?\b/, /\bMA\b/, /\bMPhil\b/i, /master'?s|masters/i] },
+    { label:"Bachelor's degree",          res:[/\bbachelor/i, /\bB\.?E\b/, /\bB\.?S\.?c?\b/, /\bB\.?A\b/, /\bBBA\b/i, /\bLL\.?B\b/i] },
+    { label:"Professional (CA / ACCA / CFA)", res:[/chartered accountant/i, /\bICAEW\b/i, /\bACCA\b/i, /\bCFA\b/i, /\bCPA\b/i] },
+    { label:"A / O Levels",               res:[/\bA[- ]?levels?\b/i, /\bO[- ]?levels?\b/i] }
+  ];
+  var degRows = DEG.map(function(d){ return { label:d.label, count: named.filter(function(p){ return anyMatch(eduText(p), d.res); }).length }; })
+                   .filter(function(r){ return r.count>0; });   // keep level order (highest first)
+
+  var INST = [
+    { label:"Aitchison College",              res:[/aitchison/i] },
+    { label:"UET, Lahore",                    res:[/university of engineering/i, /\bUET\b/] },
+    { label:"University of Dundee",           res:[/dundee/i] },
+    { label:"Kinnaird College",               res:[/kinnaird/i] },
+    { label:"City University, London",        res:[/city university/i] },
+    { label:"Les Roches, Switzerland",        res:[/les roches/i] },
+    { label:"Lahore Grammar School",          res:[/lahore grammar/i] },
+    { label:"North East London Polytechnic",  res:[/north east london/i] },
+    { label:"National Defence University",    res:[/national defence university/i] },
+    { label:"Learning Alliance",              res:[/learning alliance/i] },
+    { label:"School of Public Policy, Lahore", res:[/school of public policy/i] },
+    { label:"LUMS",                           res:[/\bLUMS\b/i, /lahore university of management/i] },
+    { label:"LSE",                            res:[/\bLSE\b/, /london school of economics/i] },
+    { label:"INSEAD",                         res:[/\bINSEAD\b/i] },
+    { label:"MIT",                            res:[/\bMIT\b/, /massachusetts institute of technology/i] },
+    { label:"Harvard University",             res:[/harvard/i] },
+    { label:"University of Oxford",           res:[/\boxford\b/i] },
+    { label:"University of Cambridge",        res:[/\bcambridge\b/i] },
+    { label:"Stanford University",            res:[/stanford/i] },
+    { label:"IBA, Karachi",                   res:[/\bIBA\b/, /institute of business administration/i] },
+    { label:"NUST",                           res:[/\bNUST\b/] },
+    { label:"GIKI",                           res:[/\bGIKI\b/i, /ghulam ishaq khan/i] },
+    { label:"London Business School",         res:[/london business school/i, /\bLBS\b/] },
+    { label:"Wharton",                        res:[/wharton/i] }
+  ];
+  var instRows = INST.map(function(it){ return { label:it.label, count: named.filter(function(p){ return anyMatch(eduText(p), it.res); }).length }; })
+                     .filter(function(r){ return r.count>0; }).sort(function(a,b){ return b.count-a.count || a.label.localeCompare(b.label); });
+
   // most common first names (everyone named), ignoring leading titles like "Sheikh"
   function givenName(full){
     var toks = FL.displayName(full).trim().split(/\s+/);
@@ -122,10 +165,18 @@ window.familyReady.then(function(){
     small(notable, "Notable members") +
     small(honoured, "With recorded honours") +
     small(withProf.length, "With a recorded profession") +
-    small(distinctNames, "Distinct first names") +
-    small(withDob.length, "With a date of birth") +
-    small(withDod.length, "Remembered (date of death)");
+    small(distinctNames, "Distinct first names");
   root.appendChild(grid);
+
+  // Living & remembered — builds up as dates of death are recorded
+  var ls = section("Living & remembered");
+  if(withDod.length){
+    var living = named.length - withDod.length;
+    bars(ls, [{ label:"Living", count:living }, { label:"Passed away (remembered)", count:withDod.length }]);
+    ls.appendChild(el("div","stat-note","Based on recorded dates of death. Members without one are counted as living, so this sharpens as more dates are added."));
+  } else {
+    ls.appendChild(el("div","stat-empty","No dates of death have been recorded yet. Once they are added, this section will show how many of the family are living and how many are remembered — building up over time."));
+  }
 
   // branches
   var bs = section("The seven branches");
@@ -137,6 +188,22 @@ window.familyReady.then(function(){
     var ps = section("Professions & callings");
     bars(ps, profRows);
     ps.appendChild(el("div","stat-note","Among the "+withProf.length+" members whose profession has been recorded so far. As more are added, this grows."));
+  }
+
+  // education & degrees
+  var es = section("Education & degrees");
+  if(degRows.length){
+    bars(es, degRows);
+    es.appendChild(el("div","stat-note","Counted from the "+hasEdu.length+" members whose education is recorded (a person can hold more than one qualification)."));
+  } else {
+    es.appendChild(el("div","stat-empty","Education details are still being collected — add a member's schooling or degrees to their biography and they will be counted here."));
+  }
+
+  // educational institutions
+  if(instRows.length){
+    var is = section("Educational institutions");
+    bars(is, instRows);
+    is.appendChild(el("div","stat-note","Schools, colleges and universities the family has attended. New institutions appear here automatically as they are added to biographies."));
   }
 
   // names
@@ -164,8 +231,11 @@ window.familyReady.then(function(){
   if(sharedAlias[0]) fact("Even pet names repeat: <b>"+sharedAlias.length+"</b> nicknames are shared by more than one person (e.g. “"+esc(sharedAlias[0].n)+"”).");
   if(widestGen) fact("The largest single generation is the <b>"+(widestGen.g===0?"1st":ordinal(widestGen.g+1))+"</b>, with <b>"+widestGen.n+"</b> people.");
   if(oldestBirth) fact("The earliest recorded birth year is <b>"+year(oldestBirth.dob)+"</b> ("+esc(FL.displayName(oldestBirth.name))+").");
+  var mastersPlus = named.filter(function(p){ return anyMatch(eduText(p), [/\bph\.?d\b/i,/doctoral|doctorate/i,/\bMBA\b/i,/\bM\.?S\.?c?\b/,/\bMA\b/,/master'?s|masters/i]); }).length;
+  if(mastersPlus) fact("<b>"+mastersPlus+"</b> members hold a <b>Master's degree or higher</b> — and counting, as more records are added.");
+  if(instRows[0]) fact("The most-attended institution on record is <b>"+esc(instRows[0].label)+"</b>.");
 
-  var note = el("div","stat-foot","All figures are counted from the archive as it stands today; dates and professions are still being collected, so those counts will keep rising.");
+  var note = el("div","stat-foot","All figures are counted from the archive as it stands today; dates, education and professions are still being collected, so those counts will keep rising.");
   root.appendChild(note);
 
   function ordinal(n){ var s=["th","st","nd","rd"], v=n%100; return n+(s[(v-20)%10]||s[v]||s[0]); }

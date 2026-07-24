@@ -16,7 +16,8 @@
       { label:"Family Directory",    href:"directory.html", page:"directory" },
       { label:"Relationship Finder", href:"finder.html",    page:"finder" },
       { label:"Timeline",            href:"timeline.html",  page:"timeline" },
-      { label:"Notable Members",     href:"notable.html",   page:"notable" }
+      { label:"Notable Members",     href:"notable.html",   page:"notable" },
+      { label:"Statistics",          href:"stats.html",     page:"stats" }
     ]},
     { label:"Gallery",             href:"gallery.html",   page:"gallery" },
     { label:"Family Stories",      href:"stories.html",   page:"stories" },

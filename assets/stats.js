@@ -76,7 +76,7 @@ window.familyReady.then(function(){
 
   var INST = [
     { label:"Aitchison College",              res:[/aitchison/i] },
-    { label:"UET, Lahore",                    res:[/university of engineering/i, /\bUET\b/] },
+    { label:"University of Engineering & Technology (UET)", res:[/university of engineering/i, /\bUET\b/] },
     { label:"University of Dundee",           res:[/dundee/i] },
     { label:"Kinnaird College",               res:[/kinnaird/i] },
     { label:"City University, London",        res:[/city university/i] },
@@ -91,14 +91,21 @@ window.familyReady.then(function(){
     { label:"INSEAD",                         res:[/\bINSEAD\b/i] },
     { label:"MIT",                            res:[/\bMIT\b/, /massachusetts institute of technology/i] },
     { label:"Harvard University",             res:[/harvard/i] },
-    { label:"University of Oxford",           res:[/\boxford\b/i] },
+    { label:"University of Oxford",           res:[/\boxford\b(?!\s+brookes)/i] },
     { label:"University of Cambridge",        res:[/\bcambridge\b/i] },
     { label:"Stanford University",            res:[/stanford/i] },
     { label:"IBA, Karachi",                   res:[/\bIBA\b/, /institute of business administration/i] },
     { label:"NUST",                           res:[/\bNUST\b/] },
     { label:"GIKI",                           res:[/\bGIKI\b/i, /ghulam ishaq khan/i] },
     { label:"London Business School",         res:[/london business school/i, /\bLBS\b/] },
-    { label:"Wharton",                        res:[/wharton/i] }
+    { label:"Wharton",                        res:[/wharton/i] },
+    { label:"University of Chicago",          res:[/university of chicago/i] },
+    { label:"University of Notre Dame",       res:[/notre dame/i] },
+    { label:"Syracuse University",            res:[/syracuse/i] },
+    { label:"Oxford Brookes University",      res:[/oxford brookes/i] },
+    { label:"Bahria University",              res:[/bahria/i] },
+    { label:"University of Management & Technology (UMT)", res:[/university of management (and|&) technology/i, /\bUMT\b/] },
+    { label:"Asian Institute of Technology",  res:[/asian institute of technology/i] }
   ];
   var instRows = INST.map(function(it){ return { label:it.label, count: named.filter(function(p){ return anyMatch(eduText(p), it.res); }).length }; })
                      .filter(function(r){ return r.count>0; }).sort(function(a,b){ return b.count-a.count || a.label.localeCompare(b.label); });

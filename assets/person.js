@@ -38,6 +38,7 @@ window.familyReady.then(function(){
   head.appendChild(av);
   var ht = el("div"); ht.style.minWidth="0";
   ht.appendChild(el("h2",null,esc(FL.displayName(n.name))));
+  if(n.alias) ht.appendChild(el("div","alias",'<span class="lbl">also known as</span> “'+esc(n.alias)+'”'));
   if(n.role) ht.appendChild(el("div","prole",esc(n.role)));
   var tags = el("div","ptags");
   function tag(t){ tags.appendChild(el("span","tag",esc(t))); }

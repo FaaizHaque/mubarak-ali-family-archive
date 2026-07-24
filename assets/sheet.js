@@ -65,7 +65,7 @@
       }
       var node = { id:o.id, name:o.name||'', sex:(o.sex||'').toLowerCase() };
       if(spouses.length) node.spouses = spouses;
-      ['dob','dod','profession','photo','role','honors','note','todo','bio'].forEach(function(k){ if(o[k]) node[k]=o[k]; });
+      ['dob','dod','profession','photo','role','honors','note','todo','bio','alias'].forEach(function(k){ if(o[k]) node[k]=o[k]; });
       if(truthy(o.notable)) node.notable = true;
       node._parent = o.parent_id || '';
       byId[o.id] = node; nodes.push(node);

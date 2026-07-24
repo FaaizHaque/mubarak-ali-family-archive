@@ -90,6 +90,7 @@ if(window.familyReady) window.familyReady.then(function(){
       : '';
     c.innerHTML='<h3 style="margin:0 0 12px">'+(addMode?'Add a new person':'Editing: '+SITE.escapeText(FL.displayName(n.name)))+'</h3>'+
       field('Full name','f_name',n.name,'')+ sexSel + parentField +
+      field('Alias / pet name','f_alias',n.alias,'Optional family nickname, shown under the name (e.g. “Munni”).')+
       (addMode?field('Spouse (name)','f_spouse','',''):'')+
       '<div class="row2"><div>'+field('Date of birth','f_dob',n.dob,'e.g. 1958')+'</div><div>'+field('Date of death','f_dod',n.dod,'leave blank if living')+'</div></div>'+
       field('Profession','f_profession',n.profession,'')+
@@ -123,7 +124,7 @@ if(window.familyReady) window.familyReady.then(function(){
   function doSave(person, addMode){
     var status=document.getElementById('status'); status.className='status'; status.textContent='Saving…';
     var name=val('f_name'); if(!name){ status.className='status err'; status.textContent='Please enter a name.'; return; }
-    var values={ name:name, sex:val('f_sex'), dob:val('f_dob'), dod:val('f_dod'), profession:val('f_profession'),
+    var values={ name:name, sex:val('f_sex'), alias:val('f_alias'), dob:val('f_dob'), dod:val('f_dod'), profession:val('f_profession'),
       bio:val('f_bio'), note:val('f_note'), role:val('f_role'), honors:val('f_honors'), photo:val('f_photo'),
       notable: document.getElementById('f_notable').checked ? 'yes' : '' };
     var id;

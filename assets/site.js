@@ -103,7 +103,7 @@
     drawer = el("div","drawer");
     drawer.innerHTML =
       '<div class="dhead"><button class="close" title="Close">✕</button>'+
-      '<div class="dav u" id="d-av"></div><h3 id="d-name"></h3><div class="dtags" id="d-tags"></div></div>'+
+      '<div class="dav u" id="d-av"></div><h3 id="d-name"></h3><div class="alias" id="d-alias" style="display:none"></div><div class="dtags" id="d-tags"></div></div>'+
       '<div class="dbody" id="d-body"></div>';
     drawer.querySelector(".close").onclick = closeProfile;
     document.body.appendChild(drawer);
@@ -205,6 +205,9 @@
     var av = document.getElementById("d-av"); av.className = "dav "+(n.sex||"u"); av.innerHTML=""; av.onclick=null;
     fillAvatar(av, n, {zoom:true, full:true});
     document.getElementById("d-name").textContent = FL.displayName(n.name);
+    var dAlias = document.getElementById("d-alias");
+    if(n.alias){ dAlias.style.display=""; dAlias.innerHTML='<span class="lbl">also known as</span> “'+escapeText(n.alias)+'”'; }
+    else { dAlias.style.display="none"; dAlias.innerHTML=""; }
 
     var tags = document.getElementById("d-tags"); tags.innerHTML="";
     function tag(t){ tags.appendChild(el("span","tag",t)); }

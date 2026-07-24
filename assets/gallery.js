@@ -73,7 +73,7 @@ window.familyReady.then(function(){
     if(n.external){ var pid=(n.spouses||[]).map(function(s){return s.id;}).filter(function(x){return x&&FL.byId[x];})[0]; if(pid) n=FL.byId[pid]; }
     var ch = FL.chain(n.id);                                   // [{node,depth} ... root]
     if(!ch || !ch.length) return { section:'gatherings', householdId:null };
-    if(ch.length <= 2) return { section:'elders', householdId:null };   // patriarch or a branch head
+    if(ch.length <= 3) return { section:'elders', householdId:null };   // patriarch, his children & grandchildren = the family elders
     return { section: ch[ch.length-2].node.id, householdId: ch[ch.length-3].node.id };
   }
 
@@ -82,7 +82,7 @@ window.familyReady.then(function(){
     var branches = FL.branches();
     var order = [{key:'elders'}].concat(branches.map(function(b){ return {key:b.id, branch:b}; })).concat([{key:'gatherings'}]);
     var meta = {
-      elders:     { title:'Family Elders', sub:'Sheikh Mubarak Ali and the elder generations of the family' },
+      elders:     { title:'Family Elders', sub:'Sheikh Mubarak Ali, his children and grandchildren — the senior generations' },
       gatherings: { title:'Gatherings & Occasions', sub:'Group and cross-family photographs' }
     };
     branches.forEach(function(b){ meta[b.id] = { title:'Branch '+b.index+' — '+FL.displayName(b.name), branch:b }; });

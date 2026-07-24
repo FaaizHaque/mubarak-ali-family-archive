@@ -3,7 +3,7 @@
 The gallery is a **curated** collection of family photographs, organised so it
 never becomes a jumble:
 
-- **The Elders** — Sheikh Mubarak Ali and his seven children.
+- **Family Elders** — Sheikh Mubarak Ali and his seven children.
 - **One section per branch** (Branch 1–7), each **sub-grouped by household** —
   i.e. by the branch head's children and their families.
 - **Gatherings & Occasions** — group photos, weddings, reunions and old
@@ -39,7 +39,7 @@ That's it — save `gallery.csv` and the photo appears on the site within a minu
 
 `place` is the only thing you need to think about. It is **one** of:
 
-- `elders` — puts the photo in **The Elders** section.
+- `elders` — puts the photo in **Family Elders** section.
 - `gatherings` — puts it in **Gatherings & Occasions** (group / cross-family / old photos).
 - **a person's name or id** — the gallery reads the family tree and files the photo
   under that person's **branch** and **household** automatically. You don't pick the
@@ -62,7 +62,7 @@ farooq-graduation.jpg,Farooq Masroor's graduation,farooq,1989,farooq
 eid-gathering-1998.jpg,Eid gathering at the family home,gatherings,1998,
 ```
 
-- The first two land in **The Elders**.
+- The first two land in **Family Elders**.
 - `anwar-family-1972.jpg` and `moin-ambassador.jpg` both land in **Branch 3 —
   Sheikh Muhammad Arif**, under the **Anwar ul Haque** household (Moin is Anwar's
   son, so his photo files under Anwar's family too).

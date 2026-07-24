@@ -82,7 +82,7 @@ window.familyReady.then(function(){
     var branches = FL.branches();
     var order = [{key:'elders'}].concat(branches.map(function(b){ return {key:b.id, branch:b}; })).concat([{key:'gatherings'}]);
     var meta = {
-      elders:     { title:'The Elders', sub:'Sheikh Mubarak Ali and his seven children' },
+      elders:     { title:'Family Elders', sub:'Sheikh Mubarak Ali and the elder generations of the family' },
       gatherings: { title:'Gatherings & Occasions', sub:'Group and cross-family photographs' }
     };
     branches.forEach(function(b){ meta[b.id] = { title:'Branch '+b.index+' — '+FL.displayName(b.name), branch:b }; });

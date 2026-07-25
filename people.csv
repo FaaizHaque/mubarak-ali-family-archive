@@ -76,24 +76,24 @@ Education:
 Yahya,m,Maryam,,,,,,,,,,,yahya,mobin-ul-haque,,,,,
 Ibrahim,m,,,,,,,,,,,,ibrahim,mobin-ul-haque,,,,,
 Saleha,f,,,,,,,,,,,,saleha,mobin-ul-haque,,,,,
-Mateen ul Haque,m,Amna,,,,,,,,,,,mateen-ul-haque,b3-anwar,,,Makhni,,
+Mateen ul Haque,m,Amna,,,Retired Army Major; supply-chain & materials manager,"Mateen ul Haque served in the Pakistan Army and retired as a Major. He went on to a long career in supply-chain and logistics management, and is a Gold-Medallist MBA from the University of Management & Technology (UMT), Lahore. He is currently Materials Manager at the Islamabad Serena Hotel.",,,,"Gold-Medallist MBA, University of Management & Technology (UMT), Lahore",,,mateen-ul-haque,b3-anwar,,,Makhni,,
 Maheen,f,Ali,,,,,,,,,,,maheen,mateen-ul-haque,,,,,
 Momin,m,,,,,,,,,,,,momin,maheen,,,,,
 Muzna,f,Sulaiman,,,,,,,,,,,muzna,mateen-ul-haque,,,,,
 Mahnoor,f,,,,,,,,,,,,mahnoor,mateen-ul-haque,,,,,
 Muhammad,m,,,,,,,,,,,,muhammad,mateen-ul-haque,,,,,
 Isma,f,Ilyas,,,,,,,,,,,isma,b3-anwar,,,Nanni,,
-Awais,m,Momina,,,,,,,,,,,awais,isma,,,,,
-Amber,f,Muhammad,,,,,,,,,,,amber,isma,,,,,
+Awais,m,Momina,,,"Serving officer, Pakistan Army — Major (Lahore)","Awais is a serving officer in the Pakistan Army, currently a Major stationed in Lahore.",,,,,,,awais,isma,,,,,
+Amber,f,Muhammad,,,"Officer, Pakistan Air Force",,,,,,,,amber,isma,,,,,
 Hamdan,m,,,,,,,,,,,,hamdan,amber,,,,,
 Hadia,f,,,,,,,,,,,,hadia,amber,,,,,
 Asra,f,Bilal,,,,,,,,,,,asra,isma,,,,,
-Riaz ul Haque,m,Suriya,,,,,,,,,,,b3-riaz,b3-arif,,,,,yes
+Riaz ul Haque,m,Suriya,,,Army officer (retired as Major),Riaz ul Haque served in the Pakistan Army and retired as a Major.,,,,,,,b3-riaz,b3-arif,,,,,yes
 Irfan,m,AA,,,,,,,,,,,irfan,b3-riaz,,,,,
 AAA,m,,,,,,,,,,,,name-to-be-added-3,irfan,,,,,
 Sulaiman,m,BBB,,,,,,,,,,,sulaiman,b3-riaz,,,Bobby,,
 CCC,m,,,,,,,,,,,,name-to-be-added-4,sulaiman,,,,,
-Usman,m,DD,,,,,,,,,,,usman,b3-riaz,,,Tony,,
+Usman,m,DD,,,"Serving officer, Pakistan Army","Usman is a serving officer in the Pakistan Army, following his father Riaz ul Haque.",,,,,,,usman,b3-riaz,,,Tony,,
 EF,,,,,,,,,,,,,name-to-be-added-5,usman,,,,,
 FF,,,,,,,,,,,,,name-to-be-added-6,usman,,,,,
 Rubeena,f,Imran,,,,,,,,,,,rubeena,b3-riaz,,,Ruby,,
@@ -476,3 +476,4 @@ Qaseem Shami,m,Sitara,,,,,,,,,,,qaseem-shami,,sitara,,,,yes
 Atiqa,f,Ata,,,,,,,,,,,atiqa,,ata,,,,yes
 Altaf Shafi,m,Habib,,,,,,,,,,,altaf-shafi,,habib,,,,yes
 Manzoor,m,Haseeb,,,,,,,,,,,manzoor,,haseeb,,,,yes
+Muhammad,m,Amber,,,"Officer, Pakistan Air Force",,,,,,,,muhammad-amber,,amber,,,,

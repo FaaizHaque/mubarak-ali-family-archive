@@ -47,22 +47,27 @@ window.familyReady.then(function(){
     { label:"Engineers", re:/engineer/i },
     { label:"Doctors & medicine", re:/doctor|physician|surgeon|medical|medicine/i },
     { label:"Bankers, finance & economists", re:/bank|account|finance|economist/i },
-    { label:"Diplomats & civil service", re:/diplomat|ambassador|foreign service|civil serv|secretary|governor/i },
-    { label:"Business & management", re:/manager|executive|entrepreneur|business|director|ceo/i },
+    { label:"Civil service", re:/civil serv|\bCSP\b|chief secretary|bureaucrat|deputy commissioner|district magistrate|\bcommissioner\b|federal secretary|provincial secretary/i, keep:true },
+    { label:"Foreign service & diplomacy", re:/foreign service|ambassador|high commissioner|\bdiplomat|\bconsul\b|embassy/i, keep:true },
+    { label:"Armed forces", re:/\barmy\b|\bnavy\b|air ?force|armed forces|\bcolonel\b|brigadier|lieutenant|\badmiral\b|air marshal|air commodore|\bPAF\b|\bPMA\b|military/i, keep:true },
+    { label:"Business & management", re:/manager|executive|entrepreneur|business|director|\bceo\b|\bmd\b|\bcfo\b|\bcso\b/i },
     { label:"Teachers & educators", re:/teacher|professor|educat|lecturer|academic|tutor/i },
     { label:"Law & judiciary", re:/judge|lawyer|advocate|legal|barrister|attorney/i },
     { label:"Design, arts & architecture", re:/designer|artist|architect|painter/i },
     { label:"Scientists", re:/scientist|chemist|physicist|biologist|research/i },
     { label:"Homemakers", re:/housewife|homemaker/i }
   ];
-  var withProf = named.filter(function(p){ return p.profession && p.profession.trim(); });
+  // scan the profession AND the curated role, so those whose careers are recorded as a role
+  // (e.g. "Civil servant (CSP) · Chief Secretary") are counted, not just those with a profession.
+  function career(p){ return ((p.profession||'')+'  '+(p.role||'')).trim(); }
+  var withCareer = named.filter(function(p){ return career(p); });
   var profCounts = {}; PROF.forEach(function(c){ profCounts[c.label]=0; }); var profOther=0;
-  withProf.forEach(function(p){ var m=null; for(var i=0;i<PROF.length;i++){ if(PROF[i].re.test(p.profession)){ m=PROF[i]; break; } } if(m) profCounts[m.label]++; else profOther++; });
-  var profRows = PROF.map(function(c){ return { label:c.label, count:profCounts[c.label] }; }).filter(function(r){ return r.count>0; }).sort(function(a,b){ return b.count-a.count; });
+  withCareer.forEach(function(p){ var t=career(p), m=null; for(var i=0;i<PROF.length;i++){ if(PROF[i].re.test(t)){ m=PROF[i]; break; } } if(m) profCounts[m.label]++; else profOther++; });
+  var profRows = PROF.map(function(c){ return { label:c.label, count:profCounts[c.label], keep:c.keep }; }).filter(function(r){ return r.count>0 || r.keep; }).sort(function(a,b){ return b.count-a.count; });
   if(profOther) profRows.push({ label:"Other professions", count:profOther });
 
-  // ---- education: parse the biography text (and profession) for degrees & institutions ----
-  function eduText(p){ return ((p.bio||'')+'  '+(p.profession||'')); }
+  // ---- education: scan biography, profession, honours, summary and role for degrees & institutions ----
+  function eduText(p){ return [p.bio,p.profession,p.honors,p.summary,p.role].filter(Boolean).join("  "); }
   function anyMatch(text, res){ for(var i=0;i<res.length;i++){ if(res[i].test(text)) return true; } return false; }
   var hasEdu = named.filter(function(p){ return /universit|college|school|institut|polytechnic|\bMBA\b|\bMS\b|\bMSc\b|\bMA\b|\bBE\b|\bBA\b|\bBSc\b|\bPh\.?D\b|bachelor|master|doctor|degree|graduate|a[- ]?level|icaew|chartered|acca|\bcfa\b/i.test(eduText(p)); });
   var DEG = [
@@ -74,6 +79,12 @@ window.familyReady.then(function(){
   ];
   var degRows = DEG.map(function(d){ return { label:d.label, count: named.filter(function(p){ return anyMatch(eduText(p), d.res); }).length }; })
                    .filter(function(r){ return r.count>0; });   // keep level order (highest first)
+
+  // headline education counts for the quick grid
+  var phdCount     = named.filter(function(p){ return anyMatch(eduText(p), DEG[0].res); }).length;   // Doctorate
+  var mastersCount = named.filter(function(p){ return anyMatch(eduText(p), DEG[1].res); }).length;   // Master's
+  var FOREIGN_UNI = [/\bMIT\b/, /massachusetts institute/i, /\bLSE\b/, /london school of economics/i, /\bINSEAD\b/i, /harvard/i, /\boxford\b/i, /\bcambridge\b/i, /stanford/i, /wharton/i, /university of chicago/i, /notre dame/i, /syracuse/i, /\bdundee\b/i, /city university/i, /les roches/i, /north east london/i, /london business school/i, /\bLBS\b/, /asian institute of technology/i, /\b(from|in)\s+france\b/i, /\(france\)/i];
+  var foreignUniCount = named.filter(function(p){ return anyMatch(eduText(p), FOREIGN_UNI); }).length;
 
   var INST = [
     { label:"Aitchison College",              res:[/aitchison/i] },
@@ -170,9 +181,11 @@ window.familyReady.then(function(){
     small(female, "Female") +
     small(intermarriages, "Marriages within the family") +
     small(aliased.length, "Have a family pet name") +
-    small(notable, "Notable members") +
-    small(honoured, "With recorded honours") +
-    small(withProf.length, "With a recorded profession") +
+    small(honoured, "National / foreign awards") +
+    small(mastersCount, "Hold a Master’s degree") +
+    small(phdCount, "Hold a PhD") +
+    small(foreignUniCount, "Studied at a foreign university") +
+    small(withCareer.length, "With a recorded profession") +
     small(distinctNames, "Distinct first names");
   root.appendChild(grid);
 
@@ -196,7 +209,7 @@ window.familyReady.then(function(){
   if(profRows.length){
     var ps = section("Professions & callings");
     bars(ps, profRows);
-    ps.appendChild(el("div","stat-note","Among the "+withProf.length+" members whose profession has been recorded so far. As more are added, this grows."));
+    ps.appendChild(el("div","stat-note","Among the "+withCareer.length+" members whose profession or calling has been recorded so far. Civil, foreign and armed-forces service are counted from their recorded roles."));
   }
 
   // education & degrees

@@ -78,6 +78,7 @@ window.familyReady.then(function(){
   var pointers=new Map(), moved=false, downX=0, downY=0, sTx=0, sTy=0, pinchDist=0, pinchScale=1, tapNode=null, tapSpouse=null;
   function xy(e){ var r=stage.getBoundingClientRect(); return {x:e.clientX-r.left, y:e.clientY-r.top}; }
   stage.addEventListener("pointerdown", function(e){
+    if(e.target && e.target.closest && e.target.closest(".controls")) return;   // a press on the zoom / fit / expand buttons must not start a pan — capturing the pointer here would steal the button's click
     stage.setPointerCapture(e.pointerId); pointers.set(e.pointerId, xy(e));
     if(pointers.size===1){ moved=false; var p=xy(e); downX=p.x; downY=p.y; sTx=tx; sTy=ty; stage.classList.add("grabbing");
       tapNode = (e.target && e.target.closest) ? e.target.closest(".node") : null;

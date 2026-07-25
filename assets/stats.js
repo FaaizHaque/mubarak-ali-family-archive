@@ -128,8 +128,9 @@ window.familyReady.then(function(){
     while(toks.length>1 && /^(sheikh|dr\.?|syed|qazi|agha|malik|mohd\.?)$/i.test(toks[0])) toks.shift();
     return toks[0] || '';
   }
+  var NAME_FOLD = { 'farah':'Farrah' };   // count spelling variants of a name together
   var nameMap = {};
-  named.forEach(function(p){ var first=givenName(p.name); if(!first) return; var k=first.toLowerCase(); (nameMap[k]=nameMap[k]||{ n:first, c:0 }).c++; });
+  named.forEach(function(p){ var first=givenName(p.name); if(!first) return; var canon=NAME_FOLD[first.toLowerCase()]||first; var k=canon.toLowerCase(); (nameMap[k]=nameMap[k]||{ n:canon, c:0 }).c++; });
   var topNames = Object.keys(nameMap).map(function(k){ return nameMap[k]; }).filter(function(x){ return x.c>=2; }).sort(function(a,b){ return b.c-a.c || a.n.localeCompare(b.n); }).slice(0,14);
 
   // pet names

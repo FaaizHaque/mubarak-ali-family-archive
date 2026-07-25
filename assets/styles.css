@@ -266,8 +266,8 @@ li.collapsed > .node .toggle{color:var(--gold); border-color:var(--gold)}
   min-width:120px; font-style:italic; cursor:default; box-shadow:none; font-family:-apple-system,sans-serif}
 .node.todo:hover{transform:none; border-color:var(--line)}
 
-.controls{position:absolute; right:14px; bottom:16px; z-index:35; display:flex; flex-direction:column; gap:8px}
-.controls button{width:44px; height:44px; border-radius:12px; border:1px solid var(--line); background:var(--panel); color:var(--ink);
+.controls{position:absolute; right:14px; bottom:16px; z-index:35; display:flex; flex-direction:column; gap:8px; touch-action:manipulation}
+.controls button{width:44px; height:44px; border-radius:12px; border:1px solid var(--line); background:var(--panel); color:var(--ink); touch-action:manipulation;
   font-size:19px; cursor:pointer; box-shadow:var(--shadow); display:grid; place-items:center; font-family:-apple-system,sans-serif}
 .controls button:hover{border-color:var(--gold)}
 .legend{position:absolute; left:14px; bottom:16px; z-index:30; background:var(--panel); border:1px solid var(--line); border-radius:12px;

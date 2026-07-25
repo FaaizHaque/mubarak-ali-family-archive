@@ -127,6 +127,11 @@ window.familyReady.then(function(){
   }
   SITE.onShowInTree = function(id){ centerOn(id, false); };
 
+  // Keep all pointer events on the controls from reaching the stage (which would start a pan
+  // and capture the pointer, stealing the click) — same guard the collapse toggles use.
+  var controlsEl = document.querySelector(".controls");
+  if(controlsEl){ ["pointerdown","pointerup"].forEach(function(ev){ controlsEl.addEventListener(ev, function(e){ e.stopPropagation(); }); }); }
+
   document.getElementById("zin").onclick=function(){ zoomAround(stage.clientWidth/2, stage.clientHeight/2, scale*1.25); };
   document.getElementById("zout").onclick=function(){ zoomAround(stage.clientWidth/2, stage.clientHeight/2, scale/1.25); };
   document.getElementById("fit").onclick=fit;

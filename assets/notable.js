@@ -20,9 +20,31 @@ window.familyReady.then(function(){
     }
     return FL.generation(p.id);
   }
-  var brIndex = {}; FL.branches().forEach(function(b){ brIndex[b.name] = b.index; });
+  // family-seniority rank: a pre-order walk of the tree visits elder branches and elder
+  // siblings first, so a lower rank = more senior within the family.
+  var rank = {}, ri = 0;
+  (function walk(n){ if(!n) return; rank[n.id] = ri++; (n.children||[]).forEach(walk); })(FL.byId["mubarak"]);
+  function seniority(p){
+    var n = p.id && FL.byId[p.id]; if(!n) return 1e9;
+    if(n.external){                                       // married-in → sit just after their in-family spouse
+      var sp = (n.spouses||[]).map(function(s){ return s.id && FL.byId[s.id]; }).filter(function(x){ return x && !x.external; })[0];
+      return sp && rank[sp.id]!=null ? rank[sp.id] + 0.5 : 1e9;
+    }
+    return rank[n.id]!=null ? rank[n.id] : 1e9;
+  }
+  function birthYear(p){ var n = p.id && FL.byId[p.id]; var m = n && (''+(n.dob||'')).match(/\b(\d{4})\b/); return m ? +m[1] : null; }
+
   list.forEach(function(p){ p._gen = genOf(p); });
-  list.sort(function(a,b){ return a._gen - b._gen || (brIndex[a.branch]||9) - (brIndex[b.branch]||9) || a.name.localeCompare(b.name); });
+  // Within a generation: members with a recorded birth date come first (oldest first);
+  // the rest follow by family seniority — senior branch first, then birth order.
+  list.sort(function(a,b){
+    if(a._gen !== b._gen) return a._gen - b._gen;
+    var ya = birthYear(a), yb = birthYear(b);
+    if(ya && yb) return ya - yb || seniority(a) - seniority(b);
+    if(ya) return -1;
+    if(yb) return 1;
+    return seniority(a) - seniority(b);
+  });
 
   function ordinal(n){ var s=["th","st","nd","rd"], v=n%100; return n + (s[(v-20)%10] || s[v] || s[0]); }
   function groupLabel(gen){ return gen<=2 ? "Family elders" : ordinal(gen) + " generation"; }

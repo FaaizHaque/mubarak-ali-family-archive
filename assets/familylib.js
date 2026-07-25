@@ -196,7 +196,7 @@
   /* ---------- collectors for pages ---------- */
   FL.notablePeople = function(){
     var out = [];
-    people.forEach(function(p){ if(p.notable) out.push({ id:p.id, name:FL.displayName(p.name), sex:p.sex, role:p.role||"", honors:p.honors||"", photo:p.photo||"", branch:(FL.branchOf(p.id)||{}).name }); });
+    people.forEach(function(p){ if(p.notable) out.push({ id:p.id, name:FL.displayName(p.name), sex:p.sex, role:p.role||"", honors:p.honors||"", summary:p.summary||"", photo:p.photo||"", branch:(FL.branchOf(p.id)||{}).name }); });
     (FL.notableExtra||[]).forEach(function(x){ out.push({ id:null, name:x.name, sex:x.sex||"", role:x.relation||"", honors:x.honors||"", photo:x.photo||"", branch:null }); });
     return out;
   };

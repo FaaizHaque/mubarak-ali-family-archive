@@ -42,9 +42,10 @@ window.familyReady.then(function(){
     var av = document.createElement("div"); av.className = "avatar " + (p.sex||"");
     SITE.fillAvatar(av, { id:p.id, name:p.name, photo:p.photo });
     var m = document.createElement("div"); m.style.minWidth = "0";
+    var desc = p.summary || p.honors;   // prefer a 2–3 line summary; fall back to honours
     m.innerHTML = '<div class="nm"><span class="starred">★</span> ' + SITE.escapeText(p.name) + '</div>' +
       (p.role ? '<div class="mt"><span class="b">' + SITE.escapeText(p.role) + '</span></div>' : '') +
-      (p.honors ? '<div class="mt" style="margin-top:5px;line-height:1.5">' + SITE.escapeText(p.honors) + '</div>' : '');
+      (desc ? '<div class="mt" style="margin-top:5px;line-height:1.5">' + SITE.escapeText(desc) + '</div>' : '');
     el.appendChild(av); el.appendChild(m); curGrid.appendChild(el);
   });
 });

@@ -67,6 +67,7 @@
       if(spouses.length) node.spouses = spouses;
       ['dob','dod','profession','photo','role','honors','note','todo','bio','alias','summary'].forEach(function(k){ if(o[k]) node[k]=o[k]; });
       if(truthy(o.notable)) node.notable = true;
+      if(truthy(o.deceased) || node.dod) node.deceased = true;   // died (with or without a known date)
       node._parent = o.parent_id || '';
       byId[o.id] = node; nodes.push(node);
     });

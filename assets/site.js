@@ -216,7 +216,7 @@
     if(n.sex==="m") tag("Male"); else if(n.sex==="f") tag("Female");
     if(n.external) tag("Married into the family");
     var br = FL.branchOf(id); if(br) tag("Branch: "+FL.displayName(br.name));
-    if(n.dob||n.dod) tag((n.dob||"?")+(n.dod?" – "+n.dod:" – present"));
+    if(n.dob||n.dod||n.deceased) tag(n.dod ? (n.dob||"?")+" – "+n.dod : n.deceased ? ((n.dob?n.dob+" · ":"")+"deceased") : (n.dob||"?")+" – present");
     if(n.profession) tag("💼 "+n.profession);
 
     var body = document.getElementById("d-body"); body.innerHTML="";

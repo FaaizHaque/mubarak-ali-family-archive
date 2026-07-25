@@ -23,6 +23,7 @@ window.familyReady.then(function(){
 
   var withDob = named.filter(function(p){ return year(p.dob); });
   var withDod = named.filter(function(p){ return year(p.dod); });
+  var deceased = named.filter(function(p){ return p.deceased; });   // died (date known or not)
 
   // generations (0 = Sheikh Mubarak Ali)
   var genOf = {}, maxGen = 0, genDist = {};
@@ -175,12 +176,13 @@ window.familyReady.then(function(){
     small(distinctNames, "Distinct first names");
   root.appendChild(grid);
 
-  // Living & remembered — builds up as dates of death are recorded
+  // Living & remembered — builds up as the family is recorded as living or departed
   var ls = section("Living & remembered");
-  if(withDod.length){
-    var living = named.length - withDod.length;
-    bars(ls, [{ label:"Living", count:living }, { label:"Passed away (remembered)", count:withDod.length }]);
-    ls.appendChild(el("div","stat-note","Based on recorded dates of death. Members without one are counted as living, so this sharpens as more dates are added."));
+  if(deceased.length){
+    var living = named.length - deceased.length;
+    var withDates = deceased.filter(function(p){ return year(p.dod); }).length;
+    bars(ls, [{ label:"Living", count:living }, { label:"Passed away (remembered)", count:deceased.length }]);
+    ls.appendChild(el("div","stat-note","Among the "+named.length+" named members of the family. Exact dates of death are shown where known ("+withDates+" recorded so far)."));
   } else {
     ls.appendChild(el("div","stat-empty","No dates of death have been recorded yet. Once they are added, this section will show how many of the family are living and how many are remembered — building up over time."));
   }

@@ -2,11 +2,11 @@ name,sex,spouse,dob,dod,profession,bio,photo,notable,role,honors,note,todo,id,pa
 Sheikh Mubarak Ali,m,,,,,,,,,,The patriarch — the origin of the family.,,mubarak,,,,,,yes
 Sheikh Muhammad Ramzan,m,Daulat; Sharifan,,,,,,,,,Branch 1 of 7.,,b1-ramzan,mubarak,,first wife; widow of his brother Sheikh Muhammad Sadiq (Branch 2),,,yes
 Ibrar,m,,,,,,,,,,son with Daulat — died in childhood.,,ibrar,b1-ramzan,,,,,yes
-Suriya Jabeen,f,Ahsan ul Haque,,,,,,,,,Mother: Sharifan. Married her first cousin Ahsan ul Haque (Branch 6); their children are shown on his line.,,b1-suriya,b1-ramzan,b6-ahsan,son of Kubra (Branch 6),,,yes
-Siraj ul Haque,m,Shameem,,,,,,,,,"Mother: Sharifan. Married his first cousin Shameem (daughter of Kubra, Branch 6).",,b1-siraj,b1-ramzan,b6-shameem,daughter of Kubra (Branch 6),,,yes
+Suriya Jabeen,f,Ahsan ul Haque,,04.02.2004,,,,,,,Mother: Sharifan. Married her first cousin Ahsan ul Haque (Branch 6); their children are shown on his line.,,b1-suriya,b1-ramzan,b6-ahsan,son of Kubra (Branch 6),,,yes
+Siraj ul Haque,m,Shameem,,2020,,,,,,,"Mother: Sharifan. Married his first cousin Shameem (daughter of Kubra, Branch 6).",,b1-siraj,b1-ramzan,b6-shameem,daughter of Kubra (Branch 6),,,yes
 Zia,m,,,,,,,,,,not married.,,zia,b1-siraj,,,Pumpum,,
 Saira,f,,,,,,,,,,not married.,,saira,b1-siraj,,,,,
-Ijaz ul Haque,m,Zareen,,,,,,,,,Mother: Sharifan.,,ijaz-ul-haque,b1-ramzan,,,Jajo,,yes
+Ijaz ul Haque,m,Zareen,,2020,,,,,,,Mother: Sharifan.,,ijaz-ul-haque,b1-ramzan,,,Jajo,,yes
 Sheikh Muhammad Sadiq,m,Sharifan,,,,,,,,,Branch 2 of 7.,,b2-sadiq,mubarak,,after Sadiq's death she married his brother Ramzan (Branch 1),,,yes
 Sheikh Altaf,m,Sarwat,,,,,,,,,"Half-brother (through mother Sharifan) to Suriya, Siraj & Ijaz of Branch 1.",,sheikh-altaf,b2-sadiq,,,,,yes
 Anjum,f,,,,,,,,,,not married.,,anjum,sheikh-altaf,,,,,
@@ -22,7 +22,7 @@ In the 1930s and 1940s — when Balochistan still lacked an organised judicial s
 A close confidant of Qazi Isa, he provided vital support in establishing the Balochistan chapter of the All-India Muslim League and in rallying urban professionals, students and workers behind the Pakistan Movement.
 
 Within the family he was the elder of Branch 3 and, after the 1947 Partition, played a leading part in helping displaced relatives resettle and rebuild in Pakistan. The friendship between the two families endured — Qazi Isa’s son, Qazi Faez Isa, later became Chief Justice of Pakistan.",,yes,"Pioneering lawyer of Balochistan · Elder, Branch 3","Gold Medallist, Punjab University",Branch 3 of 7.,,b3-arif,mubarak,,,,"A gold-medallist lawyer from Punjab University who, alongside Qazi Muhammad Isa, helped build the legal profession and organise the Pakistan Movement in 1930s–40s Quetta. After Partition he helped displaced relatives resettle in Pakistan.",yes
-Anwar ul Haque,m,Sajida,,,,,,,,,,,b3-anwar,b3-arif,,,,,yes
+Anwar ul Haque,m,Sajida,,13.12.2019,,,,,,,,,b3-anwar,b3-arif,,,,,yes
 Moin ul Haque,m,Farrah,01.03.1963,,Diplomat — Pakistan Foreign Service,"Place of Birth: Rawalpindi, Pakistan
 Date of Birth: 01.03.1963
 Qualification: Masters in Commerce
@@ -290,7 +290,7 @@ Maria Nauman,f,Malik Nauman,,,,,,,,,,,maria-nauman,amara,,,,,
 Isha Umer,f,Umer Khalil,,,,,,,,,,,isha-umer,amara,,,,,
 Shameem,f,Siraj ul Haque,,,,,,,,,Daughter of Kubra. Married her first cousin Siraj ul Haque (Branch 1); their children are shown on his line.,,b6-shameem,b6-kubra,b1-siraj,son of Sheikh Muhammad Ramzan (Branch 1),,,
 Nasreen,f,,,,,,,,,,,,nasreen,b6-kubra,,,,,
-Ahsan ul Haque,m,Suriya Jabeen,,,,,,,,,Son of Kubra. Married his first cousin Suriya Jabeen (Branch 1); their children are shown on his line below.,,b6-ahsan,b6-kubra,b1-suriya,daughter of Sheikh Muhammad Ramzan (Branch 1),,,yes
+Ahsan ul Haque,m,Suriya Jabeen,,28.02.2025,,,,,,,Son of Kubra. Married his first cousin Suriya Jabeen (Branch 1); their children are shown on his line below.,,b6-ahsan,b6-kubra,b1-suriya,daughter of Sheikh Muhammad Ramzan (Branch 1),,,yes
 Rizwan ul Haque,m,Romana,,,,,,,,,,,rizwan-ul-haque,b6-ahsan,,,Mohni,,
 Hira,f,A,,,,,,,,,,,hira,rizwan-ul-haque,,,,,
 C,m,,,,,,,,,,son,,name-to-be-added-25,hira,,,,,
@@ -463,7 +463,7 @@ Amna Bibi,f,Sheikh Muhammad Arif,,,,,,,,,,,amna-bibi,,b3-arif,,,,yes
 Mumtaz Begum,f,Sheikh Jaffar,,,,,,,,,,,mumtaz-begum,,b4-jaffar,,,,yes
 Muhammad Hakeem,m,Kubra,,,,,,,,,,,muhammad-hakeem,,b6-kubra,,,,yes
 Ghafoor,m,Ruqayya,,,,,,,,,,,ghafoor,,b7-ruqayya,,,,yes
-Zareen,f,Ijaz ul Haque,,,,,,,,,,,zareen,,ijaz-ul-haque,,,,yes
+Zareen,f,Ijaz ul Haque,,2020,,,,,,,,,zareen,,ijaz-ul-haque,,,,yes
 Sarwat,f,Sheikh Altaf,,,,,,,,,,,sarwat,,sheikh-altaf,,,,yes
 Suriya,f,Riaz ul Haque,,,,,,,,,,,suriya,,b3-riaz,,,,yes
 Shahwar,f,Javaid,,,,,,,,,,,shahwar,,javaid,,,,yes

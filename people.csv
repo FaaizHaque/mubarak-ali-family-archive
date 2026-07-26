@@ -3,9 +3,9 @@ Sheikh Mubarak Ali,m,,,,,,,,,,The patriarch — the origin of the family.,,mubar
 Sheikh Muhammad Ramzan,m,Daulat; Sharifan,,,,,,,,,Branch 1 of 7.,,b1-ramzan,mubarak,,first wife; widow of his brother Sheikh Muhammad Sadiq (Branch 2),,,yes
 Ibrar,m,,,,,,,,,,son with Daulat — died in childhood.,,ibrar,b1-ramzan,,,,,yes
 Suriya Jabeen,f,Ahsan ul Haque,,04.02.2004,,,,,,,Mother: Sharifan. Married her first cousin Ahsan ul Haque (Branch 6); their children are shown on his line.,,b1-suriya,b1-ramzan,b6-ahsan,son of Kubra (Branch 6),,,yes
-Siraj ul Haque,m,Shameem,,2020,,,,,,,"Mother: Sharifan. Married his first cousin Shameem (daughter of Kubra, Branch 6).",,b1-siraj,b1-ramzan,b6-shameem,daughter of Kubra (Branch 6),,,yes
-Zia,m,,,,,,,,,,not married.,,zia,b1-siraj,,,Pumpum,,
-Saira,f,,,,,,,,,,not married.,,saira,b1-siraj,,,,,
+Sheikh Siraj ul Haque,m,Shamim Akhtar,15.06.1934,09.04.2020,Doctor (MBBS),"Sheikh Siraj ul Haque was a physician who earned his MBBS from King Edward Medical College, Lahore.",,,,,"Mother: Sharifan. Married his first cousin Shameem (daughter of Kubra, Branch 6).",,b1-siraj,b1-ramzan,b6-shameem,daughter of Kubra (Branch 6),,,yes
+Zia ul Haque,m,,06.1971,,"Pilot, Pakistan International Airlines (PIA)",,,,,,not married.,,zia,b1-siraj,,,Pumpum,,
+Sara Siraj,f,,12.06.1974,,Counsellor (mental health & relationships),Sara Siraj holds a Master’s in Applied Psychology and a CPCAB (UK) counselling qualification. She focuses on mental-health and relationship counselling.,,,,,not married.,,saira,b1-siraj,,,,,
 Ijaz ul Haque,m,Zareen,,2020,,,,,,,Mother: Sharifan.,,ijaz-ul-haque,b1-ramzan,,,Jajo,,yes
 Sheikh Muhammad Sadiq,m,Sharifan,,,,,,,,,Branch 2 of 7.,,b2-sadiq,mubarak,,after Sadiq's death she married his brother Ramzan (Branch 1),,,yes
 Sheikh Altaf,m,Sarwat,,,,,,,,,"Half-brother (through mother Sharifan) to Suriya, Siraj & Ijaz of Branch 1.",,sheikh-altaf,b2-sadiq,,,,,yes
@@ -300,7 +300,7 @@ Aamira Hamid,f,Agha Hamid,,,,,,,,,,,amara,sitara,,,Bublee,,
 Javeria Asghar,f,Muhammad Asghar Khan,,,,,,,,,,,javeria,amara,,,,,
 Maria Nauman,f,Malik Nauman,,,,,,,,,,,maria-nauman,amara,,,,,
 Isha Umer,f,Umer Khalil,,,,,,,,,,,isha-umer,amara,,,,,
-Shameem,f,Siraj ul Haque,,,,,,,,,Daughter of Kubra. Married her first cousin Siraj ul Haque (Branch 1); their children are shown on his line.,,b6-shameem,b6-kubra,b1-siraj,son of Sheikh Muhammad Ramzan (Branch 1),,,
+Shamim Akhtar,f,Siraj ul Haque,,,,,,,,,Daughter of Kubra. Married her first cousin Siraj ul Haque (Branch 1); their children are shown on his line.,,b6-shameem,b6-kubra,b1-siraj,son of Sheikh Muhammad Ramzan (Branch 1),,,
 Nasreen Akhtar,f,Ghulam Dastagir Bajwa,01.03.1940,,Government school teacher,,,,,,,,nasreen,b6-kubra,,,Noni,,
 Ahsan ul Haque,m,Suriya Jabeen,,28.02.2025,,,,,,,Son of Kubra. Married his first cousin Suriya Jabeen (Branch 1); their children are shown on his line below.,,b6-ahsan,b6-kubra,b1-suriya,daughter of Sheikh Muhammad Ramzan (Branch 1),,,yes
 Rizwan ul Haque,m,Romana,,,,,,,,,,,rizwan-ul-haque,b6-ahsan,,,Mohni,,
@@ -500,3 +500,4 @@ Aasim Bajwa,m,Huma Sahar,21.09.1980,,"Project Director, Pakistan Air Force (PAF)
 Huma Sahar,f,Aasim Bajwa,30.06.1981,,,,,,,,,,huma-sahar,,aasim-bajwa,,,,
 Muhammad Abdullah Aasim,m,,27.07.2011,,,,,,,,FSc student.,,abdullah-aasim,aasim-bajwa,,,,,
 Muhammad Ibraheem Aasim,m,,05.03.2013,,,,,,,,O-levels student.,,ibraheem-aasim,aasim-bajwa,,,,,
+Uzma Siraj,f,,,,,,,,,,Died in infancy.,,uzma-siraj,b1-siraj,,,,,yes

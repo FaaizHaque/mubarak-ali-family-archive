@@ -22,7 +22,7 @@ window.familyReady = (function(){
     return Promise.resolve().then(finish);
   }
   return fetch(url, { cache: "no-store" })
-    .then(function(r){ if(!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+    .then(function(r){ if(!r.ok) throw new Error("HTTP " + r.status); try{ window.FAMILY_UPDATED = r.headers.get("last-modified") || ""; }catch(e){} return r.text(); })
     .then(function(text){
       var built = window.buildRootFromCsv(text);
       var root = built && built.root;

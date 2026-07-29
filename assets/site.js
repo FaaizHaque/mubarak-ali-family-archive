@@ -88,11 +88,19 @@
     updateThemeBtn();
   }
 
+  function formatUpdated(s){                     // HTTP "Last-Modified" → "9 December 2025"
+    if(!s) return "";
+    try{ var d = new Date(s); if(isNaN(d.getTime())) return "";
+      var M=["January","February","March","April","May","June","July","August","September","October","November","December"];
+      return d.getDate()+" "+M[d.getMonth()]+" "+d.getFullYear();
+    }catch(e){ return ""; }
+  }
   function buildFooter(){
     if(document.body.classList.contains("page-tree")) return;
     var f = el("footer","footer");
-    var year = "";  // static; avoids Date in some sandboxes
-    f.innerHTML = '<div class="in"><div>'+FL.site.title+' · a living family archive</div>'+
+    var upd = formatUpdated(window.FAMILY_UPDATED);
+    f.innerHTML = '<div class="in"><div>'+FL.site.title+' · a living family archive'+
+      (upd ? ' <span class="foot-upd">· updated on '+upd+'</span>' : '')+'</div>'+
       '<div><a href="edit.html">✎ Add / edit a person</a> &nbsp;·&nbsp; <a href="index.html">Home</a></div></div>';
     document.body.appendChild(f);
   }

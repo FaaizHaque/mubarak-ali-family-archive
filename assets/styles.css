@@ -117,6 +117,7 @@ img{max-width:100%}
 .footer{border-top:1px solid var(--line); background:var(--panel); color:var(--muted); font-size:13px}
 .footer .in{max-width:1080px; margin:0 auto; padding:22px 20px; display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between}
 .footer a{color:var(--gold)}
+.footer .foot-upd{color:var(--faint); font-size:12px}
 
 /* ---------- HOME ---------- */
 .hero{background:

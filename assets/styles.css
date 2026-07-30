@@ -394,6 +394,10 @@ li.collapsed > .node .toggle{color:var(--gold); border-color:var(--gold)}
 .galsec{margin:8px 0 14px; padding-bottom:8px; border-bottom:2px solid var(--gold-soft)}
 .galsec .h{font-family:var(--serif); font-size:23px; color:var(--ink); margin:0}
 .galsec .s{font-size:13px; color:var(--muted); margin-top:3px}
+.galsec.corner-head{display:flex; align-items:center; gap:14px}
+.galsec.corner-head .corner-txt{min-width:0}
+.avatar.corner-av{width:62px; height:62px; font-size:22px; cursor:pointer; transition:box-shadow .15s ease, transform .15s ease}
+.avatar.corner-av:hover{box-shadow:0 0 0 3px var(--gold-soft); transform:scale(1.03)}
 .galhh{font-size:15px; font-weight:700; color:var(--accent); margin:26px 0 12px; padding-top:20px; border-top:1px solid var(--line); letter-spacing:.01em; display:flex; align-items:center; gap:9px}
 .galhh::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--gold-soft); flex:none}
 .galsec + .galhh{margin-top:6px; padding-top:0; border-top:none}   /* first family sits under the section header — no divider */

@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Documents &amp; Archive · Sheikh Mubarak Ali Family Archive</title>
-<link rel="stylesheet" href="assets/styles.css" />
+<link rel="stylesheet" href="assets/styles.css?v=2" />
 </head>
 <body data-page="documents">
   <div class="container narrow">
@@ -67,10 +67,22 @@
         if(general){
           head.innerHTML='<h3 class="h">Family Records</h3><div class="s">Certificates, letters and records belonging to the whole family</div>';
         } else {
-          var mid=docs[0].memberId && FL.byId[docs[0].memberId] ? docs[0].memberId : null;
-          head.innerHTML='<h3 class="h">'+SITE.escapeText(key)+'’s Corner</h3>'+
+          var mnode = docs[0].memberId ? FL.byId[docs[0].memberId] : null;
+          var mid = mnode ? docs[0].memberId : null;
+          if(mnode){
+            head.className = "galsec corner-head";
+            var av = document.createElement("div");
+            av.className = "avatar corner-av " + (mnode.sex||"");
+            SITE.fillAvatar(av, mnode);
+            av.title = "View "+SITE.escapeText(key)+"’s profile";
+            av.onclick = function(){ SITE.openProfile(mid); };
+            head.appendChild(av);
+          }
+          var txt = document.createElement("div"); txt.className = "corner-txt";
+          txt.innerHTML = '<h3 class="h">'+SITE.escapeText(key)+'’s Corner</h3>'+
             (mid?'<div class="s"><a href="#prof">View '+SITE.escapeText(key)+'’s profile →</a></div>':'');
-          if(mid){ head.querySelector("a").onclick=function(e){ e.preventDefault(); SITE.openProfile(mid); }; }
+          head.appendChild(txt);
+          if(mid){ txt.querySelector("a").onclick=function(e){ e.preventDefault(); SITE.openProfile(mid); }; }
         }
         sec.appendChild(head);
         var tiles=document.createElement("div"); tiles.className="tiles"; tiles.style.gridTemplateColumns="1fr";

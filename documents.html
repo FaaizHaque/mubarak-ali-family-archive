@@ -10,7 +10,7 @@
   <div class="container narrow">
     <div class="pagehead">
       <h2>Documents &amp; Archive</h2>
-      <div class="lede">Scanned certificates, letters, records and other original materials — the documentary memory of the family.</div>
+      <div class="lede">Publications, articles, letters, poetry, certificates and other original materials — the documentary memory of the family. Each member’s writings and records are gathered in their own corner.</div>
     </div>
     <hr class="rule" />
     <div id="docs"></div>
@@ -26,23 +26,58 @@
   <script src="content/documents.js"></script>
   <script>
     window.familyReady.then(function(){
-      var SITE=window.SITE, items=window.DOCUMENTS||[], box=document.getElementById("docs");
+      var SITE=window.SITE, FL=window.FL, items=window.DOCUMENTS||[], box=document.getElementById("docs");
       if(!items.length){
         document.getElementById("empty").innerHTML =
           '<div class="empty-state"><div class="ico">📜</div><h3>No documents yet</h3>'+
-          '<p>This is where scanned certificates, letters, and historical records will be preserved for the family.</p></div>'+
+          '<p>This is where the family’s publications, articles, poetry, letters and records will be preserved — grouped into a “corner” for each member.</p></div>'+
           '<div class="howto"><h4>How to add a document</h4><ol>'+
-          '<li>Create a <code>documents-files/</code> folder and put the scan (PDF or image) inside.</li>'+
-          '<li>Open <code>content/documents.js</code> and add <code>{ title:"…", note:"…", file:"documents-files/name.pdf", year:"…" }</code>.</li>'+
-          '<li>Save — it appears here as a link.</li></ol></div>';
+          '<li>Put the file (a <b>PDF</b> or image) into a <code>documents-files/</code> folder. Word documents are converted to PDF first so everyone can read them in the browser.</li>'+
+          '<li>Open <code>content/documents.js</code> and add a line such as<br><code>{ member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"…", note:"…", file:"documents-files/name.pdf", year:"…" }</code></li>'+
+          '<li>The <code>member</code> field creates that person’s corner (e.g. <i>Moin ul Haque’s Corner</i>). Leave it out for general family records.</li>'+
+          '</ol><p class="lede" style="font-size:13px;margin-top:6px">Or just send the documents to your assistant and say whose corner they belong to.</p></div>';
         return;
       }
+
+      // group by member ("corner"), keeping first-seen order; member-less items go last, under Family Records
+      var order=[], groups={};
       items.forEach(function(d){
-        var row=document.createElement("a"); row.className="tile"; row.href=d.file||"#"; if(d.file) row.target="_blank";
-        row.innerHTML='<div class="ico">📄</div><div><div class="tt">'+SITE.escapeText(d.title||"Document")+(d.year?' <span class="tag">'+SITE.escapeText(d.year)+'</span>':'')+'</div>'+(d.note?'<div class="td">'+SITE.escapeText(d.note)+'</div>':'')+'</div>';
-        box.appendChild(row);
+        var key=((d.member||"").trim())||"__general__";
+        if(!groups[key]){ groups[key]=[]; order.push(key); }
+        groups[key].push(d);
       });
-      box.className="tiles"; box.style.gridTemplateColumns="1fr";
+      order.sort(function(a,b){ return (a==="__general__")-(b==="__general__"); });   // general section last
+
+      function icon(cat){ var c=(cat||"").toLowerCase();
+        if(/book/.test(c)) return "📖"; if(/poe/.test(c)) return "✒️";
+        if(/article|press|news|essay/.test(c)) return "📰"; if(/letter/.test(c)) return "✉️";
+        if(/certificate|record/.test(c)) return "📜"; if(/photo|image/.test(c)) return "🖼️";
+        return "📄"; }
+      function tile(d){
+        var a=document.createElement("a"); a.className="tile"; a.href=d.file||"#"; if(d.file) a.target="_blank"; if(d.file) a.rel="noopener";
+        var tags=(d.category?'<span class="tag">'+SITE.escapeText(d.category)+'</span>':'')+(d.year?' <span class="tag">'+SITE.escapeText(d.year)+'</span>':'');
+        a.innerHTML='<div class="ico">'+icon(d.category)+'</div><div style="min-width:0"><div class="tt">'+SITE.escapeText(d.title||"Document")+' '+tags+'</div>'+(d.note?'<div class="td">'+SITE.escapeText(d.note)+'</div>':'')+'</div>';
+        return a;
+      }
+
+      order.forEach(function(key){
+        var docs=groups[key], general=(key==="__general__");
+        var sec=document.createElement("section"); sec.className="gsecwrap";
+        var head=document.createElement("div"); head.className="galsec";
+        if(general){
+          head.innerHTML='<h3 class="h">Family Records</h3><div class="s">Certificates, letters and records belonging to the whole family</div>';
+        } else {
+          var mid=docs[0].memberId && FL.byId[docs[0].memberId] ? docs[0].memberId : null;
+          head.innerHTML='<h3 class="h">'+SITE.escapeText(key)+'’s Corner</h3>'+
+            (mid?'<div class="s"><a href="#prof">View '+SITE.escapeText(key)+'’s profile →</a></div>':'');
+          if(mid){ head.querySelector("a").onclick=function(e){ e.preventDefault(); SITE.openProfile(mid); }; }
+        }
+        sec.appendChild(head);
+        var tiles=document.createElement("div"); tiles.className="tiles"; tiles.style.gridTemplateColumns="1fr";
+        docs.forEach(function(d){ tiles.appendChild(tile(d)); });
+        sec.appendChild(tiles);
+        box.appendChild(sec);
+      });
     });
   </script>
 </body>

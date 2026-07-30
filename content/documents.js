@@ -17,6 +17,7 @@
 ============================================================================= */
 window.DOCUMENTS = [
   { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"A Requiem to Naltar", note:"A first-hand account of the Naltar helicopter tragedy of 8 May 2015, written on its eleventh anniversary.", file:"documents-files/a-requiem-to-naltar.pdf", year:"2026" },
+  { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"The Forgotten Lockdown", note:"An essay contrasting the world's COVID-19 lockdowns with the forgotten, months-long lockdown in Indian-Occupied Jammu & Kashmir. Written in Paris, May 2020.", file:"documents-files/the-forgotten-lockdown.pdf", year:"2020" },
 
   // ---- Templates: copy a line, fill it in, and drop the file into documents-files/ ----
   // { member:"Ikram ul Haque", memberId:"ikram", category:"Book", title:"Arz-e-Multan", note:"A history of the Multan region.", file:"documents-files/arz-e-multan.pdf", year:"1972" },

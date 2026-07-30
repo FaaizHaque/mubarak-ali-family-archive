@@ -16,7 +16,9 @@
      year      — e.g. "1972"                                                (optional)
 ============================================================================= */
 window.DOCUMENTS = [
+  { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"A Requiem to Naltar", note:"A first-hand account of the Naltar helicopter tragedy of 8 May 2015, written on its eleventh anniversary.", file:"documents-files/a-requiem-to-naltar.pdf", year:"2026" },
+
+  // ---- Templates: copy a line, fill it in, and drop the file into documents-files/ ----
   // { member:"Ikram ul Haque", memberId:"ikram", category:"Book", title:"Arz-e-Multan", note:"A history of the Multan region.", file:"documents-files/arz-e-multan.pdf", year:"1972" },
-  // { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"…", note:"…", file:"documents-files/example.pdf" },
   // { category:"Certificate", title:"Migration certificate", note:"Issued 1948", file:"documents-files/migration-1948.pdf", year:"1948" }
 ];

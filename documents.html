@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Documents &amp; Archive · Sheikh Mubarak Ali Family Archive</title>
-<link rel="stylesheet" href="assets/styles.css?v=2" />
+<link rel="stylesheet" href="assets/styles.css?v=3" />
 </head>
 <body data-page="documents">
   <div class="container narrow">
@@ -54,8 +54,9 @@
         if(/certificate|record/.test(c)) return "📜"; if(/photo|image/.test(c)) return "🖼️";
         return "📄"; }
       function tile(d){
-        var a=document.createElement("a"); a.className="tile"; a.href=d.file||"#"; if(d.file) a.target="_blank"; if(d.file) a.rel="noopener";
-        var tags=(d.category?'<span class="tag">'+SITE.escapeText(d.category)+'</span>':'')+(d.year?' <span class="tag">'+SITE.escapeText(d.year)+'</span>':'');
+        var external = d.file && /^https?:\/\//i.test(d.file);
+        var a=document.createElement("a"); a.className="tile"+(external?" tile-ext":""); a.href=d.file||"#"; if(d.file){ a.target="_blank"; a.rel="noopener noreferrer"; }
+        var tags=(d.category?'<span class="tag">'+SITE.escapeText(d.category)+'</span>':'')+(d.year?' <span class="tag">'+SITE.escapeText(d.year)+'</span>':'')+(external?' <span class="tag ext">↗ '+SITE.escapeText(d.source||"Web link")+'</span>':'');
         a.innerHTML='<div class="ico">'+icon(d.category)+'</div><div style="min-width:0"><div class="tt">'+SITE.escapeText(d.title||"Document")+' '+tags+'</div>'+(d.note?'<div class="td">'+SITE.escapeText(d.note)+'</div>':'')+'</div>';
         return a;
       }

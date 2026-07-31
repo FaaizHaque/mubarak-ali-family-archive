@@ -28,6 +28,9 @@ window.DOCUMENTS = [
   { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms – II: low-hanging fruit rotting", note:"Part II — on governance, meritocracy, accountability and honouring commercial contracts. Business Recorder, 25 January 2023.", file:"documents-files/energy-sector-reforms-ii.pdf", year:"2023" },
   { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms: Low-hanging fruit rotting – III", note:"Part III — on deregulation, privatisation, reviving state enterprises and the K-Electric model. Business Recorder, 2 February 2023.", file:"documents-files/energy-sector-reforms-iii.pdf", year:"2023" },
 
+  { member:"Nadeem ul Haque", memberId:"nadeem-ul-haq", category:"Article", title:"The poverty measurement industry", note:"On Pakistan's shifting poverty lines, and how measuring poverty has come to substitute for combating it. Dawn, 12 November 2025.", file:"documents-files/poverty-measurement-industry.pdf", year:"2025" },
+  { member:"Nadeem ul Haque", memberId:"nadeem-ul-haq", category:"Article", title:"Vertical growth", note:"On why Pakistan's cities must be allowed to grow upward — ending the two-floor restriction to unlock housing and investment. Dawn, 16 November 2022.", file:"documents-files/vertical-growth.pdf", year:"2022" },
+
   // ---- Templates: copy a line, fill it in, and drop the file into documents-files/ ----
   // { member:"Ikram ul Haque", memberId:"ikram", category:"Book", title:"Arz-e-Multan", note:"A history of the Multan region.", file:"documents-files/arz-e-multan.pdf", year:"1972" },
   // { category:"Certificate", title:"Migration certificate", note:"Issued 1948", file:"documents-files/migration-1948.pdf", year:"1948" }

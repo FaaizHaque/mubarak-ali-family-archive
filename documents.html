@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Documents &amp; Archive · Sheikh Mubarak Ali Family Archive</title>
-<link rel="stylesheet" href="assets/styles.css?v=4" />
+<link rel="stylesheet" href="assets/styles.css?v=5" />
 </head>
 <body data-page="documents">
   <div class="container narrow">
@@ -55,7 +55,7 @@
         return "📄"; }
       function tile(d){
         var external = d.file && /^https?:\/\//i.test(d.file);
-        var a=document.createElement("a"); a.className="tile"+(external?" tile-ext":""); a.href=d.file||"#"; if(d.file){ a.target="_blank"; a.rel="noopener noreferrer"; }
+        var a=document.createElement("a"); a.className="tile"+(external?" tile-ext":"")+(d.file?"":" tile-nolink"); if(d.file){ a.href=d.file; a.target="_blank"; a.rel="noopener noreferrer"; }
         var tags=(d.category?'<span class="tag">'+SITE.escapeText(d.category)+'</span>':'')+(d.year?' <span class="tag">'+SITE.escapeText(d.year)+'</span>':'')+(external?' <span class="tag ext">↗ '+SITE.escapeText(d.source||"Web link")+'</span>':'');
         var iconHtml = d.cover
           ? '<div class="ico cover"><img alt="" loading="lazy" src="'+SITE.escapeText(d.cover)+'"></div>'

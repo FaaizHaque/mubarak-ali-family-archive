@@ -24,7 +24,7 @@ window.DOCUMENTS = [
   { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"The Forgotten Lockdown", note:"An essay contrasting the world's COVID-19 lockdowns with the forgotten, months-long lockdown in Indian-Occupied Jammu & Kashmir. Written in Paris, May 2020.", file:"documents-files/the-forgotten-lockdown.pdf", year:"2020" },
   { member:"Moin ul Haque", memberId:"b3-moin", category:"Poetry", title:"Daddy (ڈیڈی)", note:"An Urdu elegy for Sheikh Ahsan ul Haque, lovingly known as ‘Daddy’, written on his passing.", file:"documents-files/daddy-an-elegy.pdf", year:"2025" },
 
-  { member:"Imran ul Haque", memberId:"imran", category:"Article", source:"Business Recorder", title:"Opinion: Pakistan's energy sector", note:"An opinion column by Imran ul Haque, published in Business Recorder.", file:"https://www.brecorder.com/news/40217243" },
+  { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms — I", note:"An opinion column on Pakistan's energy sector and reforms, published in Business Recorder on 29 December 2022.", file:"documents-files/energy-sector-reforms-i.pdf", year:"2022" },
 
   // ---- Templates: copy a line, fill it in, and drop the file into documents-files/ ----
   // { member:"Ikram ul Haque", memberId:"ikram", category:"Book", title:"Arz-e-Multan", note:"A history of the Multan region.", file:"documents-files/arz-e-multan.pdf", year:"1972" },

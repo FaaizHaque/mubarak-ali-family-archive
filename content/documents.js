@@ -24,7 +24,9 @@ window.DOCUMENTS = [
   { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"The Forgotten Lockdown", note:"An essay contrasting the world's COVID-19 lockdowns with the forgotten, months-long lockdown in Indian-Occupied Jammu & Kashmir. Written in Paris, May 2020.", file:"documents-files/the-forgotten-lockdown.pdf", year:"2020" },
   { member:"Moin ul Haque", memberId:"b3-moin", category:"Poetry", title:"Daddy (ڈیڈی)", note:"An Urdu elegy for Sheikh Ahsan ul Haque, lovingly known as ‘Daddy’, written on his passing.", file:"documents-files/daddy-an-elegy.pdf", year:"2025" },
 
-  { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms — I", note:"An opinion column on Pakistan's energy sector and reforms, published in Business Recorder on 29 December 2022.", file:"documents-files/energy-sector-reforms-i.pdf", year:"2022" },
+  { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms — I", note:"Part I of his energy-sector reforms series — on Pakistan's gas supply, circular debt, subsidies and the energy mix. Business Recorder, 29 December 2022.", file:"documents-files/energy-sector-reforms-i.pdf", year:"2022" },
+  { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms – II: low-hanging fruit rotting", note:"Part II — on governance, meritocracy, accountability and honouring commercial contracts. Business Recorder, 25 January 2023.", file:"documents-files/energy-sector-reforms-ii.pdf", year:"2023" },
+  { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms: Low-hanging fruit rotting – III", note:"Part III — on deregulation, privatisation, reviving state enterprises and the K-Electric model. Business Recorder, 2 February 2023.", file:"documents-files/energy-sector-reforms-iii.pdf", year:"2023" },
 
   // ---- Templates: copy a line, fill it in, and drop the file into documents-files/ ----
   // { member:"Ikram ul Haque", memberId:"ikram", category:"Book", title:"Arz-e-Multan", note:"A history of the Multan region.", file:"documents-files/arz-e-multan.pdf", year:"1972" },

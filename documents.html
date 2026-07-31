@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Documents &amp; Archive · Sheikh Mubarak Ali Family Archive</title>
-<link rel="stylesheet" href="assets/styles.css?v=3" />
+<link rel="stylesheet" href="assets/styles.css?v=4" />
 </head>
 <body data-page="documents">
   <div class="container narrow">
@@ -57,7 +57,11 @@
         var external = d.file && /^https?:\/\//i.test(d.file);
         var a=document.createElement("a"); a.className="tile"+(external?" tile-ext":""); a.href=d.file||"#"; if(d.file){ a.target="_blank"; a.rel="noopener noreferrer"; }
         var tags=(d.category?'<span class="tag">'+SITE.escapeText(d.category)+'</span>':'')+(d.year?' <span class="tag">'+SITE.escapeText(d.year)+'</span>':'')+(external?' <span class="tag ext">↗ '+SITE.escapeText(d.source||"Web link")+'</span>':'');
-        a.innerHTML='<div class="ico">'+icon(d.category)+'</div><div style="min-width:0"><div class="tt">'+SITE.escapeText(d.title||"Document")+' '+tags+'</div>'+(d.note?'<div class="td">'+SITE.escapeText(d.note)+'</div>':'')+'</div>';
+        var iconHtml = d.cover
+          ? '<div class="ico cover"><img alt="" loading="lazy" src="'+SITE.escapeText(d.cover)+'"></div>'
+          : '<div class="ico">'+icon(d.category)+'</div>';
+        a.innerHTML=iconHtml+'<div style="min-width:0"><div class="tt">'+SITE.escapeText(d.title||"Document")+' '+tags+'</div>'+(d.note?'<div class="td">'+SITE.escapeText(d.note)+'</div>':'')+'</div>';
+        if(d.cover){ var im=a.querySelector(".ico.cover img"); if(im){ im.onerror=function(){ var b=im.parentNode; b.className="ico"; b.textContent=icon(d.category); }; } }
         return a;
       }
 

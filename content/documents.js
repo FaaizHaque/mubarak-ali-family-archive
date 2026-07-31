@@ -16,6 +16,8 @@
                  their profile, e.g. "b3-moin".
      category  — Book · Article · Poetry · Letter · Certificate · Record …  (optional tag)
      source    — for a web link, where it lives, e.g. "Business Recorder" — shown as a ↗ chip
+     cover     — (books etc.) a cover image, e.g. "documents-files/covers/looking-back.jpg"
+                 — shown as a thumbnail in place of the icon
      note      — a short description                                        (optional)
      year      — e.g. "1972"                                                (optional)
 ============================================================================= */

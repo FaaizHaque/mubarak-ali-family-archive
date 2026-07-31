@@ -20,24 +20,26 @@
                  — shown as a thumbnail in place of the icon
      note      — a short description                                        (optional)
      year      — e.g. "1972"                                                (optional)
+
+   Corners appear in the order members first show up below (currently by age seniority).
 ============================================================================= */
 window.DOCUMENTS = [
-  { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"A Requiem to Naltar", note:"A first-hand account of the Naltar helicopter tragedy of 8 May 2015, written on its eleventh anniversary.", file:"documents-files/a-requiem-to-naltar.pdf", year:"2026" },
-  { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"The Forgotten Lockdown", note:"An essay contrasting the world's COVID-19 lockdowns with the forgotten, months-long lockdown in Indian-Occupied Jammu & Kashmir. Written in Paris, May 2020.", file:"documents-files/the-forgotten-lockdown.pdf", year:"2020" },
-  { member:"Moin ul Haque", memberId:"b3-moin", category:"Poetry", title:"Daddy (ڈیڈی)", note:"An Urdu elegy for Sheikh Ahsan ul Haque, lovingly known as ‘Daddy’, written on his passing.", file:"documents-files/daddy-an-elegy.pdf", year:"2025" },
-
-  { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms — I", note:"Part I of his energy-sector reforms series — on Pakistan's gas supply, circular debt, subsidies and the energy mix. Business Recorder, 29 December 2022.", file:"documents-files/energy-sector-reforms-i.pdf", year:"2022" },
-  { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms – II: low-hanging fruit rotting", note:"Part II — on governance, meritocracy, accountability and honouring commercial contracts. Business Recorder, 25 January 2023.", file:"documents-files/energy-sector-reforms-ii.pdf", year:"2023" },
-  { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms: Low-hanging fruit rotting – III", note:"Part III — on deregulation, privatisation, reviving state enterprises and the K-Electric model. Business Recorder, 2 February 2023.", file:"documents-files/energy-sector-reforms-iii.pdf", year:"2023" },
-
   { member:"Ikram ul Haque", memberId:"ikram", category:"Book", cover:"documents-files/covers/arz-e-multan.jpg", title:"Arz-e-Multan (ارضِ ملتان)", note:"‘The Land of Multan’ — an Urdu history of Multan's heritage, culture and spiritual legacy, including its shrines and Sufi traditions. Published by Bazm-e-Saqafat, Multan." },
 
   { member:"Nadeem ul Haque", memberId:"nadeem-ul-haq", category:"Book", source:"Goodreads", cover:"documents-files/covers/looking-back.jpg", title:"Looking Back: How Pakistan Became an Asian Tiger by 2050", note:"A speculative narrative imagining how Pakistan transforms into a high-income ‘Asian Tiger’ by 2050 — the economist's fictional lens on public policy and the change it can shape. Kindle Edition, 223 pages.", file:"https://www.goodreads.com/book/show/34328731-looking-back", year:"2017" },
   { member:"Nadeem ul Haque", memberId:"nadeem-ul-haq", category:"Article", title:"The poverty measurement industry", note:"On Pakistan's shifting poverty lines, and how measuring poverty has come to substitute for combating it. Dawn, 12 November 2025.", file:"documents-files/poverty-measurement-industry.pdf", year:"2025" },
   { member:"Nadeem ul Haque", memberId:"nadeem-ul-haq", category:"Article", title:"Vertical growth", note:"On why Pakistan's cities must be allowed to grow upward — ending the two-floor restriction to unlock housing and investment. Dawn, 16 November 2022.", file:"documents-files/vertical-growth.pdf", year:"2022" },
 
+  { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms — I", note:"Part I of his energy-sector reforms series — on Pakistan's gas supply, circular debt, subsidies and the energy mix. Business Recorder, 29 December 2022.", file:"documents-files/energy-sector-reforms-i.pdf", year:"2022" },
+  { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms – II: low-hanging fruit rotting", note:"Part II — on governance, meritocracy, accountability and honouring commercial contracts. Business Recorder, 25 January 2023.", file:"documents-files/energy-sector-reforms-ii.pdf", year:"2023" },
+  { member:"Imran ul Haque", memberId:"imran", category:"Article", title:"Energy sector reforms: Low-hanging fruit rotting – III", note:"Part III — on deregulation, privatisation, reviving state enterprises and the K-Electric model. Business Recorder, 2 February 2023.", file:"documents-files/energy-sector-reforms-iii.pdf", year:"2023" },
+
   { member:"Faisal Haque", memberId:"b3-faisal", category:"Book", source:"Amazon", cover:"documents-files/covers/art-of-verification-sva.jpg", title:"The Art of Verification with SystemVerilog Assertions", note:"A comprehensive, example-driven guide to SystemVerilog Assertions (SVA) and assertion-based verification — co-authored with Khizar A. Khan and Jonathan Michelson. Verification Central, 664 pages.", file:"https://www.amazon.com/Art-Verification-SystemVerilog-Assertions/dp/0971199418", year:"2006" },
   { member:"Faisal Haque", memberId:"b3-faisal", category:"Book", source:"Amazon", cover:"documents-files/covers/sv-testbench-quick-reference.jpg", title:"SystemVerilog Testbench Quick Reference", note:"A concise, code-example reference to the most commonly used SystemVerilog testbench constructs — co-authored with Jonathan Michelson. Verification Central, 2018.", file:"https://www.amazon.com/SystemVerilog-Testbench-Quick-Reference-Faisal/dp/0971199426", year:"2018" },
+
+  { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"A Requiem to Naltar", note:"A first-hand account of the Naltar helicopter tragedy of 8 May 2015, written on its eleventh anniversary.", file:"documents-files/a-requiem-to-naltar.pdf", year:"2026" },
+  { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"The Forgotten Lockdown", note:"An essay contrasting the world's COVID-19 lockdowns with the forgotten, months-long lockdown in Indian-Occupied Jammu & Kashmir. Written in Paris, May 2020.", file:"documents-files/the-forgotten-lockdown.pdf", year:"2020" },
+  { member:"Moin ul Haque", memberId:"b3-moin", category:"Poetry", title:"Daddy (ڈیڈی)", note:"An Urdu elegy for Sheikh Ahsan ul Haque, lovingly known as ‘Daddy’, written on his passing.", file:"documents-files/daddy-an-elegy.pdf", year:"2025" },
 
   // ---- Templates: copy a line, fill it in, and drop the file into documents-files/ ----
   // { member:"Ikram ul Haque", memberId:"ikram", category:"Book", title:"Arz-e-Multan", note:"A history of the Multan region.", file:"documents-files/arz-e-multan.pdf", year:"1972" },

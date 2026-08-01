@@ -34,16 +34,30 @@ window.familyReady.then(function(){
   }
   function birthYear(p){ var n = p.id && FL.byId[p.id]; var m = n && (''+(n.dob||'')).match(/\b(\d{4})\b/); return m ? +m[1] : null; }
 
-  // Manual placement: ids listed here are shown at the END of their generation group.
-  var PIN_LAST = { "hamid": true };
+  // Manual ordering: within each display group (Family elders, then each later
+  // generation) notables appear in this exact sequence; anyone not listed follows,
+  // by the automatic birth-order / seniority sort.
+  var ORDER = [
+    // Family elders
+    "b3-arif", "abdul-samad", "ikram", "inam", "riffat-pasha", "b1-siraj", "b3-imdad", "hamid",
+    // 3rd generation
+    "nadeem-ul-haq", "imran", "amir", "tahir-jawaid", "b3-faisal", "b3-moin", "b3-adil", "moqeem"
+  ];
+  var ORDER_IX = {}; ORDER.forEach(function(id, i){ ORDER_IX[id] = i; });
+  function groupRank(p){ return p._gen <= 2 ? 2 : p._gen; }   // all elders form a single group
 
   list.forEach(function(p){ p._gen = genOf(p); });
   // Within a generation: members with a recorded birth date come first (oldest first);
   // the rest follow by family seniority — senior branch first, then birth order.
   list.sort(function(a,b){
-    if(a._gen !== b._gen) return a._gen - b._gen;
-    var pa = PIN_LAST[a.id] ? 1 : 0, pb = PIN_LAST[b.id] ? 1 : 0;
-    if(pa !== pb) return pa - pb;                       // pinned people go after everyone else in their generation
+    var ga = groupRank(a), gb = groupRank(b);
+    if(ga !== gb) return ga - gb;                       // Family elders first, then generation by generation
+    var ia = ORDER_IX[a.id], ib = ORDER_IX[b.id];
+    if(ia != null || ib != null){                      // manual sequence wins; listed before unlisted
+      if(ia == null) return 1;
+      if(ib == null) return -1;
+      return ia - ib;
+    }
     var ya = birthYear(a), yb = birthYear(b);
     if(ya && yb) return ya - yb || seniority(a) - seniority(b);
     if(ya) return -1;

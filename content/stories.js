@@ -4,6 +4,7 @@
 window.STORIES = [
   {
     title: "The Engagement Tea",
+    author: "Farrah",
     date: "Wah Cantt · 1980",
     people: [ "b1-farrah", "b3-faisal", "b1-shazia" ],
     body: `It was 1980, and Faisal's engagement to my sister Shazia was being held at our family home in Wah Cantt. Faisal arrived with his family from Islamabad, and after the engagement ceremony and dinner came one of the customary traditions.
@@ -30,12 +31,11 @@ Faisal, meanwhile, was horrified. Wearing a brand-new suit for his engagement, h
 
 More than four decades later, the incident has never been forgotten. In fact, Faisal still delights in recounting the story whenever the family gathers, never missing the chance to tease me. His standing complaint remains that I ruined his brand-new engagement suit, while I simply remind him that he was the one who challenged me to "go ahead."
 
-Looking back, it was a harmless prank, but it became the perfect beginning to a lifelong brother- and sister-in-law relationship—one filled with teasing, laughter, and enough family stories to entertain generations.
-
-— Narrated by Farrah`
+Looking back, it was a harmless prank, but it became the perfect beginning to a lifelong brother- and sister-in-law relationship—one filled with teasing, laughter, and enough family stories to entertain generations.`
   },
   {
     title: "The One-Way Ticket Affair",
+    author: "Moin ul Haque",
     date: "Brussels · 1993–1996",
     people: [ "b3-moin", "b1-farrah", "b1-shazia", "b3-faisal", "fatima", "salman", "sadaf" ],
     body: `One of our fondest memories from our first diplomatic posting in Brussels (1993–1996) revolves around what has since become famous in the family as the "One-Way Ticket Affair."
@@ -56,9 +56,7 @@ Needless to say, I was not around to face his immediate wrath, having convenient
 
 To this day, I honestly do not know how it happened. I remember very clearly asking the ticket clerk for an 'aller-retour' ticket—the correct French expression for a return ticket. Perhaps I was misunderstood, or perhaps I misunderstood the clerk. Whatever the reason, the result was memorable.
 
-Looking back now, of course the whole mishap could have been avoided. But then we would have lost one of those priceless family stories that gets retold every few years, each time with even greater laughter. And if I could travel back in time, I think I would gladly pay the cost of those extra tickets just to witness the expression on Faisal's face when the ticket inspector calmly informed him that he possessed nothing more than a one-way ticket to Paris.
-
-— Narrated by Moin ul Haque`
+Looking back now, of course the whole mishap could have been avoided. But then we would have lost one of those priceless family stories that gets retold every few years, each time with even greater laughter. And if I could travel back in time, I think I would gladly pay the cost of those extra tickets just to witness the expression on Faisal's face when the ticket inspector calmly informed him that he possessed nothing more than a one-way ticket to Paris.`
   }
   // {
   //   title: "The journey to Karachi, 1947",

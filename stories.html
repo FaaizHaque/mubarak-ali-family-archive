@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Family Stories · Sheikh Mubarak Ali Family Archive</title>
 <link rel="stylesheet" href="assets/styles.css" />
+<style>
+  .story-accordion{display:flex;flex-direction:column;gap:14px}
+  .story-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;transition:border-color .15s ease}
+  .story-card.open{border-color:var(--accent)}
+  .story-head{display:flex;align-items:center;gap:15px;width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:18px 20px;font:inherit;color:inherit}
+  .story-head:hover{background:rgba(0,0,0,.025)}
+  .story-ico{font-size:22px;line-height:1;flex:0 0 auto}
+  .story-headmain{flex:1 1 auto;min-width:0}
+  .story-title{display:block;font-size:20px;font-weight:600;line-height:1.25}
+  .story-byline{display:block;font-size:13px;color:var(--muted,#6f6a5c);margin-top:3px}
+  .story-chev{flex:0 0 auto;font-size:15px;color:var(--accent);transition:transform .18s ease}
+  .story-card.open .story-chev{transform:rotate(90deg)}
+  .story-body{padding:2px 20px 20px}
+  .story-body p{font-size:16px;line-height:1.7;margin:0 0 14px}
+  .story-people{margin-top:6px;display:flex;flex-wrap:wrap;gap:8px}
+  .story-hint{font-size:13px;color:var(--muted,#6f6a5c);margin:-4px 0 16px}
+</style>
 </head>
 <body data-page="stories">
   <div class="container narrow">
@@ -13,7 +30,8 @@
       <div class="lede">Memories, accounts and milestones — the moments that turn a family tree into a family history.</div>
     </div>
     <hr class="rule" />
-    <div id="stories"></div>
+    <div id="hint"></div>
+    <div id="stories" class="story-accordion"></div>
     <div id="empty"></div>
   </div>
 
@@ -37,19 +55,40 @@
           '<li>Optionally add <code>author</code>, <code>date</code>, and <code>people</code> (ids from the tree).</li></ol></div>';
         return;
       }
+      if(items.length>1){
+        document.getElementById("hint").innerHTML='<div class="story-hint">'+items.length+' stories · tap any title to read it.</div>';
+      }
       items.forEach(function(s){
-        var art=document.createElement("article"); art.style.cssText="background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--shadow)";
-        var meta=[s.author,s.date].filter(Boolean).map(function(x){return SITE.escapeText(x);}).join(" · ");
-        var html='<h3 style="margin:0 0 4px;font-size:22px">'+SITE.escapeText(s.title||"Untitled")+'</h3>';
-        if(meta) html+='<div class="lede" style="font-size:13px;margin-bottom:12px">'+meta+'</div>';
-        (s.body||"").split(/\n\s*\n/).forEach(function(p){ html+='<p style="font-size:16px;line-height:1.7;margin:0 0 14px">'+SITE.escapeText(p)+'</p>'; });
-        art.innerHTML=html;
+        var card=document.createElement("article"); card.className="story-card";
+
+        var head=document.createElement("button"); head.type="button"; head.className="story-head"; head.setAttribute("aria-expanded","false");
+        var byline=[ s.author?("Narrated by "+s.author):"", s.date ].filter(Boolean).map(function(x){return SITE.escapeText(x);}).join(" · ");
+        head.innerHTML=
+          '<span class="story-ico" aria-hidden="true">✍️</span>'+
+          '<span class="story-headmain">'+
+            '<span class="story-title">'+SITE.escapeText(s.title||"Untitled")+'</span>'+
+            (byline?'<span class="story-byline">'+byline+'</span>':'')+
+          '</span>'+
+          '<span class="story-chev" aria-hidden="true">▸</span>';
+
+        var body=document.createElement("div"); body.className="story-body"; body.hidden=true;
+        var html="";
+        (s.body||"").split(/\n\s*\n/).forEach(function(p){ html+='<p>'+SITE.escapeText(p)+'</p>'; });
+        body.innerHTML=html;
         if(s.people && s.people.length){
-          var row=document.createElement("div"); row.style.marginTop="6px";
-          s.people.forEach(function(id){ if(!FL.byId[id]) return; var b=document.createElement("button"); b.className="relbtn"; b.innerHTML='<span class="dot"></span>'+SITE.escapeText(FL.displayName(FL.byId[id].name)); b.onclick=function(){ SITE.openProfile(id); }; row.appendChild(b); });
-          art.appendChild(row);
+          var row=document.createElement("div"); row.className="story-people";
+          s.people.forEach(function(id){ if(!FL.byId[id]) return; var b=document.createElement("button"); b.type="button"; b.className="relbtn"; b.innerHTML='<span class="dot"></span>'+SITE.escapeText(FL.displayName(FL.byId[id].name)); b.onclick=function(){ SITE.openProfile(id); }; row.appendChild(b); });
+          body.appendChild(row);
         }
-        box.appendChild(art);
+
+        head.addEventListener("click", function(){
+          var willOpen=body.hidden;
+          body.hidden=!willOpen;
+          head.setAttribute("aria-expanded", willOpen?"true":"false");
+          card.classList.toggle("open", willOpen);
+        });
+
+        card.appendChild(head); card.appendChild(body); box.appendChild(card);
       });
     });
   </script>

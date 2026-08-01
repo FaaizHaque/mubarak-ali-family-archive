@@ -43,6 +43,7 @@ window.DOCUMENTS = [
 
   { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"A Requiem to Naltar", note:"A first-hand account of the Naltar helicopter tragedy of 8 May 2015, written on its eleventh anniversary.", file:"documents-files/a-requiem-to-naltar.pdf", year:"2026" },
   { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", title:"The Forgotten Lockdown", note:"An essay contrasting the world's COVID-19 lockdowns with the forgotten, months-long lockdown in Indian-Occupied Jammu & Kashmir. Written in Paris, May 2020.", file:"documents-files/the-forgotten-lockdown.pdf", year:"2020" },
+  { member:"Moin ul Haque", memberId:"b3-moin", category:"Article", source:"PIVOT Magazine (ISSI)", title:"Global Governance Initiative", note:"His ‘View Point’ essay on President Xi Jinping's global initiatives — from the Belt and Road to the new Global Governance Initiative (GGI) launched in 2025 — and their vision for a more just and equitable world order. PIVOT, the quarterly magazine of the Institute of Strategic Studies Islamabad (ISSI), April 2026 (pages 6–9).", file:"https://issi.org.pk/wp-content/uploads/2026/04/PIVOT_Magazine_April__2026.pdf", year:"2026" },
   { member:"Moin ul Haque", memberId:"b3-moin", category:"Poetry", title:"Daddy (ڈیڈی)", note:"An Urdu elegy for Sheikh Ahsan ul Haque, lovingly known as ‘Daddy’, written on his passing.", file:"documents-files/daddy-an-elegy.pdf", year:"2025" },
 
   // ---- Templates: copy a line, fill it in, and drop the file into documents-files/ ----

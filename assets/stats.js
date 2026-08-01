@@ -142,8 +142,13 @@ window.familyReady.then(function(){
   var sharedAlias = Object.keys(aliasMap).map(function(k){ return aliasMap[k]; }).filter(function(x){ return x.c>=2; }).sort(function(a,b){ return b.c-a.c; });
 
   var notable = ppl.filter(function(p){ return p.notable; }).length;
-  var honouredList = named.filter(function(p){ return p.honors && p.honors.trim(); });
+  // Awards: distinctions conferred by a state or notable institution (not titles, roles or authorship)
+  var AWARD_RE = /sitara|hilal|nishan|tamgha|imtiaz|pride of performance|medalli|\bmedal\b|\baward(?:s|ed)?\b|laureate|\bprize\b|quaid-?e-?azam|gallantry|basalat|jur['’]?at/i;
+  var honouredList = named.filter(function(p){ return p.honors && AWARD_RE.test(p.honors); });
   var honoured = honouredList.length;
+  // Leadership positions: CEOs, chairs, MDs, ambassadors, heads of institutions, etc.
+  var LEADER_RE = /chief executive|\bCEO\b|managing director|\bMD\b|chairman|chairperson|\bambassador\b|high commissioner|director[- ]?general|\bDG\b|chief secretary|vice[- ]?chancellor|deputy chairman|country head|\bpresident\b|\bfounder\b|co-?founder|consul[- ]?general|chief of protocol|\bCOO\b|\bCFO\b|\bCTO\b|\bCSO\b|head of/i;
+  var leadersList = named.filter(function(p){ return LEADER_RE.test([p.profession,p.role,p.summary].filter(Boolean).join('  ')); });
 
   // largest immediate families (exclude the patriarch himself)
   var bigFamilies = blood.filter(function(p){ return p.id!=='mubarak' && p.children && p.children.length; })
@@ -229,6 +234,11 @@ window.familyReady.then(function(){
   tile(phdCount, "Hold a PhD", peopleReveal("Members who hold a PhD", phdPeople));
   tile(foreignUniCount, "Studied at a foreign university", peopleReveal("Studied at a foreign university", foreignUniPeople));
   tile(withCareer.length, "With a recorded profession");
+  tile(leadersList.length, "In leadership positions", function(){
+    openReveal("Leadership positions (CEO, chair, MD, ambassador…)", function(list){
+      leadersList.forEach(function(p){ var row=el("div","rv-row"); row.appendChild(nameChip(p, p.role||p.profession)); list.appendChild(row); });
+    });
+  });
   tile(distinctNames, "Distinct first names");
 
   // Living & remembered — builds up as the family is recorded as living or departed

@@ -149,6 +149,16 @@ window.familyReady.then(function(){
   // Leadership positions: CEOs, chairs, MDs, ambassadors, heads of institutions, etc.
   var LEADER_RE = /chief executive|\bCEO\b|managing director|\bMD\b|chairman|chairperson|\bambassador\b|high commissioner|director[- ]?general|\bDG\b|chief secretary|vice[- ]?chancellor|deputy chairman|country head|\bpresident\b|\bfounder\b|co-?founder|consul[- ]?general|chief of protocol|\bCOO\b|\bCFO\b|\bCTO\b|\bCSO\b|head of/i;
   var leadersList = named.filter(function(p){ return LEADER_RE.test([p.profession,p.role,p.summary].filter(Boolean).join('  ')); });
+  // list leaders by family seniority — mirrors the manual order on the Notable Members page (ORDER in notable.js; keep in sync)
+  var SENIORITY = ["b3-arif","abdul-samad","ikram","inam","riffat-pasha","b1-siraj","b3-imdad","hamid",
+                   "nadeem-ul-haq","imran","amir","tahir-jawaid","b3-faisal","b3-moin","b3-adil","moqeem"];
+  var SEN_IX = {}; SENIORITY.forEach(function(id,i){ SEN_IX[id]=i; });
+  leadersList.sort(function(a,b){
+    var ia=SEN_IX[a.id], ib=SEN_IX[b.id];
+    if(ia!=null && ib!=null) return ia-ib;
+    if(ia!=null) return -1; if(ib!=null) return 1;
+    return 0;
+  });
 
   // largest immediate families (exclude the patriarch himself)
   var bigFamilies = blood.filter(function(p){ return p.id!=='mubarak' && p.children && p.children.length; })

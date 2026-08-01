@@ -33,14 +33,15 @@ window.familyReady.then(function(){
   var branches = FL.branches().slice().sort(function(a,b){ return b.count-a.count; });
 
   // intermarriages: both partners are blood descendants
-  var seenPair = {}, intermarriages = 0;
+  var seenPair = {}, intermarriagePairs = [];
   blood.forEach(function(p){
     (p.spouses||[]).forEach(function(s){
       if(s.id && FL.byId[s.id] && !FL.byId[s.id].external){
-        var key=[p.id,s.id].sort().join('|'); if(!seenPair[key]){ seenPair[key]=1; intermarriages++; }
+        var key=[p.id,s.id].sort().join('|'); if(!seenPair[key]){ seenPair[key]=1; intermarriagePairs.push([p, FL.byId[s.id]]); }
       }
     });
   });
+  var intermarriages = intermarriagePairs.length;
 
   // professions → buckets
   var PROF = [
@@ -81,10 +82,12 @@ window.familyReady.then(function(){
                    .filter(function(r){ return r.count>0; });   // keep level order (highest first)
 
   // headline education counts for the quick grid
-  var phdCount     = named.filter(function(p){ return anyMatch(eduText(p), DEG[0].res); }).length;   // Doctorate
+  var phdPeople    = named.filter(function(p){ return anyMatch(eduText(p), DEG[0].res); });          // Doctorate
+  var phdCount     = phdPeople.length;
   var mastersCount = named.filter(function(p){ return anyMatch(eduText(p), DEG[1].res); }).length;   // Master's
   var FOREIGN_UNI = [/\bMIT\b/, /massachusetts institute/i, /\bLSE\b/, /london school of economics/i, /\bINSEAD\b/i, /harvard/i, /\boxford\b/i, /\bcambridge\b/i, /stanford/i, /wharton/i, /university of chicago/i, /notre dame/i, /syracuse/i, /\bdundee\b/i, /city university/i, /les roches/i, /north east london/i, /london business school/i, /\bLBS\b/, /asian institute of technology/i, /\b(from|in)\s+france\b/i, /\(france\)/i];
-  var foreignUniCount = named.filter(function(p){ return anyMatch(eduText(p), FOREIGN_UNI); }).length;
+  var foreignUniPeople = named.filter(function(p){ return anyMatch(eduText(p), FOREIGN_UNI); });
+  var foreignUniCount = foreignUniPeople.length;
 
   var INST = [
     { label:"Aitchison College",              res:[/aitchison/i] },
@@ -139,7 +142,8 @@ window.familyReady.then(function(){
   var sharedAlias = Object.keys(aliasMap).map(function(k){ return aliasMap[k]; }).filter(function(x){ return x.c>=2; }).sort(function(a,b){ return b.c-a.c; });
 
   var notable = ppl.filter(function(p){ return p.notable; }).length;
-  var honoured = named.filter(function(p){ return p.honors && p.honors.trim(); }).length;
+  var honouredList = named.filter(function(p){ return p.honors && p.honors.trim(); });
+  var honoured = honouredList.length;
 
   // largest immediate families (exclude the patriarch himself)
   var bigFamilies = blood.filter(function(p){ return p.id!=='mubarak' && p.children && p.children.length; })
@@ -175,20 +179,57 @@ window.familyReady.then(function(){
     big((maxGen+1), "Generations");
   root.appendChild(hero);
 
-  // quick grid
-  var grid = el("div","stat-grid");
-  grid.innerHTML =
-    small(male, "Male") +
-    small(female, "Female") +
-    small(intermarriages, "Marriages within the family") +
-    small(aliased.length, "Have a family pet name") +
-    small(honoured, "National / foreign awards") +
-    small(mastersCount, "Hold a Master’s degree") +
-    small(phdCount, "Hold a PhD") +
-    small(foreignUniCount, "Studied at a foreign university") +
-    small(withCareer.length, "With a recorded profession") +
-    small(distinctNames, "Distinct first names");
-  root.appendChild(grid);
+  // quick grid — some tiles are clickable to reveal the people behind the number
+  var grid = el("div","stat-grid"); root.appendChild(grid);
+  var reveal = el("div","stat-reveal"); reveal.style.display="none"; root.appendChild(reveal);
+
+  function nameChip(p, extra){
+    var a = el(p.id ? "button" : "span", "rv-name"); a.textContent = FL.displayName(p.name);
+    if(p.id) a.onclick = function(){ SITE.openProfile(p.id); };
+    if(!extra) return a;
+    var wrap = el("span","rv-pair"); wrap.appendChild(a); wrap.appendChild(el("span","rv-extra","— "+esc(extra)));
+    return wrap;
+  }
+  function openReveal(title, build){
+    reveal.innerHTML = "";
+    var head = el("div","rv-head"); head.appendChild(el("h4",null,esc(title)));
+    var x = el("button","rv-x","✕"); x.onclick = function(){ reveal.style.display="none"; }; head.appendChild(x);
+    reveal.appendChild(head);
+    var listEl = el("div","rv-list"); build(listEl); reveal.appendChild(listEl);
+    reveal.style.display = ""; reveal.scrollIntoView({ behavior:"smooth", block:"nearest" });
+  }
+  function peopleReveal(title, arr){ return function(){ openReveal(title, function(list){
+    arr.forEach(function(p){ var row=el("div","rv-row"); row.appendChild(nameChip(p)); list.appendChild(row); });
+  }); }; }
+  function tile(num, lbl, onTap){
+    var t = el("div","s"+(onTap?" tap":"")); t.innerHTML='<div class="num">'+num+'</div><div class="lbl">'+esc(lbl)+'</div>';
+    if(onTap){ t.setAttribute("role","button"); t.setAttribute("tabindex","0"); t.onclick=onTap;
+      t.onkeydown=function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); onTap(); } }; }
+    grid.appendChild(t);
+  }
+
+  tile(male, "Male");
+  tile(female, "Female");
+  tile(intermarriages, "Marriages within the family", function(){
+    openReveal("Marriages within the family", function(list){
+      intermarriagePairs.forEach(function(pr){
+        var row=el("div","rv-row");
+        row.appendChild(nameChip(pr[0])); row.appendChild(el("span","rv-amp","&")); row.appendChild(nameChip(pr[1]));
+        list.appendChild(row);
+      });
+    });
+  });
+  tile(aliased.length, "Have a family pet name");
+  tile(honoured, "National / foreign awards", function(){
+    openReveal("National / foreign awards", function(list){
+      honouredList.forEach(function(p){ var row=el("div","rv-row"); row.appendChild(nameChip(p, p.honors)); list.appendChild(row); });
+    });
+  });
+  tile(mastersCount, "Hold a Master’s degree");
+  tile(phdCount, "Hold a PhD", peopleReveal("Members who hold a PhD", phdPeople));
+  tile(foreignUniCount, "Studied at a foreign university", peopleReveal("Studied at a foreign university", foreignUniPeople));
+  tile(withCareer.length, "With a recorded profession");
+  tile(distinctNames, "Distinct first names");
 
   // Living & remembered — builds up as the family is recorded as living or departed
   var ls = section("Living & remembered");

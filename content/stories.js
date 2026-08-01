@@ -6,9 +6,7 @@ window.STORIES = [
     title: "The Engagement Tea",
     date: "Wah Cantt · 1980",
     people: [ "b1-farrah", "b3-faisal", "b1-shazia" ],
-    body: `Another of our family's almost-legendary stories also revolves around Faisal—though this one goes back to before he married my sister, Shazia.
-
-It was 1980, and Faisal's engagement to Shazia was being held at our family home in Wah Cantt. Faisal arrived with his family from Islamabad, and after the engagement ceremony and dinner came one of the customary traditions.
+    body: `It was 1980, and Faisal's engagement to my sister Shazia was being held at our family home in Wah Cantt. Faisal arrived with his family from Islamabad, and after the engagement ceremony and dinner came one of the customary traditions.
 
 As the prospective younger sister-in-law, I was asked to serve tea to the groom-to-be. Naturally, I did not come alone. I was accompanied by a group of cousins and friends, all wearing mischievous smiles and trying very hard to suppress their laughter.
 

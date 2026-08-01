@@ -8,7 +8,7 @@ window.STORIES = [
     people: [ "b3-moin", "b1-farrah", "b1-shazia", "b3-faisal", "fatima", "salman", "sadaf" ],
     body: `One of our fondest memories from our first diplomatic posting in Brussels (1993–1996) revolves around what has since become famous in the family as the "One-Way Ticket Affair."
 
-Farrah's sister, Shazia (Bitto), her husband Faisal, and their young children—Fati, Babi, and Sadaf—came from California to spend some time with us. During their stay, Shazia and Faisal planned a day trip to Paris by train, while the children would remain with us in Brussels.
+Farrah's sister, Shazia (Bitto), her husband Faisal, and their young children—Fati, Babi, and Sadaf—came from California to spend some time with us. During their stay, Shazia and Faisal planned a two- to three-day trip to Paris by train, while the children would remain with us in Brussels.
 
 Since I spoke French, I accompanied them to the railway station to buy their train tickets. Their journey was scheduled for the following day, but that very night I was leaving on an official visit to Morocco. Confident that everything had been taken care of, I wished them a wonderful trip and headed off.
 

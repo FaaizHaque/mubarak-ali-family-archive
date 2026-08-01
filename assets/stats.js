@@ -147,7 +147,7 @@ window.familyReady.then(function(){
   var honouredList = named.filter(function(p){ return p.honors && AWARD_RE.test(p.honors); });
   var honoured = honouredList.length;
   // Leadership positions: CEOs, chairs, MDs, ambassadors, heads of institutions, etc.
-  var LEADER_RE = /chief executive|\bCEO\b|managing director|\bMD\b|chairman|chairperson|\bambassador\b|high commissioner|director[- ]?general|\bDG\b|chief secretary|vice[- ]?chancellor|deputy chairman|country head|\bpresident\b|\bfounder\b|co-?founder|consul[- ]?general|chief of protocol|\bCOO\b|\bCFO\b|\bCTO\b|\bCSO\b|head of/i;
+  var LEADER_RE = /chief executive|\bCEO\b|managing director|\bMD\b|chairman|chairperson|\bambassador\b|high commissioner|director[- ]?general|\bDG\b|chief secretary|cabinet secretary|vice[- ]?chancellor|deputy chairman|country head|\bpresident\b|\bfounder\b|co-?founder|consul[- ]?general|chief of protocol|\bCOO\b|\bCFO\b|\bCTO\b|\bCSO\b|head of/i;
   var leadersList = named.filter(function(p){ return LEADER_RE.test([p.profession,p.role,p.summary].filter(Boolean).join('  ')); });
   // list leaders by family seniority — mirrors the manual order on the Notable Members page (ORDER in notable.js; keep in sync)
   var SENIORITY = ["b3-arif","abdul-samad","ikram","inam","riffat-pasha","b1-siraj","b3-imdad","hamid",

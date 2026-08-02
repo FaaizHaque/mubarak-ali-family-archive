@@ -2,7 +2,7 @@ name,sex,spouse,dob,dod,profession,bio,photo,notable,role,honors,note,todo,id,pa
 Sheikh Mubarak Ali,m,,,,,,,,,,The patriarch — the origin of the family.,,mubarak,,,,,,yes
 Sheikh Muhammad Ramzan,m,Daulat; Sharifan,,,,,,,,,Branch 1 of 7.,,b1-ramzan,mubarak,,first wife; widow of his brother Sheikh Muhammad Sadiq (Branch 2),,,yes
 Ibrar,m,,,,,,,,,,son with Daulat — died in childhood.,,ibrar,b1-ramzan,,,,,yes
-Suriya Jabeen,f,Ahsan ul Haque,,04.02.2004,,,,,,,Mother: Sharifan. Married her first cousin Ahsan ul Haque (Branch 6); their children are shown on his line.,,b1-suriya,b1-ramzan,b6-ahsan,son of Kubra (Branch 6),,,yes
+Suriya Jabeen,f,Ahsan ul Haque,,04.02.2004,,,,,,,Mother: Sharifan. Married her first cousin Ahsan ul Haque (Branch 6).,,b1-suriya,b1-ramzan,b6-ahsan,son of Kubra (Branch 6),,,yes
 Sheikh Siraj ul Haque,m,Shamim Akhtar,15.06.1934,09.04.2020,Doctor (MBBS),"Sheikh Siraj ul Haque lost his mother at the tender age of four, and his father during his second year of medical college. When, in the face of such early losses, it was suggested that he give up his studies for a life in business, he answered with the conviction of a man twice his age: “No. I will become what my father dreamed for me. I will be nothing less.”
 
 A brilliant student, he graduated from King Edward Medical College, Lahore, and began his career as a Police Doctor. His dedication later brought him to Pakistan International Airlines (PIA), where he rose to Senior Medical Officer and was the founding force behind the airline’s Crew Medical Centre in Rawalpindi. He was known throughout for his dedication and his honesty.
@@ -309,7 +309,7 @@ Career:
 Ayesha Jawaid,f,Tahir Jawaid,31.07.1963,,Remedial Therapist,Remedial therapist for children with dyslexia.,,,,,,,ayesha-3,masroor,,,Chocho,,
 Maryam,f,X,,,,,,,,,,children — details to be added,maryam-2,masroor,,,Mallo,,
 Jamila,f,Riffat Pasha,,,,,,,,,No biological children.,,jamila,b5-sughra,,,,,yes
-Naseem,f,Imdad ul Haque,,,,,,,,,Married her first cousin Imdad ul Haque (Branch 3); their children are shown on his line.,,b5-naseem,b5-sughra,b3-imdad,son of Sheikh Muhammad Arif (Branch 3),Munni,,yes
+Naseem,f,Imdad ul Haque,,,,,,,,,Married her first cousin Imdad ul Haque (Branch 3).,,b5-naseem,b5-sughra,b3-imdad,son of Sheikh Muhammad Arif (Branch 3),Munni,,yes
 Kubra,f,Muhammad Hakeem,,,,,,,,,Branch 6 of 7.,,b6-kubra,mubarak,,,,,yes
 Sitara,f,Qaseem Shami,,,,,,,,,,,sitara,b6-kubra,,,,,yes
 Aamir Naseem,m,Saira Aamir,,,Mechanical engineer · gas transmission & distribution,"Aamir Naseem is a mechanical engineer and gas-sector leader with over three decades of experience in Pakistan’s natural-gas industry.
@@ -342,20 +342,20 @@ Aamira Hamid,f,Agha Hamid,,,,,,,,,,,amara,sitara,,,Bublee,,
 Javeria Asghar,f,Muhammad Asghar Khan,,,,,,,,,,,javeria,amara,,,,,
 Maria Nauman,f,Malik Nauman,,,,,,,,,,,maria-nauman,amara,,,,,
 Isha Umer,f,Umer Khalil,,,,,,,,,,,isha-umer,amara,,,,,
-Shamim Akhtar,f,Siraj ul Haque,,,,,,,,,Daughter of Kubra. Married her first cousin Siraj ul Haque (Branch 1); their children are shown on his line.,,b6-shameem,b6-kubra,b1-siraj,son of Sheikh Muhammad Ramzan (Branch 1),,,
+Shamim Akhtar,f,Siraj ul Haque,,,,,,,,,Daughter of Kubra. Married her first cousin Siraj ul Haque (Branch 1).,,b6-shameem,b6-kubra,b1-siraj,son of Sheikh Muhammad Ramzan (Branch 1),,,
 Nasreen Akhtar,f,Ghulam Dastagir Bajwa,01.03.1940,,Government school teacher,,,,,,,,nasreen,b6-kubra,,,Noni,,
-Ahsan ul Haque,m,Suriya Jabeen,,28.02.2025,,,,,,,Son of Kubra. Married his first cousin Suriya Jabeen (Branch 1); their children are shown on his line below.,,b6-ahsan,b6-kubra,b1-suriya,daughter of Sheikh Muhammad Ramzan (Branch 1),,,yes
+Ahsan ul Haque,m,Suriya Jabeen,,28.02.2025,,,,,,,Son of Kubra. Married his first cousin Suriya Jabeen (Branch 1).,,b6-ahsan,b6-kubra,b1-suriya,daughter of Sheikh Muhammad Ramzan (Branch 1),,,yes
 Rizwan ul Haque,m,Romana,,,,,,,,,,,rizwan-ul-haque,b6-ahsan,,,Mohni,,
 Hira,f,A,,,,,,,,,,,hira,rizwan-ul-haque,,,,,
 C,m,,,,,,,,,,son,,name-to-be-added-25,hira,,,,,
 Maryam,f,B,,,,,,,,,,,maryam-3,rizwan-ul-haque,,,,,
-Shazia,f,Faisal,,,,,,,,,Daughter of Suriya & Ahsan. Married Faisal (Branch 3); their children are shown on his line.,,b1-shazia,b6-ahsan,b3-faisal,son of Imdad ul Haque (Branch 3),,,
+Shazia,f,Faisal,,,,,,,,,Daughter of Suriya & Ahsan. Married Faisal (Branch 3).,,b1-shazia,b6-ahsan,b3-faisal,son of Imdad ul Haque (Branch 3),,,
 Farrah,f,Moin ul Haque,13.04.1964,,,"Farrah, the youngest child of Ahsan ul Haque and Suriya Jabeen, spent her childhood and received her education in Wah Cantt. An exceptionally diligent and hardworking student, she consistently remained among the top of her class throughout her academic years. After completing her Bachelor's degree from Sir Syed College, Wah, she earned a Master's degree in Economics from the University of the Punjab.
 Her passion for education led her to join Sir Syed College, Wah, as a lecturer in Economics, where she taught for nearly two years, continuing in that role for almost a year after her marriage.
 Marriage to Moin ul Haque, a career diplomat, opened a new chapter in her life, taking her to different countries across the world. Despite frequent relocations, she remained committed to her love of teaching. While living in Sri Lanka, she completed a diploma to become a certified Montessori teacher. Thereafter, at various overseas postings, she either volunteered or worked as a Montessori teacher, continuing to nurture young minds wherever the family was stationed.
 Farrah also possesses a natural aptitude for languages and embraced every opportunity to learn the language of the country in which she lived. Over the years, she acquired working knowledge of French, Turkish, and Chinese, reflecting both her curiosity and her willingness to immerse herself in different cultures.
 Alongside her professional interests, Farrah successfully balanced the many responsibilities of international life. As the mother of three children, she devoted herself to their upbringing while efficiently managing the household through frequent international moves. At the same time, she gracefully fulfilled the demanding representational responsibilities that accompany the life of a diplomat's spouse, supporting official engagements and helping foster friendships across cultures.
-Intelligent, adaptable, and deeply committed to both her family and education, Farrah has carried herself with quiet confidence, grace, and dignity throughout every stage of her life. Her ability to balance multiple responsibilities while maintaining her warmth, humility, and dedication to others remains one of her defining qualities.",,,,,Her children are shown on Moin ul Haque's line.,,b1-farrah,b6-ahsan,b3-moin,son of Anwar ul Haque (Branch 3),Bublee,,
+Intelligent, adaptable, and deeply committed to both her family and education, Farrah has carried herself with quiet confidence, grace, and dignity throughout every stage of her life. Her ability to balance multiple responsibilities while maintaining her warmth, humility, and dedication to others remains one of her defining qualities.",,,,,,,b1-farrah,b6-ahsan,b3-moin,son of Anwar ul Haque (Branch 3),Bublee,,
 Zahoor ul Haque,m,Parveen Zahoor,01.04.1935,,Organic Chemist,"PhD in Organic Chemistry — University of Dundee, Scotland.",,,,,,,b6-zahoor,b6-kubra,,,,,yes
 Aliya,f,Suhail,,,,,,,,,,,b6-aliya,b6-zahoor,b3-suhail,son of Imdad ul Haque (Branch 3),Noshi,,
 Israr,m,,,,,,,,,,,,israr,b6-kubra,,,,,yes
@@ -363,7 +363,7 @@ Ruqayya,f,Ghafoor,,,,,,,,,Branch 7 of 7.,,b7-ruqayya,mubarak,,,,,yes
 Ata,m,Atiqa,,,,,,,,,,,ata,b7-ruqayya,,,,,yes
 Usman,m,X,,,,,,,,,,children — details to be added,usman-3,ata,,,,,
 X,m,,,,,,,,,,,children — details to be added,name-to-be-added-26,ata,,married — name to be added,,,
-Irum,f,Babar,,,,,,,,,Married her first cousin Babar (Branch 7); their children are shown on his line.,,b7-irum,ata,b7-babar,first cousin — son of Habib & Altaf Shafi (Branch 7),,,
+Irum,f,Babar,,,,,,,,,Married her first cousin Babar (Branch 7).,,b7-irum,ata,b7-babar,first cousin — son of Habib & Altaf Shafi (Branch 7),,,
 Farah,f,,,,,,,,,,,details to be added,farah,ata,,married — name to be added,,,
 Habib,f,Altaf Shafi,,01.03.2023,,,,,,,,,habib,b7-ruqayya,,,,,yes
 Babar,m,Irum,,,,,,,,,,"two daughters, both married — names and details to be added",b7-babar,habib,b7-irum,first cousin — daughter of Ata (Branch 7),,,

@@ -73,10 +73,13 @@
     return FL;
   };
 
-  // A person's children, or (for a married-in spouse with none of their own) their partner's children.
+  // A person's own children — or, for anyone with none nested under them
+  // (a married-in spouse, or a family member whose children sit on their
+  // partner's line), the children they co-parent with their in-family spouse.
   FL.effectiveChildren = function(n){
     if(n.children && n.children.length) return n.children;
-    if(n.external){ var p=(n.spouses||[]).map(function(s){ return s.id && byId[s.id]; }).filter(Boolean)[0]; if(p && p.children) return p.children; }
+    var partners=(n.spouses||[]).map(function(s){ return s.id && byId[s.id]; }).filter(Boolean);
+    for(var i=0;i<partners.length;i++){ if(partners[i].children && partners[i].children.length) return partners[i].children; }
     return [];
   };
 

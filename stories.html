@@ -19,6 +19,7 @@
   .story-card.open .story-chev{transform:rotate(90deg)}
   .story-body{padding:2px 20px 20px}
   .story-body p{font-size:16px;line-height:1.7;margin:0 0 14px}
+  .story-signoff{font-style:italic;color:var(--muted,#6f6a5c);text-align:right;font-size:15px;margin:18px 0 6px}
   .story-people{margin-top:6px;display:flex;flex-wrap:wrap;gap:8px}
   .story-hint{font-size:13px;color:var(--muted,#6f6a5c);margin:-4px 0 16px}
 </style>
@@ -74,6 +75,7 @@
         var body=document.createElement("div"); body.className="story-body"; body.hidden=true;
         var html="";
         (s.body||"").split(/\n\s*\n/).forEach(function(p){ html+='<p>'+SITE.escapeText(p)+'</p>'; });
+        if(s.author){ html+='<p class="story-signoff">— Narrated by '+SITE.escapeText(s.author)+'</p>'; }
         body.innerHTML=html;
         if(s.people && s.people.length){
           var row=document.createElement("div"); row.className="story-people";
@@ -83,6 +85,15 @@
 
         head.addEventListener("click", function(){
           var willOpen=body.hidden;
+          if(willOpen){
+            box.querySelectorAll(".story-card.open").forEach(function(other){
+              if(other===card) return;
+              other.classList.remove("open");
+              var ob=other.querySelector(".story-body"), oh=other.querySelector(".story-head");
+              if(ob) ob.hidden=true;
+              if(oh) oh.setAttribute("aria-expanded","false");
+            });
+          }
           body.hidden=!willOpen;
           head.setAttribute("aria-expanded", willOpen?"true":"false");
           card.classList.toggle("open", willOpen);

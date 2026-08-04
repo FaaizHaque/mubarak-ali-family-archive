@@ -18,7 +18,7 @@
 */
 (function () {
   var SALT = "mubarak-ali-family-archive::";
-  var PASS_HASH = "32f2b3c36509a32046933bee69dd6dc4d9ab728df4286256fef3dc4e0451fc2d"; // temporary password: "family" — please change
+  var PASS_HASH = "c018fab9f4f01425744eb972ab770ee79291c3c505dd54c66d504594edba4b60"; // family password (salted SHA-256) — to change it, see the note above
   var KEY = "smaf_gate_ok";
 
   try { if (sessionStorage.getItem(KEY) === PASS_HASH) return; } catch (e) {}
